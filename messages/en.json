@@ -174,5 +174,168 @@
     "copy": "© PARS STUDIO — MMXXVI",
     "city": "ISTANBUL",
     "made": "MADE WITH PATIENCE"
+  },
+  "booking": {
+    "section": "007",
+    "label": "BOOKING",
+    "heading": "Plan a session.",
+    "intro": "Pick a date, a service and a duration in a few steps. Your confirmation lands in minutes.",
+    "back": "Back",
+    "steps": {
+      "service": "SERVICE",
+      "schedule": "DATE & TIME",
+      "details": "DETAILS",
+      "review": "REVIEW"
+    },
+    "service": {
+      "label": "Pick a service",
+      "pickPrompt": "Choose a service",
+      "durationOptions": "Available durations"
+    },
+    "schedule": {
+      "dateLabel": "Date",
+      "datePlaceholder": "MMM D, YYYY",
+      "datePicker": "Open calendar",
+      "durationLabel": "Duration",
+      "hour": "hour",
+      "hours": "hours",
+      "timeLabel": "Start time",
+      "timeHint": "Studio runs 10:00 — 22:00. Closed Sundays.",
+      "loading": "Checking availability…",
+      "noSlots": "No slot fits this date. Try another day.",
+      "slotTaken": "taken",
+      "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+      "months": [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ]
+    },
+    "details": {
+      "name": "Full name",
+      "namePh": "Your full name",
+      "email": "Email",
+      "emailPh": "you@mail.com",
+      "phone": "Phone",
+      "phonePh": "+90 5xx xxx xx xx",
+      "artist": "Artist name",
+      "artistOptional": "(optional)",
+      "artistPh": "Your stage name, if any",
+      "project": "Project description",
+      "projectOptional": "(optional)",
+      "projectPh": "The track's story, mood, target…",
+      "references": "Reference links",
+      "referencesOptional": "(optional)",
+      "referencesPh": "Spotify, YouTube or Drive links"
+    },
+    "review": {
+      "title": "Review",
+      "service": "Service",
+      "date": "Date",
+      "time": "Time",
+      "duration": "Duration",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "consent": "By submitting you agree that the studio may contact you regarding this booking only."
+    },
+    "submit": "Submit booking",
+    "submitting": "Submitting…",
+    "next": "Continue",
+    "errors": {
+      "name": "Please enter a valid name.",
+      "email": "Enter a valid email.",
+      "phone": "Enter a valid phone number.",
+      "service": "Select a service.",
+      "date": "Pick a date.",
+      "time": "Pick a time.",
+      "duration": "Pick a duration.",
+      "tooLong": "Too long.",
+      "slotTaken": "This slot is no longer available. Please pick another time.",
+      "server": "Something went wrong. Please try again."
+    },
+    "success": {
+      "label": "BOOKING RECEIVED",
+      "heading": "Thank you. Your message reached the studio.",
+      "body": "We sent you a confirmation email. The studio team will get back to you within 24 hours.",
+      "codeLabel": "CONFIRMATION CODE",
+      "summary": "Session details",
+      "downloadIcs": "Add to calendar (.ics)",
+      "another": "Plan another session",
+      "home": "Home"
+    }
+  },
+  "admin": {
+    "login": {
+      "label": "STUDIO PANEL",
+      "heading": "Sign in",
+      "intro": "Studio team only. Sign in to manage reservations.",
+      "email": "Email",
+      "emailPh": "you@parsstudio.com",
+      "password": "Password",
+      "passwordPh": "••••••••",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "error": "Invalid email or password."
+    },
+    "dashboard": {
+      "label": "RESERVATIONS",
+      "heading": "Dashboard",
+      "logout": "Sign out",
+      "loggedInAs": "Signed in as",
+      "empty": "No reservations yet.",
+      "emptyFilter": "No reservations match this filter.",
+      "filters": {
+        "all": "All",
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "columns": {
+        "date": "DATE",
+        "time": "TIME",
+        "service": "SERVICE",
+        "customer": "CUSTOMER",
+        "status": "STATUS",
+        "code": "CODE"
+      }
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "completed": "Completed"
+    },
+    "dialog": {
+      "title": "Reservation Detail",
+      "code": "CONFIRMATION CODE",
+      "createdAt": "Created",
+      "customer": "Customer",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "artist": "Artist name",
+      "session": "Session",
+      "date": "Date",
+      "time": "Time",
+      "duration": "Duration",
+      "service": "Service",
+      "project": "Project",
+      "references": "References",
+      "notes": "Admin notes",
+      "notesPh": "Studio only…",
+      "statusLabel": "Change status",
+      "save": "Save",
+      "saving": "Saving…",
+      "saved": "Saved.",
+      "delete": "Delete",
+      "deleteConfirm": "Delete this reservation permanently?",
+      "deleting": "Deleting…",
+      "downloadIcs": "Add to calendar (.ics)",
+      "close": "Close",
+      "hour": "hour",
+      "hours": "hours",
+      "error": "Something went wrong. Try again."
+    }
   }
 }

@@ -174,5 +174,168 @@
     "copy": "© PARS STUDIO — MMXXVI",
     "city": "İSTANBUL",
     "made": "SABIRLA YAPILDI"
+  },
+  "booking": {
+    "section": "007",
+    "label": "REZERVASYON",
+    "heading": "Bir oturum planla.",
+    "intro": "Birkaç adımda tarihi, hizmeti ve süreyi seç. Onay e-postan dakikalar içinde gelir.",
+    "back": "Geri",
+    "steps": {
+      "service": "HİZMET",
+      "schedule": "TARİH & SAAT",
+      "details": "DETAY",
+      "review": "ÖZET"
+    },
+    "service": {
+      "label": "Hizmet seç",
+      "pickPrompt": "Bir hizmet seç",
+      "durationOptions": "Mümkün süreler"
+    },
+    "schedule": {
+      "dateLabel": "Tarih",
+      "datePlaceholder": "GG.AA.YYYY",
+      "datePicker": "Takvim aç",
+      "durationLabel": "Süre",
+      "hour": "saat",
+      "hours": "saat",
+      "timeLabel": "Başlangıç saati",
+      "timeHint": "Stüdyo 10:00 — 22:00. Pazar kapalı.",
+      "loading": "Müsaitlik kontrol ediliyor…",
+      "noSlots": "Bu tarih için uygun saat yok. Başka bir tarih dene.",
+      "slotTaken": "dolu",
+      "weekdays": ["Pa", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+      "months": [
+        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+      ]
+    },
+    "details": {
+      "name": "Ad Soyad",
+      "namePh": "Adınız ve soyadınız",
+      "email": "E-posta",
+      "emailPh": "ornek@mail.com",
+      "phone": "Telefon",
+      "phonePh": "+90 5xx xxx xx xx",
+      "artist": "Sanatçı adı",
+      "artistOptional": "(opsiyonel)",
+      "artistPh": "Sahne adın varsa",
+      "project": "Proje açıklaması",
+      "projectOptional": "(opsiyonel)",
+      "projectPh": "Parçanın hikâyesi, ruh hâli, hedef…",
+      "references": "Referans linkleri",
+      "referencesOptional": "(opsiyonel)",
+      "referencesPh": "Spotify, YouTube ya da Drive linkleri"
+    },
+    "review": {
+      "title": "Özet",
+      "service": "Hizmet",
+      "date": "Tarih",
+      "time": "Saat",
+      "duration": "Süre",
+      "name": "İsim",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "consent": "Göndererek iletişim bilgilerinin sadece bu rezervasyon için kullanılacağını kabul ediyorsun."
+    },
+    "submit": "Rezervasyonu Gönder",
+    "submitting": "Gönderiliyor…",
+    "next": "Devam",
+    "errors": {
+      "name": "Lütfen geçerli bir ad gir.",
+      "email": "Geçerli bir e-posta gir.",
+      "phone": "Geçerli bir telefon numarası gir.",
+      "service": "Bir hizmet seç.",
+      "date": "Bir tarih seç.",
+      "time": "Bir saat seç.",
+      "duration": "Süre seç.",
+      "tooLong": "Çok uzun.",
+      "slotTaken": "Bu saat artık müsait değil. Lütfen başka bir saat seç.",
+      "server": "Bir şeyler ters gitti. Lütfen tekrar dene."
+    },
+    "success": {
+      "label": "REZERVASYON ALINDI",
+      "heading": "Teşekkürler. Mesajın stüdyoya ulaştı.",
+      "body": "Onayını içeren bir e-posta gönderdik. Stüdyo ekibi 24 saat içinde dönüş yapar.",
+      "codeLabel": "ONAY KODU",
+      "summary": "Oturum Bilgileri",
+      "downloadIcs": "Takvime ekle (.ics)",
+      "another": "Başka bir oturum planla",
+      "home": "Ana sayfa"
+    }
+  },
+  "admin": {
+    "login": {
+      "label": "STÜDYO PANELİ",
+      "heading": "Giriş",
+      "intro": "Sadece stüdyo ekibi. Rezervasyonları yönetmek için giriş yap.",
+      "email": "E-posta",
+      "emailPh": "ornek@parsstudio.com",
+      "password": "Şifre",
+      "passwordPh": "••••••••",
+      "submit": "Giriş Yap",
+      "submitting": "Giriş yapılıyor…",
+      "error": "E-posta veya şifre hatalı."
+    },
+    "dashboard": {
+      "label": "REZERVASYONLAR",
+      "heading": "Panel",
+      "logout": "Çıkış",
+      "loggedInAs": "Giriş yapıldı:",
+      "empty": "Henüz rezervasyon yok.",
+      "emptyFilter": "Bu filtreyle eşleşen rezervasyon yok.",
+      "filters": {
+        "all": "Tümü",
+        "pending": "Bekliyor",
+        "confirmed": "Onaylı",
+        "completed": "Tamamlandı",
+        "cancelled": "İptal"
+      },
+      "columns": {
+        "date": "TARİH",
+        "time": "SAAT",
+        "service": "HİZMET",
+        "customer": "MÜŞTERİ",
+        "status": "DURUM",
+        "code": "KOD"
+      }
+    },
+    "status": {
+      "pending": "Bekliyor",
+      "confirmed": "Onaylı",
+      "cancelled": "İptal",
+      "completed": "Tamamlandı"
+    },
+    "dialog": {
+      "title": "Rezervasyon Detayı",
+      "code": "ONAY KODU",
+      "createdAt": "Oluşturuldu",
+      "customer": "Müşteri",
+      "name": "İsim",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "artist": "Sanatçı adı",
+      "session": "Oturum",
+      "date": "Tarih",
+      "time": "Saat",
+      "duration": "Süre",
+      "service": "Hizmet",
+      "project": "Proje",
+      "references": "Referanslar",
+      "notes": "Admin Notları",
+      "notesPh": "Sadece stüdyo görür…",
+      "statusLabel": "Durumu değiştir",
+      "save": "Kaydet",
+      "saving": "Kaydediliyor…",
+      "saved": "Kaydedildi.",
+      "delete": "Sil",
+      "deleteConfirm": "Bu rezervasyonu kalıcı olarak sil?",
+      "deleting": "Siliniyor…",
+      "downloadIcs": "Takvime ekle (.ics)",
+      "close": "Kapat",
+      "hour": "saat",
+      "hours": "saat",
+      "error": "Bir hata oluştu. Tekrar dene."
+    }
   }
 }
