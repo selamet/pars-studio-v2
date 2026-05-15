@@ -161,7 +161,11 @@
       "Hafta içi 11:00 — 22:00"
     ],
     "phoneTitle": "TELEFON",
-    "phone": "+90 212 000 00 00",
+    "phone": "+90 531 393 20 83",
+    "whatsappNumber": "905313932083",
+    "whatsappCta": "WhatsApp ile yaz",
+    "whatsappMessage": "Merhaba Pars Studio, rezervasyon hakkında bilgi almak istiyorum.",
+    "whatsappAria": "WhatsApp ile konuşma başlat",
     "mapTitle": "HARİTA",
     "mapQuery": "Bomonti, Şişli, İstanbul",
     "mapDirections": "Yol tarifi al",

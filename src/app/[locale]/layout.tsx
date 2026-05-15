@@ -7,6 +7,7 @@ import { locales, type Locale } from '@/i18n';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/nav/Navbar';
 import Grain from '@/components/Grain';
+import WhatsappButton from '@/components/WhatsappButton';
 
 const serif = Fraunces({
   subsets: ['latin', 'latin-ext'],
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
           <Grain />
           <Navbar />
           <Providers>{children}</Providers>
+          <WhatsappButton />
         </NextIntlClientProvider>
       </body>
     </html>

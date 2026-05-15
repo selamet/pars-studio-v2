@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import WhatsappIcon from '@/components/WhatsappIcon';
 
 type SocialLink = { label: string; href: string };
 
@@ -51,12 +52,26 @@ export default function Contact() {
 
           <div className="reveal-text flex flex-col gap-4">
             <span className="meta">{t('phoneTitle')}</span>
-            <a
-              href={`tel:${t('phone').replace(/\s+/g, '')}`}
-              className="w-fit text-[14px] text-fg/[0.7] transition-colors hover:text-accent"
-            >
-              {t('phone')}
-            </a>
+            <div className="flex flex-col gap-2 text-[14px]">
+              <a
+                href={`tel:${t('phone').replace(/\s+/g, '')}`}
+                className="w-fit text-fg/[0.7] transition-colors hover:text-accent"
+              >
+                {t('phone')}
+              </a>
+              <a
+                href={`https://wa.me/${t('whatsappNumber').replace(
+                  /\D/g,
+                  ''
+                )}?text=${encodeURIComponent(t('whatsappMessage'))}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="group inline-flex w-fit items-center gap-2 text-fg/[0.7] transition-colors hover:text-accent"
+              >
+                <WhatsappIcon className="h-4 w-4 text-[#25D366]" />
+                {t('whatsappCta')}
+              </a>
+            </div>
           </div>
 
           <div className="reveal-text flex flex-col gap-4">

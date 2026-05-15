@@ -161,7 +161,11 @@
       "Weekdays 11:00 — 22:00"
     ],
     "phoneTitle": "PHONE",
-    "phone": "+90 212 000 00 00",
+    "phone": "+90 531 393 20 83",
+    "whatsappNumber": "905313932083",
+    "whatsappCta": "Message on WhatsApp",
+    "whatsappMessage": "Hello Pars Studio, I'd like to ask about booking a session.",
+    "whatsappAria": "Open WhatsApp chat",
     "mapTitle": "MAP",
     "mapQuery": "Bomonti, Şişli, Istanbul",
     "mapDirections": "Get directions",
