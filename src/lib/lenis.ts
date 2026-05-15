@@ -12,14 +12,19 @@ const SCROLL_ROTATION_MULTIPLIER = 0.0035;
 const SCROLL_MULTIPLIER = 1.25;
 
 /**
- * The single scroll source for the whole app.
+ * The single scroll source for the landing page.
  *
  * Initialises Lenis, drives its requestAnimationFrame loop, and on every
  * scroll event updates the shared `scrollState` (read by the Three.js loop)
  * and pumps GSAP ScrollTrigger so reveals fire on the smoothed scroll.
+ *
+ * Pass `enabled: false` to skip Lenis entirely (booking, admin) — those
+ * pages use native scroll so dialogs, long tables and form fields behave
+ * normally.
  */
-export function useLenis() {
+export function useLenis(enabled: boolean = true) {
   useEffect(() => {
+    if (!enabled) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
@@ -61,5 +66,5 @@ export function useLenis() {
       lenis.off('scroll', onScroll);
       lenis.destroy();
     };
-  }, []);
+  }, [enabled]);
 }

@@ -1,19 +1,24 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenis } from '@/lib/lenis';
 
 /**
  * App-wide client shell:
- *  - boots Lenis (the sole scroll source)
+ *  - boots Lenis on the landing page only (booking + admin use native scroll
+ *    so dialogs and long tables don't fight a smooth-scroll hijacker)
  *  - wires the one-shot GSAP `.reveal-text` reveals
  *
  * The 3D hero is intentionally never touched here.
  */
 export default function Providers({ children }: { children: React.ReactNode }) {
-  useLenis();
+  const pathname = usePathname();
+  // Landing path is exactly /<locale> (no further segments).
+  const isLanding = /^\/[a-z]{2}\/?$/.test(pathname ?? '');
+  useLenis(isLanding);
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
