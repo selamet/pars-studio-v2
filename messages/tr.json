@@ -181,8 +181,11 @@
   },
   "footer": {
     "copy": "© PARS STUDIO — MMXXVI",
+    "rights": "TÜM HAKLARI SAKLIDIR",
     "city": "İSTANBUL",
-    "made": "SABIRLA YAPILDI"
+    "poweredBy": "POWERED BY",
+    "poweredByName": "SELAMET.DEV",
+    "poweredByHref": "https://selamet.dev"
   },
   "booking": {
     "section": "007",

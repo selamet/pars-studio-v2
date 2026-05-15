@@ -181,8 +181,11 @@
   },
   "footer": {
     "copy": "© PARS STUDIO — MMXXVI",
+    "rights": "ALL RIGHTS RESERVED",
     "city": "ISTANBUL",
-    "made": "MADE WITH PATIENCE"
+    "poweredBy": "POWERED BY",
+    "poweredByName": "SELAMET.DEV",
+    "poweredByHref": "https://selamet.dev"
   },
   "booking": {
     "section": "007",

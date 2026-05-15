@@ -15,6 +15,10 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Anchor jumps (#services, #contact, …) land below the fixed navbar
+       instead of being clipped by it. Lenis has its own offset for
+       smoothed navigation on the landing page (see lib/lenis.ts). */
+    scroll-padding-top: clamp(72px, 9vh, 96px);
   }
 
   body {
@@ -22,6 +26,12 @@
     color: var(--fg);
     font-feature-settings: 'ss01', 'cv01';
     overflow-x: hidden;
+  }
+
+  /* Targets of in-page links push themselves down so the section header
+     never sits behind the fixed navbar. */
+  section[id] {
+    scroll-margin-top: clamp(72px, 9vh, 96px);
   }
 
   ::selection {

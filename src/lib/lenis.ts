@@ -33,7 +33,10 @@ export function useLenis(enabled: boolean = true) {
       // smoothTouch is off by default in Lenis v1 (the spec's `smoothTouch:false`);
       // the option was removed from the typed surface so it is omitted here.
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      anchors: true, // same-page #section links smooth-scroll through Lenis
+      // Same-page #section links smooth-scroll through Lenis. The negative
+      // offset stops the scroll ~88px short of the target so section
+      // headers don't slide under the fixed navbar.
+      anchors: { offset: -88 },
     });
 
     const onScroll = ({
