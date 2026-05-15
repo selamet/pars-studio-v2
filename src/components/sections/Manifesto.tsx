@@ -8,12 +8,10 @@ export default function Manifesto() {
   return (
     <section id="studio" className="section">
       <div className="shell">
-        {/* Chapter label */}
-        <div className="reveal-text flex items-baseline gap-5">
+        {/* Chapter label — same horizontal pattern as every other section. */}
+        <div className="reveal-text flex items-center gap-5">
           <span className="meta !text-accent">{t('section')}</span>
-          <span className="font-serif text-2xl italic text-accent">
-            {t('roman')}
-          </span>
+          <span className="h-px w-12 bg-rule" aria-hidden />
           <span className="meta">{t('label')}</span>
         </div>
 
