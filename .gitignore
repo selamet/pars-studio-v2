@@ -1,0 +1,14 @@
+node_modules
+.next
+.env
+.env*.local
+.DS_Store
+*.log
+next-env.d.ts
+/out
+/build
+.vercel
+
+# Local editor / assistant settings
+.claude/
+*.tsbuildinfo

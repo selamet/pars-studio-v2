@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "logoTop": "PARS",
+    "logoBottom": "STUDIO",
+    "studio": "Studio",
+    "services": "Services",
+    "process": "Process",
+    "contact": "Contact",
+    "status": "STUDIO OPEN",
+    "book": "Book",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "hero": {
+    "meta": "SIGNAL · 001 · ISTANBUL · 41.0082°N",
+    "eyebrow": "MUSIC · PRODUCTION · DISCIPLINE",
+    "titleLine1": "We carve raw",
+    "titleLine2": "signal",
+    "titleLine3": "into character.",
+    "caption": "Pars Studio — Recording, Mixing, Mastering & Beat Production.",
+    "scroll": "SCROLL"
+  },
+  "manifesto": {
+    "section": "001",
+    "roman": "I",
+    "label": "ABOUT THE STUDIO",
+    "image": "/images/studio/about.jpg",
+    "imageCaption": "PARS STUDIO · ISTANBUL · 41.0082°N",
+    "heading": "Good sound is not an accident. It is a decision.",
+    "p1": "Pars Studio is an independent production studio based in Istanbul. We care about one thing: turning an idea into a record you feel in your chest. We do not chase trends — we build character.",
+    "p2": "Every project starts with intent before acoustics. We sit with the artist, talk about what the track wants to say, and only then open a microphone. We dislike rushing — because a rush can be heard in the recording.",
+    "p3": "Gear matters; the ear matters more. Here, equipment is a tool, not the hero. In the end only one thing remains: the silence in the room when the track plays."
+  },
+  "services": {
+    "section": "002",
+    "label": "SERVICES",
+    "heading": "Disciplines",
+    "fromLabel": "from",
+    "items": [
+      {
+        "no": "01",
+        "name": "Recording",
+        "desc": "Tracking through a clean, accurate signal chain — analog to digital. Vocals, instruments and live room.",
+        "price": "₺1,500 / hour"
+      },
+      {
+        "no": "02",
+        "name": "Mixing",
+        "desc": "Detailed mixing that gives the track depth, space and balance. Stems and revisions included.",
+        "price": "₺6,000 / track"
+      },
+      {
+        "no": "03",
+        "name": "Mastering",
+        "desc": "Consistent, transparent mastering ready for every platform. Optimised for digital and physical.",
+        "price": "₺2,500 / track"
+      },
+      {
+        "no": "04",
+        "name": "Beat Production",
+        "desc": "Production built from scratch around the artist's world. Trap, drill, R&B, alternative.",
+        "price": "on request"
+      },
+      {
+        "no": "05",
+        "name": "Vocal Production",
+        "desc": "Performance direction, comping, tuning and aesthetic decisions. Putting the voice at the centre.",
+        "price": "₺4,000 / track"
+      }
+    ]
+  },
+  "rooms": {
+    "section": "003",
+    "label": "STUDIO",
+    "heading": "Rooms",
+    "items": [
+      {
+        "name": "Live Room",
+        "gear": "Yamaha C7 · Neumann U87 · Coles 4038 · Acoustic panels",
+        "image": "/images/studio/studio1.jpg"
+      },
+      {
+        "name": "Control Room",
+        "gear": "SSL Console · Adam A7X · Pro Tools HDX · Antelope Clock",
+        "image": "/images/studio/studio2.jpg"
+      },
+      {
+        "name": "Vocal Booth",
+        "gear": "Neumann U87 Ai · Avalon 737 · Apollo x8 · Floating floor",
+        "image": "/images/studio/studio3.jpg"
+      },
+      {
+        "name": "Production Suite",
+        "gear": "MacBook Pro M3 · Push 3 · UAD Octo · KRK Rokit",
+        "image": "/images/studio/studio4.jpg"
+      }
+    ]
+  },
+  "process": {
+    "section": "004",
+    "label": "PROCESS",
+    "heading": "Working Flow",
+    "items": [
+      {
+        "no": "001",
+        "name": "Brief",
+        "desc": "We talk references, the goal and the feeling. The plan is clear before recording."
+      },
+      {
+        "no": "002",
+        "name": "Tracking",
+        "desc": "Performance-first recording. The right take, the right signal, no needless layers."
+      },
+      {
+        "no": "003",
+        "name": "Mixing",
+        "desc": "Balance, space and character. The track is A/B'd against references."
+      },
+      {
+        "no": "004",
+        "name": "Mastering",
+        "desc": "Final polish ready for platforms. Consistent level, transparent tone."
+      },
+      {
+        "no": "005",
+        "name": "Delivery",
+        "desc": "All formats, stems and archive. Clean file names, nothing missing."
+      }
+    ]
+  },
+  "works": {
+    "section": "005",
+    "label": "SELECTED WORKS",
+    "heading": "Archive",
+    "colArtist": "ARTIST",
+    "colProject": "PROJECT",
+    "colYear": "YEAR",
+    "colRole": "ROLE",
+    "items": [
+      { "artist": "Ayla Devran", "project": "Midnight Radio", "year": "2025", "role": "Mix · Master" },
+      { "artist": "Kuzey Blok", "project": "Asphalt", "year": "2025", "role": "Record · Production" },
+      { "artist": "Mira Sönmez", "project": "Glass Heart", "year": "2024", "role": "Vocal Production" },
+      { "artist": "Derin Akarsu", "project": "Against The Current", "year": "2024", "role": "Mix" },
+      { "artist": "VHS Kids", "project": "Analog Summer", "year": "2024", "role": "Record · Mix" },
+      { "artist": "Selin Vardar", "project": "Trace", "year": "2023", "role": "Master" },
+      { "artist": "Boran Eren", "project": "Underside", "year": "2023", "role": "Beat Production" },
+      { "artist": "Lara Moon", "project": "Neon Sorrow", "year": "2023", "role": "Mix · Master" },
+      { "artist": "Tunç Arkın", "project": "Dry Noise", "year": "2022", "role": "Recording" },
+      { "artist": "Eda Yıldırım", "project": "Silent City", "year": "2022", "role": "Production · Mix" }
+    ]
+  },
+  "contact": {
+    "section": "006",
+    "label": "CONTACT",
+    "heading": "Let's talk",
+    "email": "hello@parsstudio.com",
+    "studioTitle": "STUDIO",
+    "studioLines": [
+      "Bomonti, Şişli",
+      "Istanbul, Türkiye",
+      "Weekdays 11:00 — 22:00"
+    ],
+    "socialTitle": "SOCIAL",
+    "socialLinks": [
+      { "label": "Instagram", "href": "https://instagram.com" },
+      { "label": "SoundCloud", "href": "https://soundcloud.com" },
+      { "label": "Spotify", "href": "https://spotify.com" }
+    ],
+    "bookingTitle": "BOOKING",
+    "bookingCta": "Book a session",
+    "bookingNote": "Response time: 24 hours"
+  },
+  "footer": {
+    "copy": "© PARS STUDIO — MMXXVI",
+    "city": "ISTANBUL",
+    "made": "MADE WITH PATIENCE"
+  }
+}

@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0908;
+  --bg-soft: #14110f;
+  --fg: #ece8df;
+  --fg-dim: #8a847a;
+  --accent: #c9a96e;
+  --rule: rgba(236, 232, 223, 0.1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-feature-settings: 'ss01', 'cv01';
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+}
+
+@layer components {
+  /* Hairline rule used at every section break and bordered row. */
+  .hairline {
+    border-color: var(--rule);
+  }
+
+  /* Editorial accent — italic display words pick up the brass gold. */
+  .accent-italic {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* Monospace meta / label row. */
+  .meta {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--fg-dim);
+  }
+
+  /* Section band — slides up over the sticky hero. */
+  .section {
+    position: relative;
+    z-index: 20;
+    background-color: var(--bg);
+    padding-block: clamp(96px, 14vh, 200px);
+    padding-inline: clamp(20px, 4vw, 64px);
+  }
+
+  /* Centred max-width content shell. */
+  .shell {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1520px;
+  }
+
+  /* Soft radial + vertical-fade vignette behind hero text. */
+  .hero-vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        60% 50% at 50% 52%,
+        rgba(10, 9, 8, 0.55) 0%,
+        rgba(10, 9, 8, 0.25) 45%,
+        rgba(10, 9, 8, 0) 75%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(10, 9, 8, 0.4) 0%,
+        rgba(10, 9, 8, 0) 28%,
+        rgba(10, 9, 8, 0) 62%,
+        rgba(10, 9, 8, 0.85) 100%
+      );
+  }
+
+  /* Film grain — inline SVG feTurbulence as a data URI (no inline style). */
+  .grain {
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}

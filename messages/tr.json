@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "logoTop": "PARS",
+    "logoBottom": "STUDIO",
+    "studio": "Stüdyo",
+    "services": "Hizmetler",
+    "process": "Süreç",
+    "contact": "İletişim",
+    "status": "STÜDYO AÇIK",
+    "book": "Rezervasyon",
+    "menu": "Menü",
+    "close": "Kapat"
+  },
+  "hero": {
+    "meta": "SES · 001 · İSTANBUL · 41.0082°N",
+    "eyebrow": "MÜZİK · ÜRETİM · DİSİPLİN",
+    "titleLine1": "Ham sesi",
+    "titleLine2": "karaktere",
+    "titleLine3": "kazıyoruz.",
+    "caption": "Pars Studio — Kayıt, Miks, Mastering ve Beat Prodüksiyon.",
+    "scroll": "KAYDIR"
+  },
+  "manifesto": {
+    "section": "001",
+    "roman": "I",
+    "label": "STÜDYO HAKKINDA",
+    "image": "/images/studio/about.jpg",
+    "imageCaption": "PARS STUDIO · İSTANBUL · 41.0082°N",
+    "heading": "İyi ses bir tesadüf değil; bir karardır.",
+    "p1": "Pars Studio, İstanbul'da kurulu bağımsız bir prodüksiyon stüdyosudur. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
+    "p2": "Her proje akustikten önce niyetle başlar. Sanatçıyla oturur, parçanın ne söylemek istediğini konuşur, ancak ondan sonra mikrofonu açarız. Aceleyi sevmeyiz — çünkü acele, kayıtta duyulur.",
+    "p3": "Donanım önemlidir, kulak daha çok. Burada ekipman bir araçtır, kahraman değil. Sonuçta geriye kalan tek şey vardır: parça çaldığında odadaki sessizlik."
+  },
+  "services": {
+    "section": "002",
+    "label": "HİZMETLER",
+    "heading": "Disiplinler",
+    "fromLabel": "başlangıç",
+    "items": [
+      {
+        "no": "01",
+        "name": "Kayıt",
+        "desc": "Analog hattan dijitale, gürültüsüz ve doğru sinyal zinciriyle tracking. Vokal, enstrüman ve canlı oda kaydı.",
+        "price": "₺1.500 / saat"
+      },
+      {
+        "no": "02",
+        "name": "Miks",
+        "desc": "Parçaya derinlik, alan ve denge kazandıran detaylı miks. Stem teslimat ve revizyon dahil.",
+        "price": "₺6.000 / parça"
+      },
+      {
+        "no": "03",
+        "name": "Mastering",
+        "desc": "Yayın platformlarına hazır, tutarlı ve şeffaf mastering. Dijital ve fiziksel formatlar için optimizasyon.",
+        "price": "₺2.500 / parça"
+      },
+      {
+        "no": "04",
+        "name": "Beat Prodüksiyon",
+        "desc": "Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon. Trap, drill, R&B, alternatif.",
+        "price": "talep üzerine"
+      },
+      {
+        "no": "05",
+        "name": "Vokal Prodüksiyon",
+        "desc": "Performans yönetimi, comp, tuning ve estetik karar. Vokali parçanın merkezine oturtmak.",
+        "price": "₺4.000 / parça"
+      }
+    ]
+  },
+  "rooms": {
+    "section": "003",
+    "label": "STÜDYO",
+    "heading": "Odalar",
+    "items": [
+      {
+        "name": "Live Room",
+        "gear": "Yamaha C7 · Neumann U87 · Coles 4038 · Akustik panel",
+        "image": "/images/studio/studio1.jpg"
+      },
+      {
+        "name": "Control Room",
+        "gear": "SSL Console · Adam A7X · Pro Tools HDX · Antelope Clock",
+        "image": "/images/studio/studio2.jpg"
+      },
+      {
+        "name": "Vocal Booth",
+        "gear": "Neumann U87 Ai · Avalon 737 · Apollo x8 · Float zemin",
+        "image": "/images/studio/studio3.jpg"
+      },
+      {
+        "name": "Production Suite",
+        "gear": "MacBook Pro M3 · Push 3 · UAD Octo · KRK Rokit",
+        "image": "/images/studio/studio4.jpg"
+      }
+    ]
+  },
+  "process": {
+    "section": "004",
+    "label": "SÜREÇ",
+    "heading": "Çalışma Akışı",
+    "items": [
+      {
+        "no": "001",
+        "name": "Brief",
+        "desc": "Referansları, hedefi ve duyguyu konuşuruz. Plan kayıttan önce netleşir."
+      },
+      {
+        "no": "002",
+        "name": "Tracking",
+        "desc": "Performansa odaklı kayıt. Doğru take, doğru sinyal, gereksiz katman yok."
+      },
+      {
+        "no": "003",
+        "name": "Mixing",
+        "desc": "Denge, alan ve karakter. Parça referansla A/B karşılaştırılır."
+      },
+      {
+        "no": "004",
+        "name": "Mastering",
+        "desc": "Platformlara hazır son rötuş. Tutarlı seviye, şeffaf ton."
+      },
+      {
+        "no": "005",
+        "name": "Delivery",
+        "desc": "Tüm formatlar, stemler ve arşiv. Net dosya isimleri, eksiksiz teslim."
+      }
+    ]
+  },
+  "works": {
+    "section": "005",
+    "label": "SEÇİLİ ÇALIŞMALAR",
+    "heading": "Arşiv",
+    "colArtist": "SANATÇI",
+    "colProject": "PROJE",
+    "colYear": "YIL",
+    "colRole": "ROL",
+    "items": [
+      { "artist": "Ayla Devran", "project": "Gece Yarısı Radyosu", "year": "2025", "role": "Miks · Mastering" },
+      { "artist": "Kuzey Blok", "project": "Asfalt", "year": "2025", "role": "Kayıt · Prodüksiyon" },
+      { "artist": "Mira Sönmez", "project": "Cam Kalp", "year": "2024", "role": "Vokal Prodüksiyon" },
+      { "artist": "Derin Akarsu", "project": "Akıntıya Karşı", "year": "2024", "role": "Miks" },
+      { "artist": "VHS Çocukları", "project": "Analog Yaz", "year": "2024", "role": "Kayıt · Miks" },
+      { "artist": "Selin Vardar", "project": "İz", "year": "2023", "role": "Mastering" },
+      { "artist": "Boran Eren", "project": "Şehrin Altı", "year": "2023", "role": "Beat Prodüksiyon" },
+      { "artist": "Lara Moon", "project": "Neon Hüzün", "year": "2023", "role": "Miks · Mastering" },
+      { "artist": "Tunç Arkın", "project": "Kuru Gürültü", "year": "2022", "role": "Kayıt" },
+      { "artist": "Eda Yıldırım", "project": "Sessiz Şehir", "year": "2022", "role": "Prodüksiyon · Miks" }
+    ]
+  },
+  "contact": {
+    "section": "006",
+    "label": "İLETİŞİM",
+    "heading": "Konuşalım",
+    "email": "hello@parsstudio.com",
+    "studioTitle": "STÜDYO",
+    "studioLines": [
+      "Bomonti, Şişli",
+      "İstanbul, Türkiye",
+      "Hafta içi 11:00 — 22:00"
+    ],
+    "socialTitle": "SOSYAL",
+    "socialLinks": [
+      { "label": "Instagram", "href": "https://instagram.com" },
+      { "label": "SoundCloud", "href": "https://soundcloud.com" },
+      { "label": "Spotify", "href": "https://spotify.com" }
+    ],
+    "bookingTitle": "REZERVASYON",
+    "bookingCta": "Rezervasyon Yap",
+    "bookingNote": "Yanıt süresi: 24 saat"
+  },
+  "footer": {
+    "copy": "© PARS STUDIO — MMXXVI",
+    "city": "İSTANBUL",
+    "made": "SABIRLA YAPILDI"
+  }
+}
