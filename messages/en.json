@@ -160,6 +160,11 @@
       "Istanbul, Türkiye",
       "Weekdays 11:00 — 22:00"
     ],
+    "phoneTitle": "PHONE",
+    "phone": "+90 212 000 00 00",
+    "mapTitle": "MAP",
+    "mapQuery": "Bomonti, Şişli, Istanbul",
+    "mapDirections": "Get directions",
     "socialTitle": "SOCIAL",
     "socialLinks": [
       { "label": "Instagram", "href": "https://instagram.com" },

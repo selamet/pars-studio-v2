@@ -38,8 +38,8 @@ export default function Contact() {
           />
         </a>
 
-        {/* Three columns */}
-        <div className="mt-[clamp(64px,10vh,140px)] grid gap-12 border-t hairline pt-14 sm:grid-cols-3">
+        {/* Four columns */}
+        <div className="mt-[clamp(48px,8vh,112px)] grid gap-12 border-t hairline pt-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="reveal-text flex flex-col gap-4">
             <span className="meta">{t('studioTitle')}</span>
             <div className="flex flex-col gap-1 text-[14px] text-fg/[0.7]">
@@ -47,6 +47,16 @@ export default function Contact() {
                 <span key={line}>{line}</span>
               ))}
             </div>
+          </div>
+
+          <div className="reveal-text flex flex-col gap-4">
+            <span className="meta">{t('phoneTitle')}</span>
+            <a
+              href={`tel:${t('phone').replace(/\s+/g, '')}`}
+              className="w-fit text-[14px] text-fg/[0.7] transition-colors hover:text-accent"
+            >
+              {t('phone')}
+            </a>
           </div>
 
           <div className="reveal-text flex flex-col gap-4">
@@ -74,6 +84,39 @@ export default function Contact() {
             <span className="meta normal-case tracking-[0.12em] text-fg-dim">
               {t('bookingNote')}
             </span>
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="reveal-text mt-[clamp(48px,8vh,112px)] flex flex-col gap-5">
+          <div className="flex items-center justify-between">
+            <span className="meta">{t('mapTitle')}</span>
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                t('mapQuery')
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-meta text-fg-dim transition-colors hover:text-accent"
+            >
+              {t('mapDirections')}
+              <ArrowUpRight
+                className="h-3 w-3 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                strokeWidth={1.5}
+              />
+            </a>
+          </div>
+
+          <div className="relative aspect-[16/7] w-full overflow-hidden border hairline bg-bg-soft">
+            <iframe
+              title={t('mapTitle')}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                t('mapQuery')
+              )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+              className="absolute inset-0 h-full w-full grayscale invert-[0.92] hue-rotate-180 contrast-[0.85] brightness-[0.95]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>

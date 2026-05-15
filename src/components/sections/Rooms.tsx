@@ -37,7 +37,7 @@ export default function Rooms() {
                   className="object-cover opacity-80 grayscale transition-all duration-700 group-hover:scale-[1.03] group-hover:opacity-100 group-hover:grayscale-0"
                 />
               </div>
-              <figcaption className="flex flex-col gap-3 py-7">
+              <figcaption className="flex flex-col gap-3 py-7 pl-4 pr-4 sm:pl-6 sm:pr-6">
                 <h3 className="font-serif text-2xl font-light text-fg">
                   {room.name}
                 </h3>

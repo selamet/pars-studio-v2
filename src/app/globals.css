@@ -56,7 +56,7 @@
     position: relative;
     z-index: 20;
     background-color: var(--bg);
-    padding-block: clamp(96px, 14vh, 200px);
+    padding-block: clamp(72px, 9.5vh, 140px);
     padding-inline: clamp(20px, 4vw, 64px);
   }
 

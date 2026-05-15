@@ -107,7 +107,7 @@ export default function SignalDivider() {
   return (
     <div
       aria-hidden
-      className="relative z-20 h-20 w-full overflow-hidden bg-bg"
+      className="relative z-20 h-12 w-full overflow-hidden bg-bg"
     >
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
     </div>

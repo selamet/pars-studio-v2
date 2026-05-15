@@ -16,10 +16,11 @@ export default function LandingPage() {
 
       <div className="relative z-20">
         {/* Cinematic dissolve: the hero fades out through this gradient
-            instead of being cut off by a hard opaque edge. */}
+            instead of being cut off by a hard opaque edge. Kept short so
+            the spiral doesn't linger behind the navbar while reading. */}
         <div
           aria-hidden
-          className="h-[clamp(280px,50vh,560px)] bg-gradient-to-b from-bg/0 via-bg/60 to-bg"
+          className="h-[clamp(140px,25vh,280px)] bg-gradient-to-b from-bg/0 via-bg/70 to-bg"
         />
 
         <Manifesto />
