@@ -1,5 +1,6 @@
 # Pars Studio
 
+
 Dark, cinematic landing page for **Pars Studio** — a music recording, mixing,
 mastering and beat-production studio in Istanbul. Editorial / vinyl-sleeve mood,
 fully bilingual (Turkish default + English), with a Three.js spiral-of-covers
