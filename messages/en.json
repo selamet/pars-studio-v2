@@ -30,8 +30,33 @@
     "p2": "Every project starts with intent before acoustics. We sit with the artist, talk about what the track wants to say, and only then open a microphone. We dislike rushing — because a rush can be heard in the recording.",
     "p3": "Gear matters; the ear matters more. Here, equipment is a tool, not the hero. In the end only one thing remains: the silence in the room when the track plays."
   },
-  "services": {
+  "team": {
     "section": "002",
+    "label": "TEAM",
+    "heading": "Who's behind the glass.",
+    "items": [
+      {
+        "name": "Selim K.",
+        "role": "Studio Lead · Mix Engineer",
+        "bio": "Twelve years between live rooms and the control desk. Cuts records that translate from the club to a phone speaker.",
+        "signature": "SSL · UAD · Pultec"
+      },
+      {
+        "name": "Defne A.",
+        "role": "Recording Engineer · Vocal Producer",
+        "bio": "Spends as much time on performance direction as on the chain. Treats every take as a conversation, not a take-count.",
+        "signature": "Neumann U87 · Avalon 737"
+      },
+      {
+        "name": "Onur T.",
+        "role": "Mastering · Beat Production",
+        "bio": "Comes from a sound design background. Builds beats that breathe and masters that don't shout.",
+        "signature": "Push 3 · Manley · iZotope"
+      }
+    ]
+  },
+  "services": {
+    "section": "003",
     "label": "SERVICES",
     "heading": "Services",
     "items": [
@@ -63,7 +88,7 @@
     ]
   },
   "rooms": {
-    "section": "003",
+    "section": "004",
     "label": "STUDIO",
     "heading": "Rooms",
     "items": [
@@ -90,7 +115,7 @@
     ]
   },
   "process": {
-    "section": "004",
+    "section": "005",
     "label": "PROCESS",
     "heading": "Working Flow",
     "items": [
@@ -122,7 +147,7 @@
     ]
   },
   "works": {
-    "section": "005",
+    "section": "006",
     "label": "SELECTED WORKS",
     "heading": "Archive",
     "colArtist": "ARTIST",
@@ -144,7 +169,7 @@
     ]
   },
   "voices": {
-    "section": "006",
+    "section": "007",
     "label": "VOICES",
     "heading": "What the room says.",
     "items": [
@@ -166,7 +191,7 @@
     ]
   },
   "faq": {
-    "section": "007",
+    "section": "008",
     "label": "FAQ",
     "heading": "Before you book.",
     "items": [
@@ -197,7 +222,7 @@
     ]
   },
   "contact": {
-    "section": "008",
+    "section": "009",
     "label": "CONTACT",
     "heading": "Let's talk",
     "email": "hello@parsstudio.com",
@@ -235,7 +260,7 @@
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {
-    "section": "009",
+    "section": "010",
     "label": "BOOKING",
     "heading": "Plan a session.",
     "intro": "Pick a date, a service and a duration in a few steps. Your confirmation lands in minutes.",
