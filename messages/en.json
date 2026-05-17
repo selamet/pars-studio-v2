@@ -1,7 +1,7 @@
 {
   "nav": {
     "logoTop": "PARS",
-    "logoBottom": "STUDIO",
+    "logoBottom": "STUDIOS",
     "studio": "Studio",
     "services": "Services",
     "process": "Process",
@@ -17,16 +17,16 @@
     "titleLine1": "We carve raw",
     "titleLine2": "signal",
     "titleLine3": "into character.",
-    "caption": "Pars Studio — Recording, Mixing, Mastering & Beat Production.",
+    "caption": "Pars Studios — Recording, Mixing, Mastering & Beat Production.",
     "scroll": "SCROLL"
   },
   "manifesto": {
     "section": "001",
     "label": "ABOUT THE STUDIO",
     "image": "/images/studio/about.jpg",
-    "imageCaption": "PARS STUDIO · ISTANBUL · 41.0082°N",
+    "imageCaption": "PARS STUDIOS · ISTANBUL · 41.0082°N",
     "heading": "Good sound is not an accident. It is a decision.",
-    "p1": "Pars Studio is an independent production studio based in Istanbul. We care about one thing: turning an idea into a record you feel in your chest. We do not chase trends — we build character.",
+    "p1": "Pars Studios is an independent production studio based in Istanbul. We care about one thing: turning an idea into a record you feel in your chest. We do not chase trends — we build character.",
     "p2": "Every project starts with intent before acoustics. We sit with the artist, talk about what the track wants to say, and only then open a microphone. We dislike rushing — because a rush can be heard in the recording.",
     "p3": "Gear matters; the ear matters more. Here, equipment is a tool, not the hero. In the end only one thing remains: the silence in the room when the track plays."
   },
@@ -163,7 +163,7 @@
     "phone": "+90 531 393 20 83",
     "whatsappNumber": "905313932083",
     "whatsappCta": "Message on WhatsApp",
-    "whatsappMessage": "Hello Pars Studio, I'd like to ask about booking a session.",
+    "whatsappMessage": "Hello Pars Studios, I'd like to ask about booking a session.",
     "whatsappAria": "Open WhatsApp chat",
     "mapTitle": "MAP",
     "mapQuery": "Bomonti, Şişli, Istanbul",
@@ -179,7 +179,7 @@
     "bookingNote": "Response time: 24 hours"
   },
   "footer": {
-    "copy": "© PARS STUDIO — MMXXVI",
+    "copy": "© PARS STUDIOS — MMXXVI",
     "rights": "ALL RIGHTS RESERVED",
     "city": "ISTANBUL",
     "poweredBy": "POWERED BY",

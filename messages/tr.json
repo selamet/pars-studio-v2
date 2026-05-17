@@ -1,7 +1,7 @@
 {
   "nav": {
     "logoTop": "PARS",
-    "logoBottom": "STUDIO",
+    "logoBottom": "STUDIOS",
     "studio": "Stüdyo",
     "services": "Hizmetler",
     "process": "Süreç",
@@ -17,16 +17,16 @@
     "titleLine1": "Ham sesi",
     "titleLine2": "karaktere",
     "titleLine3": "kazıyoruz.",
-    "caption": "Pars Studio — Kayıt, Miks, Mastering ve Beat Prodüksiyon.",
+    "caption": "Pars Studios — Kayıt, Miks, Mastering ve Beat Prodüksiyon.",
     "scroll": "KAYDIR"
   },
   "manifesto": {
     "section": "001",
     "label": "STÜDYO HAKKINDA",
     "image": "/images/studio/about.jpg",
-    "imageCaption": "PARS STUDIO · İSTANBUL · 41.0082°N",
+    "imageCaption": "PARS STUDIOS · İSTANBUL · 41.0082°N",
     "heading": "İyi ses bir tesadüf değil; bir karardır.",
-    "p1": "Pars Studio, İstanbul'da kurulu bağımsız bir prodüksiyon stüdyosudur. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
+    "p1": "Pars Studios, İstanbul'da kurulu bağımsız bir prodüksiyon stüdyosudur. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
     "p2": "Her proje akustikten önce niyetle başlar. Sanatçıyla oturur, parçanın ne söylemek istediğini konuşur, ancak ondan sonra mikrofonu açarız. Aceleyi sevmeyiz — çünkü acele, kayıtta duyulur.",
     "p3": "Donanım önemlidir, kulak daha çok. Burada ekipman bir araçtır, kahraman değil. Sonuçta geriye kalan tek şey vardır: parça çaldığında odadaki sessizlik."
   },
@@ -163,7 +163,7 @@
     "phone": "+90 531 393 20 83",
     "whatsappNumber": "905313932083",
     "whatsappCta": "WhatsApp ile yaz",
-    "whatsappMessage": "Merhaba Pars Studio, rezervasyon hakkında bilgi almak istiyorum.",
+    "whatsappMessage": "Merhaba Pars Studios, rezervasyon hakkında bilgi almak istiyorum.",
     "whatsappAria": "WhatsApp ile konuşma başlat",
     "mapTitle": "HARİTA",
     "mapQuery": "Bomonti, Şişli, İstanbul",
@@ -179,7 +179,7 @@
     "bookingNote": "Yanıt süresi: 24 saat"
   },
   "footer": {
-    "copy": "© PARS STUDIO — MMXXVI",
+    "copy": "© PARS STUDIOS — MMXXVI",
     "rights": "TÜM HAKLARI SAKLIDIR",
     "city": "İSTANBUL",
     "poweredBy": "POWERED BY",

@@ -32,9 +32,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Pars Studio — Kayıt · Miks · Mastering · Beat',
+  title: 'Pars Studios — Kayıt · Miks · Mastering · Beat',
   description:
-    'Pars Studio — İstanbul merkezli bağımsız müzik prodüksiyon stüdyosu. Kayıt, miks, mastering ve beat prodüksiyon.',
+    'Pars Studios — İstanbul merkezli bağımsız müzik prodüksiyon stüdyosu. Kayıt, miks, mastering ve beat prodüksiyon.',
   metadataBase: new URL('https://parsstudio.com'),
 };
 
