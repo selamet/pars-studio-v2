@@ -165,8 +165,39 @@
       }
     ]
   },
-  "contact": {
+  "faq": {
     "section": "007",
+    "label": "SSS",
+    "heading": "Rezervasyondan önce.",
+    "items": [
+      {
+        "q": "Ne kadar önceden rezervasyon yapmalıyım?",
+        "a": "Miks ve mastering oturumları için iki hafta önceden rahat; kayıt için genelde bir hafta yeter. Uzun projelerde çok günlü blokları birlikte planlarız."
+      },
+      {
+        "q": "Kapora alıyor musunuz?",
+        "a": "Evet — tarihi kilitlemek için %30 kapora, kalanı oturum günü. Tek bir fatura keseriz; havale ya da kart farketmez."
+      },
+      {
+        "q": "İptal politikanız nedir?",
+        "a": "Oturumdan 48 saat önce iptal edilirse kapora tam iade olur. 48 saatin altında bir kez ücretsiz tarih değişikliği yapabiliriz."
+      },
+      {
+        "q": "Kayıt oturumuna ne getirmeliyim?",
+        "a": "Enstrümanını, IEM kullanıyorsan şarjlı kulaklıklarını, referans parçalarını ve üzerinde çalıştığın stem/scratch dosyayı getir. Mikrofon, preamp ve kulaklık miksi stüdyodan."
+      },
+      {
+        "q": "Uzaktan miks veya mastering alıyor musunuz?",
+        "a": "Evet. Drive ya da WeTransfer ile stem veya stereo dosyayı kısa bir brief ve 2–3 referansla gönder. Revizyon ve teslimat e-posta üzerinden döner."
+      },
+      {
+        "q": "Final dosyalar nasıl teslim ediliyor?",
+        "a": "Oturum sample rate'inde 24-bit WAV, ek olarak streaming-loud bir referans MP3. İstenirse stemler ve etiketli masterlar. Her şey 12 ay arşivde tutulur."
+      }
+    ]
+  },
+  "contact": {
+    "section": "008",
     "label": "İLETİŞİM",
     "heading": "Konuşalım",
     "email": "hello@parsstudio.com",
@@ -204,7 +235,7 @@
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {
-    "section": "008",
+    "section": "009",
     "label": "REZERVASYON",
     "heading": "Bir oturum planla.",
     "intro": "Birkaç adımda tarihi, hizmeti ve süreyi seç. Onay e-postan dakikalar içinde gelir.",

@@ -5,6 +5,7 @@ import Rooms from '@/components/sections/Rooms';
 import Process from '@/components/sections/Process';
 import Works from '@/components/sections/Works';
 import Voices from '@/components/sections/Voices';
+import Faq from '@/components/sections/Faq';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/sections/Footer';
 import SignalDivider from '@/components/SignalDivider';
@@ -35,6 +36,8 @@ export default function LandingPage() {
         <Works />
         <SignalDivider />
         <Voices />
+        <SignalDivider />
+        <Faq />
         <SignalDivider />
         <Contact />
         <SignalDivider />

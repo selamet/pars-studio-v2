@@ -165,8 +165,39 @@
       }
     ]
   },
-  "contact": {
+  "faq": {
     "section": "007",
+    "label": "FAQ",
+    "heading": "Before you book.",
+    "items": [
+      {
+        "q": "How far in advance should I book?",
+        "a": "Two weeks is comfortable for mix and master sessions; one week is usually enough for tracking. For longer projects we plan multi-day blocks together."
+      },
+      {
+        "q": "Is there a deposit?",
+        "a": "Yes — 30% upfront to lock the date, balance on the day. We send a single invoice; bank transfer or card both work."
+      },
+      {
+        "q": "What is your cancellation policy?",
+        "a": "Cancel 48 hours before the session and the deposit is fully refundable. Inside 48 hours we can reschedule once at no charge."
+      },
+      {
+        "q": "What should I bring to a tracking session?",
+        "a": "Your instrument, charged headphones if you use IEMs, reference tracks, and the stems or scratch you've been working on. We supply mics, preamps and the headphone mix."
+      },
+      {
+        "q": "Do you take remote mixing or mastering work?",
+        "a": "Yes. Send stems or a stereo file via Drive or WeTransfer with a short brief and 2–3 references. Revisions and final delivery are handled over email."
+      },
+      {
+        "q": "How are final files delivered?",
+        "a": "WAV 24-bit at session sample rate, plus a streaming-loud reference MP3. Stems and tagged masters on request. Everything stays archived for 12 months."
+      }
+    ]
+  },
+  "contact": {
+    "section": "008",
     "label": "CONTACT",
     "heading": "Let's talk",
     "email": "hello@parsstudio.com",
@@ -204,7 +235,7 @@
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {
-    "section": "008",
+    "section": "009",
     "label": "BOOKING",
     "heading": "Plan a session.",
     "intro": "Pick a date, a service and a duration in a few steps. Your confirmation lands in minutes.",
