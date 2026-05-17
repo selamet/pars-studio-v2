@@ -34,37 +34,31 @@
     "section": "002",
     "label": "HİZMETLER",
     "heading": "Hizmetler",
-    "fromLabel": "başlangıç",
     "items": [
       {
         "no": "01",
         "name": "Kayıt",
-        "desc": "Analog hattan dijitale, gürültüsüz ve doğru sinyal zinciriyle tracking. Vokal, enstrüman ve canlı oda kaydı.",
-        "price": "₺1.500 / saat"
+        "desc": "Analog hattan dijitale, gürültüsüz ve doğru sinyal zinciriyle tracking. Vokal, enstrüman ve canlı oda kaydı."
       },
       {
         "no": "02",
         "name": "Miks",
-        "desc": "Parçaya derinlik, alan ve denge kazandıran detaylı miks. Stem teslimat ve revizyon dahil.",
-        "price": "₺6.000 / parça"
+        "desc": "Parçaya derinlik, alan ve denge kazandıran detaylı miks. Stem teslimat ve revizyon dahil."
       },
       {
         "no": "03",
         "name": "Mastering",
-        "desc": "Yayın platformlarına hazır, tutarlı ve şeffaf mastering. Dijital ve fiziksel formatlar için optimizasyon.",
-        "price": "₺2.500 / parça"
+        "desc": "Yayın platformlarına hazır, tutarlı ve şeffaf mastering. Dijital ve fiziksel formatlar için optimizasyon."
       },
       {
         "no": "04",
         "name": "Beat Prodüksiyon",
-        "desc": "Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon. Trap, drill, R&B, alternatif.",
-        "price": "talep üzerine"
+        "desc": "Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon. Trap, drill, R&B, alternatif."
       },
       {
         "no": "05",
         "name": "Vokal Prodüksiyon",
-        "desc": "Performans yönetimi, comp, tuning ve estetik karar. Vokali parçanın merkezine oturtmak.",
-        "price": "₺4.000 / parça"
+        "desc": "Performans yönetimi, comp, tuning ve estetik karar. Vokali parçanın merkezine oturtmak."
       }
     ]
   },

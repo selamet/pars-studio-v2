@@ -34,37 +34,31 @@
     "section": "002",
     "label": "SERVICES",
     "heading": "Services",
-    "fromLabel": "from",
     "items": [
       {
         "no": "01",
         "name": "Recording",
-        "desc": "Tracking through a clean, accurate signal chain — analog to digital. Vocals, instruments and live room.",
-        "price": "₺1,500 / hour"
+        "desc": "Tracking through a clean, accurate signal chain — analog to digital. Vocals, instruments and live room."
       },
       {
         "no": "02",
         "name": "Mixing",
-        "desc": "Detailed mixing that gives the track depth, space and balance. Stems and revisions included.",
-        "price": "₺6,000 / track"
+        "desc": "Detailed mixing that gives the track depth, space and balance. Stems and revisions included."
       },
       {
         "no": "03",
         "name": "Mastering",
-        "desc": "Consistent, transparent mastering ready for every platform. Optimised for digital and physical.",
-        "price": "₺2,500 / track"
+        "desc": "Consistent, transparent mastering ready for every platform. Optimised for digital and physical."
       },
       {
         "no": "04",
         "name": "Beat Production",
-        "desc": "Production built from scratch around the artist's world. Trap, drill, R&B, alternative.",
-        "price": "on request"
+        "desc": "Production built from scratch around the artist's world. Trap, drill, R&B, alternative."
       },
       {
         "no": "05",
         "name": "Vocal Production",
-        "desc": "Performance direction, comping, tuning and aesthetic decisions. Putting the voice at the centre.",
-        "price": "₺4,000 / track"
+        "desc": "Performance direction, comping, tuning and aesthetic decisions. Putting the voice at the centre."
       }
     ]
   },

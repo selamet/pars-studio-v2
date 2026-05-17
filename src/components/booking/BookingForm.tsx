@@ -202,7 +202,7 @@ export default function BookingForm({ locale }: { locale: Locale }) {
                       )}
                       aria-pressed={active}
                     >
-                      <div className="grid grid-cols-[48px_1fr_auto] items-center gap-6 py-6 md:grid-cols-[64px_1fr_1fr_auto] md:gap-10 md:py-8">
+                      <div className="grid grid-cols-[48px_1fr] items-center gap-6 py-6 md:grid-cols-[64px_1fr_1fr] md:gap-10 md:py-8">
                         <span
                           className={cn(
                             'meta transition-colors',
@@ -222,9 +222,6 @@ export default function BookingForm({ locale }: { locale: Locale }) {
                         <p className="hidden max-w-md text-[13px] leading-[1.6] text-fg/[0.55] md:block">
                           {s.description[locale]}
                         </p>
-                        <span className="meta whitespace-nowrap">
-                          {s.priceFrom[locale]}
-                        </span>
                       </div>
                     </button>
                   </li>
