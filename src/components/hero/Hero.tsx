@@ -2,16 +2,30 @@
 
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
+import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 // WebGL is browser-only — never server-render it.
 const SpiralScene = dynamic(() => import('./SpiralScene'), { ssr: false });
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const reduced = useReducedMotion();
 
   return (
     <section className="sticky top-0 z-0 h-[100svh] w-full overflow-hidden">
-      <SpiralScene />
+      {reduced ? (
+        // Static, motion-free fallback — radial brass glow on the studio dark.
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(60% 50% at 50% 55%, rgba(201,169,110,0.10) 0%, rgba(201,169,110,0.04) 40%, rgba(10,9,8,0) 75%), #0a0908',
+          }}
+        />
+      ) : (
+        <SpiralScene />
+      )}
 
       <div className="hero-vignette relative z-10 flex h-full flex-col justify-between px-[clamp(20px,4vw,64px)] py-[clamp(80px,12vh,140px)]">
         {/* Meta row */}
