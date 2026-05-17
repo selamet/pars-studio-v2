@@ -143,8 +143,30 @@
       { "artist": "Eda Yıldırım", "project": "Silent City", "year": "2022", "role": "Production · Mix", "spotifyId": "" }
     ]
   },
-  "contact": {
+  "voices": {
     "section": "006",
+    "label": "VOICES",
+    "heading": "What the room says.",
+    "items": [
+      {
+        "quote": "They didn't try to bend the song into something else. They listened, then made it land. The mix moves like the track was always supposed to.",
+        "artist": "Ayla Devran",
+        "role": "Vocalist · Midnight Radio"
+      },
+      {
+        "quote": "Five hours in and we still hadn't opened a mic. That's the part most studios skip. By the time we tracked, the take was already there.",
+        "artist": "Kuzey Blok",
+        "role": "Producer · Asphalt"
+      },
+      {
+        "quote": "Mastering came back transparent — no over-cooked loudness, no lost air. It sat next to the references like it belonged.",
+        "artist": "Selin Vardar",
+        "role": "Artist · Trace"
+      }
+    ]
+  },
+  "contact": {
+    "section": "007",
     "label": "CONTACT",
     "heading": "Let's talk",
     "email": "hello@parsstudio.com",
@@ -182,7 +204,7 @@
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {
-    "section": "007",
+    "section": "008",
     "label": "BOOKING",
     "heading": "Plan a session.",
     "intro": "Pick a date, a service and a duration in a few steps. Your confirmation lands in minutes.",

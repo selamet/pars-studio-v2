@@ -143,8 +143,30 @@
       { "artist": "Eda Yıldırım", "project": "Sessiz Şehir", "year": "2022", "role": "Prodüksiyon · Miks", "spotifyId": "" }
     ]
   },
-  "contact": {
+  "voices": {
     "section": "006",
+    "label": "SESLER",
+    "heading": "Odanın söyledikleri.",
+    "items": [
+      {
+        "quote": "Parçayı başka bir şeye dönüştürmeye çalışmadılar. Önce dinlediler, sonra yerine oturttular. Miks, parça hep o yöne gitmesi gerekiyormuş gibi akıyor.",
+        "artist": "Ayla Devran",
+        "role": "Vokalist · Gece Yarısı Radyosu"
+      },
+      {
+        "quote": "Beş saat geçti, hâlâ tek bir mikrofon açmamıştık. Çoğu stüdyonun atladığı kısım orası. Kayda geçtiğimizde take zaten oradaydı.",
+        "artist": "Kuzey Blok",
+        "role": "Prodüktör · Asfalt"
+      },
+      {
+        "quote": "Mastering şeffaf geri döndü — abartılı bir gürlük yok, kayıp bir hava yok. Referanslarımın yanında ait olduğu yere oturdu.",
+        "artist": "Selin Vardar",
+        "role": "Sanatçı · İz"
+      }
+    ]
+  },
+  "contact": {
+    "section": "007",
     "label": "İLETİŞİM",
     "heading": "Konuşalım",
     "email": "hello@parsstudio.com",
@@ -182,7 +204,7 @@
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {
-    "section": "007",
+    "section": "008",
     "label": "REZERVASYON",
     "heading": "Bir oturum planla.",
     "intro": "Birkaç adımda tarihi, hizmeti ve süreyi seç. Onay e-postan dakikalar içinde gelir.",
