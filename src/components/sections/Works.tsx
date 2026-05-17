@@ -6,12 +6,14 @@ type Work = {
   project: string;
   year: string;
   role: string;
+  spotifyId: string;
 };
 
-/** Section 005 — selected works, hairline table layout. */
+/** Section 005 — selected works as a Spotify-embed grid. */
 export default function Works() {
   const t = useTranslations('works');
   const items = t.raw('items') as Work[];
+  const previewSoon = t('previewSoon');
 
   return (
     <section id="works" className="section">
@@ -22,33 +24,45 @@ export default function Works() {
           heading={t('heading')}
         />
 
-        {/* Column labels */}
-        <div className="hidden grid-cols-[1.4fr_1.6fr_0.5fr_1fr] gap-8 border-b hairline pb-5 md:grid">
-          <span className="meta">{t('colArtist')}</span>
-          <span className="meta">{t('colProject')}</span>
-          <span className="meta">{t('colYear')}</span>
-          <span className="meta md:text-right">{t('colRole')}</span>
-        </div>
-
-        <ul>
-          {items.map((w) => (
+        <ul className="grid grid-cols-1 gap-px bg-rule md:grid-cols-2">
+          {items.map((w, i) => (
             <li
               key={`${w.artist}-${w.project}`}
-              className="reveal-text group flex flex-col gap-1.5 border-b hairline py-6 transition-colors duration-300 hover:bg-[rgba(255,255,255,0.015)] md:grid md:grid-cols-[1.4fr_1.6fr_0.5fr_1fr] md:items-baseline md:gap-8"
+              className="reveal-text group flex flex-col gap-5 bg-bg p-6 transition-colors duration-300 hover:bg-bg-soft md:p-8"
             >
-              <span className="font-serif text-xl font-light text-fg transition-colors group-hover:text-accent">
-                {w.artist}
-              </span>
-              <span className="text-[15px] text-fg/[0.7]">{w.project}</span>
-              <div className="mt-1 flex items-center gap-3 md:contents md:mt-0">
-                <span className="meta md:self-center">{w.year}</span>
-                <span className="meta text-rule md:hidden" aria-hidden>
-                  ·
-                </span>
-                <span className="meta md:self-center md:text-right">
-                  {w.role}
-                </span>
-              </div>
+              {/* Header — artist + project */}
+              <header className="flex flex-col gap-1">
+                <span className="meta">{w.year}</span>
+                <h3 className="font-serif text-2xl font-light leading-tight text-fg transition-colors group-hover:text-accent md:text-3xl">
+                  {w.artist}
+                </h3>
+                <p className="text-[15px] text-fg/[0.7]">{w.project}</p>
+              </header>
+
+              {/* Spotify embed or placeholder */}
+              {w.spotifyId ? (
+                <div className="relative aspect-[4/1] w-full overflow-hidden bg-bg-soft">
+                  <iframe
+                    src={`https://open.spotify.com/embed/track/${w.spotifyId}?utm_source=generator&theme=0`}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                    title={`${w.artist} — ${w.project}`}
+                    className="absolute inset-0 h-full w-full"
+                  />
+                </div>
+              ) : (
+                <div className="relative flex aspect-[4/1] w-full items-center justify-center overflow-hidden border hairline bg-bg-soft/40">
+                  <span className="meta text-fg/40">{previewSoon}</span>
+                </div>
+              )}
+
+              {/* Meta footer — role */}
+              <footer>
+                <span className="meta">{w.role}</span>
+              </footer>
             </li>
           ))}
         </ul>

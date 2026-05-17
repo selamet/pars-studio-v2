@@ -129,17 +129,18 @@
     "colProject": "PROJECT",
     "colYear": "YEAR",
     "colRole": "ROLE",
+    "previewSoon": "PREVIEW COMING SOON",
     "items": [
-      { "artist": "Ayla Devran", "project": "Midnight Radio", "year": "2025", "role": "Mix · Master" },
-      { "artist": "Kuzey Blok", "project": "Asphalt", "year": "2025", "role": "Record · Production" },
-      { "artist": "Mira Sönmez", "project": "Glass Heart", "year": "2024", "role": "Vocal Production" },
-      { "artist": "Derin Akarsu", "project": "Against The Current", "year": "2024", "role": "Mix" },
-      { "artist": "VHS Kids", "project": "Analog Summer", "year": "2024", "role": "Record · Mix" },
-      { "artist": "Selin Vardar", "project": "Trace", "year": "2023", "role": "Master" },
-      { "artist": "Boran Eren", "project": "Underside", "year": "2023", "role": "Beat Production" },
-      { "artist": "Lara Moon", "project": "Neon Sorrow", "year": "2023", "role": "Mix · Master" },
-      { "artist": "Tunç Arkın", "project": "Dry Noise", "year": "2022", "role": "Recording" },
-      { "artist": "Eda Yıldırım", "project": "Silent City", "year": "2022", "role": "Production · Mix" }
+      { "artist": "Ayla Devran", "project": "Midnight Radio", "year": "2025", "role": "Mix · Master", "spotifyId": "0VjIjW4GlUZAMYd2vXMi3b" },
+      { "artist": "Kuzey Blok", "project": "Asphalt", "year": "2025", "role": "Record · Production", "spotifyId": "6K4t31amVTZDgR3sKmwUJJ" },
+      { "artist": "Mira Sönmez", "project": "Glass Heart", "year": "2024", "role": "Vocal Production", "spotifyId": "" },
+      { "artist": "Derin Akarsu", "project": "Against The Current", "year": "2024", "role": "Mix", "spotifyId": "" },
+      { "artist": "VHS Kids", "project": "Analog Summer", "year": "2024", "role": "Record · Mix", "spotifyId": "" },
+      { "artist": "Selin Vardar", "project": "Trace", "year": "2023", "role": "Master", "spotifyId": "" },
+      { "artist": "Boran Eren", "project": "Underside", "year": "2023", "role": "Beat Production", "spotifyId": "" },
+      { "artist": "Lara Moon", "project": "Neon Sorrow", "year": "2023", "role": "Mix · Master", "spotifyId": "" },
+      { "artist": "Tunç Arkın", "project": "Dry Noise", "year": "2022", "role": "Recording", "spotifyId": "" },
+      { "artist": "Eda Yıldırım", "project": "Silent City", "year": "2022", "role": "Production · Mix", "spotifyId": "" }
     ]
   },
   "contact": {

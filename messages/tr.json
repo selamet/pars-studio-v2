@@ -129,17 +129,18 @@
     "colProject": "PROJE",
     "colYear": "YIL",
     "colRole": "ROL",
+    "previewSoon": "DİNLEME YAKINDA",
     "items": [
-      { "artist": "Ayla Devran", "project": "Gece Yarısı Radyosu", "year": "2025", "role": "Miks · Mastering" },
-      { "artist": "Kuzey Blok", "project": "Asfalt", "year": "2025", "role": "Kayıt · Prodüksiyon" },
-      { "artist": "Mira Sönmez", "project": "Cam Kalp", "year": "2024", "role": "Vokal Prodüksiyon" },
-      { "artist": "Derin Akarsu", "project": "Akıntıya Karşı", "year": "2024", "role": "Miks" },
-      { "artist": "VHS Çocukları", "project": "Analog Yaz", "year": "2024", "role": "Kayıt · Miks" },
-      { "artist": "Selin Vardar", "project": "İz", "year": "2023", "role": "Mastering" },
-      { "artist": "Boran Eren", "project": "Şehrin Altı", "year": "2023", "role": "Beat Prodüksiyon" },
-      { "artist": "Lara Moon", "project": "Neon Hüzün", "year": "2023", "role": "Miks · Mastering" },
-      { "artist": "Tunç Arkın", "project": "Kuru Gürültü", "year": "2022", "role": "Kayıt" },
-      { "artist": "Eda Yıldırım", "project": "Sessiz Şehir", "year": "2022", "role": "Prodüksiyon · Miks" }
+      { "artist": "Ayla Devran", "project": "Gece Yarısı Radyosu", "year": "2025", "role": "Miks · Mastering", "spotifyId": "0VjIjW4GlUZAMYd2vXMi3b" },
+      { "artist": "Kuzey Blok", "project": "Asfalt", "year": "2025", "role": "Kayıt · Prodüksiyon", "spotifyId": "6K4t31amVTZDgR3sKmwUJJ" },
+      { "artist": "Mira Sönmez", "project": "Cam Kalp", "year": "2024", "role": "Vokal Prodüksiyon", "spotifyId": "" },
+      { "artist": "Derin Akarsu", "project": "Akıntıya Karşı", "year": "2024", "role": "Miks", "spotifyId": "" },
+      { "artist": "VHS Çocukları", "project": "Analog Yaz", "year": "2024", "role": "Kayıt · Miks", "spotifyId": "" },
+      { "artist": "Selin Vardar", "project": "İz", "year": "2023", "role": "Mastering", "spotifyId": "" },
+      { "artist": "Boran Eren", "project": "Şehrin Altı", "year": "2023", "role": "Beat Prodüksiyon", "spotifyId": "" },
+      { "artist": "Lara Moon", "project": "Neon Hüzün", "year": "2023", "role": "Miks · Mastering", "spotifyId": "" },
+      { "artist": "Tunç Arkın", "project": "Kuru Gürültü", "year": "2022", "role": "Kayıt", "spotifyId": "" },
+      { "artist": "Eda Yıldırım", "project": "Sessiz Şehir", "year": "2022", "role": "Prodüksiyon · Miks", "spotifyId": "" }
     ]
   },
   "contact": {
