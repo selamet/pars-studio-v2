@@ -1,6 +1,5 @@
 import Hero from '@/components/hero/Hero';
 import Manifesto from '@/components/sections/Manifesto';
-import Team from '@/components/sections/Team';
 import Services from '@/components/sections/Services';
 import Rooms from '@/components/sections/Rooms';
 import Process from '@/components/sections/Process';
@@ -27,8 +26,6 @@ export default function LandingPage() {
         />
 
         <Manifesto />
-        <SignalDivider />
-        <Team />
         <SignalDivider />
         <Services />
         <SignalDivider />

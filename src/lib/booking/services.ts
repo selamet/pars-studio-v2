@@ -55,8 +55,8 @@ export const SERVICES: ServiceDef[] = [
     no: '04',
     name: { tr: 'Beat Prodüksiyon', en: 'Beat Production' },
     description: {
-      tr: 'Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon. Trap, drill, R&B, alternatif.',
-      en: 'Production built from scratch around the artist. Trap, drill, R&B, alternative.',
+      tr: 'Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon.',
+      en: 'Production built from scratch around the artist.',
     },
     durations: [4, 8],
     minDuration: 4,

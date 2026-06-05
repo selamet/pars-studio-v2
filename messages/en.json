@@ -30,31 +30,6 @@
     "p2": "Every project starts with intent before acoustics. We sit with the artist, talk about what the track wants to say, and only then open a microphone. We dislike rushing — because a rush can be heard in the recording.",
     "p3": "Gear matters; the ear matters more. Here, equipment is a tool, not the hero. In the end only one thing remains: the silence in the room when the track plays."
   },
-  "team": {
-    "section": "002",
-    "label": "TEAM",
-    "heading": "Who's behind the glass.",
-    "items": [
-      {
-        "name": "Selim K.",
-        "role": "Studio Lead · Mix Engineer",
-        "bio": "Twelve years between live rooms and the control desk. Cuts records that translate from the club to a phone speaker.",
-        "signature": "SSL · UAD · Pultec"
-      },
-      {
-        "name": "Defne A.",
-        "role": "Recording Engineer · Vocal Producer",
-        "bio": "Spends as much time on performance direction as on the chain. Treats every take as a conversation, not a take-count.",
-        "signature": "Neumann U87 · Avalon 737"
-      },
-      {
-        "name": "Onur T.",
-        "role": "Mastering · Beat Production",
-        "bio": "Comes from a sound design background. Builds beats that breathe and masters that don't shout.",
-        "signature": "Push 3 · Manley · iZotope"
-      }
-    ]
-  },
   "services": {
     "section": "003",
     "label": "SERVICES",

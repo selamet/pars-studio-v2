@@ -30,31 +30,6 @@
     "p2": "Her proje akustikten önce niyetle başlar. Sanatçıyla oturur, parçanın ne söylemek istediğini konuşur, ancak ondan sonra mikrofonu açarız. Aceleyi sevmeyiz — çünkü acele, kayıtta duyulur.",
     "p3": "Donanım önemlidir, kulak daha çok. Burada ekipman bir araçtır, kahraman değil. Sonuçta geriye kalan tek şey vardır: parça çaldığında odadaki sessizlik."
   },
-  "team": {
-    "section": "002",
-    "label": "EKİP",
-    "heading": "Camın arkasındakiler.",
-    "items": [
-      {
-        "name": "Selim K.",
-        "role": "Stüdyo Şefi · Miks Mühendisi",
-        "bio": "Canlı oda ve kontrol odası arasında geçen on iki yıl. Kulüpten telefon hoparlörüne taşınabilen kayıtlar çıkarıyor.",
-        "signature": "SSL · UAD · Pultec"
-      },
-      {
-        "name": "Defne A.",
-        "role": "Kayıt Mühendisi · Vokal Prodüktör",
-        "bio": "Sinyal zincirine ayırdığı kadar performans yönetimine de zaman ayırır. Her take'i sayı değil sohbet olarak görür.",
-        "signature": "Neumann U87 · Avalon 737"
-      },
-      {
-        "name": "Onur T.",
-        "role": "Mastering · Beat Prodüksiyon",
-        "bio": "Ses tasarımı kökenli. Nefes alan beat'ler kurar, bağırmayan masterlar üretir.",
-        "signature": "Push 3 · Manley · iZotope"
-      }
-    ]
-  },
   "services": {
     "section": "003",
     "label": "HİZMETLER",
