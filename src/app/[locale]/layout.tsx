@@ -62,7 +62,7 @@ const jsonLd = {
     streetAddress: 'Bomonti',
   },
   telephone: '+90 531 393 20 83',
-  email: 'hello@parsstudio.com',
+  email: 'online@pars-studios.com',
   sameAs: [
     'https://instagram.com',
     'https://soundcloud.com',
