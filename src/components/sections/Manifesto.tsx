@@ -45,7 +45,7 @@ export default function Manifesto() {
                 {t('headingPre')}
                 <RotatingWord
                   words={headingWords}
-                  className="hero-rotating accent-italic inline-block whitespace-nowrap pb-[0.12em] -mb-[0.22em] text-[clamp(46px,5.6vw,88px)]"
+                  className="hero-rotating accent-italic inline-block whitespace-nowrap pb-[0.12em] -mb-[0.22em] text-[clamp(40px,5.6vw,88px)]"
                 />
               </span>
               <span className="block">{t('headingPost')}</span>
