@@ -42,8 +42,8 @@ export default function Hero() {
           <h1 className="max-w-title font-serif font-light leading-[0.96] tracking-[-0.018em] text-[clamp(54px,9.6vw,160px)]">
             <span className="block">{t('titleLine1')}</span>
             {/* Bottom padding gives descenders room; the negative margin keeps
-                the line spacing identical to the static lines. The shimmer is
-                kept; the size matches the rest of the headline. */}
+                the line spacing identical to the static lines. Same size as the
+                rest of the headline, with the brass shimmer kept. */}
             <RotatingWord
               words={titleWords}
               className="hero-rotating accent-italic block pb-[0.18em] -mb-[0.18em]"

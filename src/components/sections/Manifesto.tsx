@@ -37,10 +37,11 @@ export default function Manifesto() {
           {/* Text */}
           <div>
             <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(36px,4.4vw,68px)]">
-              {/* The colored word sits on its own line, bigger and single-line,
-                  so the line below ("is not an accident…") never reflows when it
-                  swaps. Bottom padding gives italic descenders room inside the
-                  clip box; the negative margin keeps the baseline in place. */}
+              {/* The colored word sits on its own line, bigger, single-line and
+                  shimmering, so the line below ("is not an accident…") never
+                  reflows when it swaps. Bottom padding gives italic descenders
+                  room inside the clip box; the negative margin keeps the
+                  baseline in place. */}
               <span className="block">
                 {t('headingPre')}
                 <RotatingWord
