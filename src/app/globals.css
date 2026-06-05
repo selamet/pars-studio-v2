@@ -42,6 +42,54 @@
     color: var(--accent);
   }
 
+  /* Logo — a living mark: the whole thing breathes with a warm brass glow,
+     while a soft champagne sheen travels across the artwork on a slower
+     beat. The sheen is a moving gradient masked to the logo PNG's own shape
+     (only the artwork lights up, not its box) and screen-blended so it reads
+     as a metallic highlight rolling over gold — never a flat white wash. */
+  .logo-shine {
+    position: relative;
+    display: inline-block;
+    animation: logo-glow 3.6s ease-in-out infinite;
+  }
+
+  .logo-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      rgba(255, 244, 214, 0) 28%,
+      rgba(255, 240, 205, 0.45) 44%,
+      rgba(255, 248, 230, 0.75) 50%,
+      rgba(255, 240, 205, 0.45) 56%,
+      rgba(255, 244, 214, 0) 72%
+    );
+    background-size: 220% 100%;
+    background-position: 150% 0;
+    -webkit-mask-image: url("/pars-studios-logo.png");
+    mask-image: url("/pars-studios-logo.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    mix-blend-mode: screen;
+    animation: logo-sheen 6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-shine {
+      animation: none;
+    }
+    .logo-shine::after {
+      animation: none;
+      opacity: 0;
+    }
+  }
+
   /* Monospace meta / label row. */
   .meta {
     font-family: var(--font-mono), ui-monospace, monospace;
@@ -94,5 +142,27 @@
   .grain {
     background-repeat: repeat;
     background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Logo glow — the brass halo swells and settles, a slow breath. */
+@keyframes logo-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 3px rgba(201, 169, 110, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 13px rgba(201, 169, 110, 0.6));
+  }
+}
+
+/* Logo sheen — a warm champagne highlight rolls across, then rests. */
+@keyframes logo-sheen {
+  0% {
+    background-position: 150% 0;
+  }
+  55%,
+  100% {
+    background-position: -60% 0;
   }
 }

@@ -64,14 +64,16 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-page items-center justify-between px-[clamp(20px,4vw,64px)] py-2">
         {/* Logo */}
         <Link href={`/${locale}`} className="shrink-0">
-          <Image
-            src="/pars-studios-logo.png"
-            alt={`${t('logoTop')} ${t('logoBottom')}`}
-            width={1007}
-            height={320}
-            priority
-            className="h-16 w-auto"
-          />
+          <span className="logo-shine">
+            <Image
+              src="/pars-studios-logo.png"
+              alt={`${t('logoTop')} ${t('logoBottom')}`}
+              width={1007}
+              height={320}
+              priority
+              className="h-16 w-auto"
+            />
+          </span>
         </Link>
 
         {/* Center links — desktop */}
