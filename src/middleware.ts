@@ -7,6 +7,8 @@ const intlMiddleware = createMiddleware({
   locales,
   defaultLocale,
   localePrefix: 'always',
+  // Always land on English first; ignore the browser's Accept-Language.
+  localeDetection: false,
 });
 
 // /tr/admin or /en/admin and below, EXCEPT /(tr|en)/admin/login
