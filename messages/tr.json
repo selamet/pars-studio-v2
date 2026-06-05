@@ -12,7 +12,7 @@
     "close": "Kapat"
   },
   "hero": {
-    "meta": "SES · 001 · İSTANBUL · CALIFORNIA",
+    "meta": "SES · 001 · CALIFORNIA · İSTANBUL",
     "eyebrow": "MÜZİK · ÜRETİM · DİSİPLİN",
     "titleLine1": "Ham sesi",
     "titleWords": ["karaktere", "ruhunuza", "duygulara", "hikâyene", "melodiye"],
@@ -24,7 +24,7 @@
     "section": "001",
     "label": "STÜDYO HAKKINDA",
     "image": "/images/studio/about-console.png",
-    "imageCaption": "PARS STUDIOS · İSTANBUL · CALIFORNIA",
+    "imageCaption": "PARS STUDIOS · CALIFORNIA · İSTANBUL",
     "headingPre": "İyi ",
     "headingWords": ["ses", "müzik", "miks", "ton", "ritim"],
     "headingPost": " bir tesadüf değil; bir karardır.",
@@ -200,12 +200,12 @@
     "studioTitle": "STÜDYO",
     "branches": [
       {
-        "label": "İSTANBUL",
-        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
-      },
-      {
         "label": "CALIFORNIA",
         "lines": ["Irvine, CA"]
+      },
+      {
+        "label": "İSTANBUL",
+        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
       }
     ],
     "hours": "Hafta içi 11:00 — 22:00",
@@ -231,9 +231,9 @@
   "footer": {
     "copy": "© PARS STUDIOS — MMXXVI",
     "rights": "TÜM HAKLARI SAKLIDIR",
-    "city": "İSTANBUL · CALIFORNIA",
-    "poweredBy": "POWERED BY",
-    "poweredByName": "SELAMET.DEV",
+    "city": "CALIFORNIA · İSTANBUL",
+    "poweredBy": "crafted by",
+    "poweredByName": "selamet.dev",
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {

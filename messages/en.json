@@ -12,7 +12,7 @@
     "close": "Close"
   },
   "hero": {
-    "meta": "SIGNAL · 001 · ISTANBUL · CALIFORNIA",
+    "meta": "SIGNAL · 001 · CALIFORNIA · ISTANBUL",
     "eyebrow": "MUSIC · PRODUCTION · DISCIPLINE",
     "titleLine1": "We carve raw",
     "titleWords": ["character", "soul", "emotion", "stories", "feeling"],
@@ -24,7 +24,7 @@
     "section": "001",
     "label": "ABOUT THE STUDIO",
     "image": "/images/studio/about-console.png",
-    "imageCaption": "PARS STUDIOS · ISTANBUL · CALIFORNIA",
+    "imageCaption": "PARS STUDIOS · CALIFORNIA · ISTANBUL",
     "headingPre": "Good ",
     "headingWords": ["sound", "music", "tone", "rhythm", "mixing"],
     "headingPost": " is not an accident. It is a decision.",
@@ -200,12 +200,12 @@
     "studioTitle": "STUDIO",
     "branches": [
       {
-        "label": "ISTANBUL",
-        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
-      },
-      {
         "label": "CALIFORNIA",
         "lines": ["Irvine, CA"]
+      },
+      {
+        "label": "ISTANBUL",
+        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
       }
     ],
     "hours": "Weekdays 11:00 — 22:00",
@@ -231,9 +231,9 @@
   "footer": {
     "copy": "© PARS STUDIOS — MMXXVI",
     "rights": "ALL RIGHTS RESERVED",
-    "city": "ISTANBUL · CALIFORNIA",
-    "poweredBy": "POWERED BY",
-    "poweredByName": "SELAMET.DEV",
+    "city": "CALIFORNIA · ISTANBUL",
+    "poweredBy": "crafted by",
+    "poweredByName": "selamet.dev",
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {

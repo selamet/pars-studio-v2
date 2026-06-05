@@ -12,13 +12,13 @@ export default function Footer() {
           <span>{t('city')}</span>
           <span className="text-fg-dim">{t('rights')}</span>
         </span>
-        <span className="meta sm:justify-self-end sm:text-right">
+        <span className="meta normal-case sm:justify-self-end sm:text-right">
           {t('poweredBy')}{' '}
           <a
             href={t('poweredByHref')}
             target="_blank"
             rel="noreferrer noopener"
-            className="text-fg transition-colors hover:text-accent"
+            className="text-accent transition-opacity hover:opacity-70"
           >
             {t('poweredByName')}
           </a>

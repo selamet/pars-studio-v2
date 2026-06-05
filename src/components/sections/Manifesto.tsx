@@ -38,9 +38,12 @@ export default function Manifesto() {
           <div>
             <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(30px,4.4vw,68px)]">
               {t('headingPre')}
+              {/* overflow-hidden makes an inline-block's baseline its bottom
+                  edge, lifting the word; the negative margin drops the edge
+                  back onto the text baseline so it lines up with the rest. */}
               <RotatingWord
                 words={headingWords}
-                className="accent-italic inline-block align-baseline"
+                className="accent-italic inline-block -mb-[0.2em]"
               />
               {t('headingPost')}
             </h2>

@@ -53,7 +53,7 @@ const jsonLd = {
   name: 'Pars Studios',
   url: 'https://parsstudio.com',
   description:
-    'Independent music production studio in Istanbul and California — recording, mixing, mastering and beat production.',
+    'Independent music production studio in California and Istanbul — recording, mixing, mastering and beat production.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Kağıthane',
