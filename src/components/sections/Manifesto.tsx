@@ -36,14 +36,16 @@ export default function Manifesto() {
 
           {/* Text */}
           <div>
-            <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(30px,4.4vw,68px)]">
+            <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(36px,4.4vw,68px)]">
               {t('headingPre')}
               {/* overflow-hidden makes an inline-block's baseline its bottom
                   edge, lifting the word; the negative margin drops the edge
-                  back onto the text baseline so it lines up with the rest. */}
+                  back onto the text baseline. The bottom padding gives italic
+                  descenders (y, g) room inside the clip box, and the extra
+                  negative margin keeps the baseline where it was. */}
               <RotatingWord
                 words={headingWords}
-                className="accent-italic inline-block -mb-[0.2em]"
+                className="accent-italic inline-block pb-[0.12em] -mb-[0.32em]"
               />
               {t('headingPost')}
             </h2>
