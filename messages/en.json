@@ -12,7 +12,7 @@
     "close": "Close"
   },
   "hero": {
-    "meta": "001 · CALIFORNIA · ISTANBUL",
+    "meta": "CALIFORNIA · ISTANBUL",
     "eyebrow": "MUSIC · VIDEO · DISTRIBUTION",
     "titleLine1": "We carve raw",
     "titleWords": ["character", "soul", "emotion", "stories", "feeling"],
@@ -28,9 +28,9 @@
     "headingPre": "Good ",
     "headingWords": ["sound", "music", "tone", "rhythm", "mixing"],
     "headingPost": " is not an accident. It is a decision.",
-    "p1": "Pars Studios is a music production company based in Irvine, CA, also serving Istanbul. We care about one thing: turning an idea into a record you feel in your chest. We do not chase trends — we build character.",
-    "p2": "Every project starts with intent before acoustics. We sit with the artist, talk about what the track wants to say, and only then open a microphone. We dislike rushing — because a rush can be heard in the recording.",
-    "p3": "Gear matters; the ear matters more. Here, equipment is a tool, not the hero. In the end only one thing remains: the silence in the room when the track plays."
+    "p1": "Pars Studios is an independent music production company based in Irvine, CA, and also serving Istanbul. We care about one thing: turning an idea into a record you feel in your chest. Rather than chasing trends, we make room for every artist to find their own voice — because what lasts over time is character, not imitation.",
+    "p2": "Every project begins with intent long before acoustics. We sit down with the artist first and talk, at length, about what the song wants to say and which emotion it carries; only then do we open a microphone. We don't like to rush, because a rush eventually bleeds into the recording and the listener feels it. For us, waiting for the right moment is often worth more than the most expensive piece of gear.",
+    "p3": "Gear matters, but the ear matters far more. Here, equipment is a tool, never the hero; the real work is making the right call at the right moment. In the end only one thing remains: the silence that fills the room when the track plays, and that instant when everyone quietly agrees, “that's it.” That is exactly what we're after."
   },
   "services": {
     "section": "003",

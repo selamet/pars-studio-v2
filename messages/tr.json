@@ -12,7 +12,7 @@
     "close": "Kapat"
   },
   "hero": {
-    "meta": "001 · CALIFORNIA · İSTANBUL",
+    "meta": "CALIFORNIA · İSTANBUL",
     "eyebrow": "MÜZİK · VİDEO · DAĞITIM",
     "titleLine1": "Ham sesi",
     "titleWords": ["karaktere", "ruhunuza", "duygulara", "hikâyene", "melodiye"],
@@ -28,9 +28,9 @@
     "headingPre": "İyi ",
     "headingWords": ["ses", "müzik", "miks", "ton", "ritim"],
     "headingPost": " bir tesadüf değil; bir karardır.",
-    "p1": "Pars Studios, Irvine CA'da kurulu, İstanbul'da da hizmet veren bir müzik prodüksiyon şirketidir. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
-    "p2": "Her proje akustikten önce niyetle başlar. Sanatçıyla oturur, parçanın ne söylemek istediğini konuşur, ancak ondan sonra mikrofonu açarız. Aceleyi sevmeyiz — çünkü acele, kayıtta duyulur.",
-    "p3": "Donanım önemlidir, kulak daha çok. Burada ekipman bir araçtır, kahraman değil. Sonuçta geriye kalan tek şey vardır: parça çaldığında odadaki sessizlik."
+    "p1": "Pars Studios, Irvine CA'da kurulu, İstanbul'da da hizmet veren bağımsız bir müzik prodüksiyon şirketidir. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamak yerine her sanatçının kendi sesini bulmasına alan açarız; çünkü zamana kalan, taklit değil karakterdir.",
+    "p2": "Her proje, akustikten çok önce niyetle başlar. Önce sanatçıyla oturur; parçanın ne anlatmak istediğini, hangi duyguyu taşıdığını uzun uzun konuşuruz. Mikrofonu ancak bundan sonra açarız. Aceleyi sevmeyiz, çünkü acele eninde sonunda kayda sızar ve dinleyen onu fark eder. Bizim için doğru anı beklemek, çoğu zaman en pahalı ekipmandan daha değerlidir.",
+    "p3": "Donanım önemlidir, ama kulak çok daha fazlası. Burada ekipman bir araçtır, asla kahraman değil; asıl iş, doğru kararı doğru anda verebilmektir. Sonuçta geriye tek bir şey kalır: parça çaldığında odaya çöken o sessizlik ve herkesin aynı anda “işte bu” dediği o an. Peşinde olduğumuz şey tam olarak budur."
   },
   "services": {
     "section": "003",
