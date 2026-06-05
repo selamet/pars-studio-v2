@@ -67,7 +67,11 @@ export default function RotatingWord({
   }, [reduced, words, interval]);
 
   return (
-    <span className={`accent-italic block overflow-hidden ${className}`}>
+    // Bottom padding gives descenders (y, g, ğ) room inside the clip box; the
+    // equal negative margin keeps the line spacing identical to the static lines.
+    <span
+      className={`accent-italic block overflow-hidden pb-[0.18em] -mb-[0.18em] ${className}`}
+    >
       <span ref={wordRef} className="inline-block will-change-transform">
         {words[index]}
       </span>
