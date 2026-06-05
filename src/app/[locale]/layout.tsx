@@ -32,9 +32,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Pars Studios — Kayıt · Miks · Mastering · Beat',
+  title: 'Pars Studios — Creative Media',
   description:
-    'Pars Studios — İstanbul merkezli bağımsız müzik prodüksiyon stüdyosu. Kayıt, miks, mastering ve beat prodüksiyon.',
+    'Pars Studios — Irvine CA merkezli, İstanbul’da da hizmet veren bağımsız yaratıcı medya stüdyosu. Kayıt, miks, mastering, film müziği, reklam müziği, video klip çekim, kurgu ve görsel efekt (FX).',
   metadataBase: new URL('https://parsstudio.com'),
   openGraph: {
     type: 'website',
@@ -53,7 +53,7 @@ const jsonLd = {
   name: 'Pars Studios',
   url: 'https://parsstudio.com',
   description:
-    'Independent music production studio in California and Istanbul — recording, mixing, mastering and beat production.',
+    'Independent creative media studio in California and Istanbul — recording, mixing, mastering, film scoring, commercial music, music videos, editing and visual effects.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Kağıthane',
