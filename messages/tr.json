@@ -131,6 +131,8 @@
     "colRole": "ROL",
     "previewSoon": "DİNLEME YAKINDA",
     "items": [
+      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Miks · Mastering", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
+      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Prodüksiyon · Miks", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" },
       { "artist": "Ayla Devran", "project": "Gece Yarısı Radyosu", "year": "2025", "role": "Miks · Mastering", "spotifyId": "0VjIjW4GlUZAMYd2vXMi3b" },
       { "artist": "Kuzey Blok", "project": "Asfalt", "year": "2025", "role": "Kayıt · Prodüksiyon", "spotifyId": "6K4t31amVTZDgR3sKmwUJJ" },
       { "artist": "Mira Sönmez", "project": "Cam Kalp", "year": "2024", "role": "Vokal Prodüksiyon", "spotifyId": "" },
