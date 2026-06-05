@@ -61,7 +61,7 @@ export default function Navbar() {
           : 'mix-blend-difference'
       )}
     >
-      <nav className="mx-auto flex max-w-page items-center justify-between px-[clamp(20px,4vw,64px)] py-6">
+      <nav className="mx-auto flex max-w-page items-center justify-between px-[clamp(20px,4vw,64px)] py-2">
         {/* Logo */}
         <Link href={`/${locale}`} className="shrink-0">
           <Image
