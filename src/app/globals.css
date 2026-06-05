@@ -49,6 +49,10 @@
   }
 
   .hero-rotating > span {
+    /* The bottom padding extends the gradient's box below the baseline so it
+       still paints italic descenders (g, y); without it the clipped-to-text
+       gradient leaves the overflowing tail transparent and it looks cut off. */
+    padding-bottom: 0.35em;
     background: linear-gradient(
       100deg,
       #b8965a 0%,
