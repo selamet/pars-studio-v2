@@ -70,12 +70,12 @@ export default function Navbar() {
             width={1007}
             height={320}
             priority
-            className="h-16 w-auto sm:h-20"
+            className="h-16 w-auto"
           />
         </Link>
 
         {/* Center links — desktop */}
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-9 md:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-9 lg:flex">
           {links.map((l) => (
             <li key={l.href}>
               {isLanding ? (
@@ -118,7 +118,7 @@ export default function Navbar() {
               <button
                 type="button"
                 aria-label={t('menu')}
-                className="text-fg md:hidden"
+                className="text-fg lg:hidden"
               >
                 <Menu className="h-5 w-5" />
               </button>
