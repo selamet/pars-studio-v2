@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -62,12 +63,15 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-page items-center justify-between px-[clamp(20px,4vw,64px)] py-6">
         {/* Logo */}
-        <Link
-          href={`/${locale}`}
-          className="font-mono text-[11px] uppercase leading-[1.15] tracking-meta text-fg"
-        >
-          <span className="block">{t('logoTop')}</span>
-          <span className="block">{t('logoBottom')}</span>
+        <Link href={`/${locale}`} className="shrink-0">
+          <Image
+            src="/pars-studios-logo.png"
+            alt={`${t('logoTop')} ${t('logoBottom')}`}
+            width={1007}
+            height={320}
+            priority
+            className="h-8 w-auto sm:h-9"
+          />
         </Link>
 
         {/* Center links — desktop */}
