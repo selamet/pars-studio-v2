@@ -79,7 +79,7 @@ export default function Contact() {
                 rel="noreferrer noopener"
                 className="group inline-flex w-fit items-center gap-2 text-fg/[0.7] transition-colors hover:text-accent"
               >
-                <WhatsappIcon className="h-4 w-4 text-[#25D366]" />
+                <WhatsappIcon className="h-4 w-4 text-accent" />
                 {t('whatsappCta')}
               </a>
             </div>

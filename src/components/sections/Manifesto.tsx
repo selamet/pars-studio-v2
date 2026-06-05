@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import RotatingWord from '@/components/hero/RotatingWord';
 
 /** Section 001 — editorial "about" block with a tall cinematic image. */
 export default function Manifesto() {
   const t = useTranslations('manifesto');
+  const headingWords = t.raw('headingWords') as string[];
 
   return (
     <section id="studio" className="section">
@@ -35,7 +37,12 @@ export default function Manifesto() {
           {/* Text */}
           <div>
             <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(30px,4.4vw,68px)]">
-              {t('heading')}
+              {t('headingPre')}
+              <RotatingWord
+                words={headingWords}
+                className="accent-italic inline-block align-baseline"
+              />
+              {t('headingPost')}
             </h2>
             <div className="mt-10 grid gap-7 text-[15px] leading-[1.65] text-fg/[0.78] sm:max-w-2xl">
               <p className="reveal-text">{t('p1')}</p>

@@ -41,7 +41,12 @@ export default function Hero() {
           <p className="meta mb-6 sm:hidden">{t('eyebrow')}</p>
           <h1 className="max-w-title font-serif font-light leading-[0.96] tracking-[-0.018em] text-[clamp(54px,9.6vw,160px)]">
             <span className="block">{t('titleLine1')}</span>
-            <RotatingWord words={titleWords} />
+            {/* Bottom padding gives descenders room; the negative margin keeps
+                the line spacing identical to the static lines. */}
+            <RotatingWord
+              words={titleWords}
+              className="accent-italic block pb-[0.18em] -mb-[0.18em]"
+            />
             <span className="block">{t('titleLine3')}</span>
           </h1>
         </div>

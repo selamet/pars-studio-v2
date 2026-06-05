@@ -25,7 +25,9 @@
     "label": "STÜDYO HAKKINDA",
     "image": "/images/studio/about-console.png",
     "imageCaption": "PARS STUDIOS · İSTANBUL · CALIFORNIA",
-    "heading": "İyi ses bir tesadüf değil; bir karardır.",
+    "headingPre": "İyi ",
+    "headingWords": ["ses", "müzik", "miks", "ton", "ritim"],
+    "headingPost": " bir tesadüf değil; bir karardır.",
     "p1": "Pars Studios, Irvine CA'da kurulu, İstanbul'da da hizmet veren bir müzik prodüksiyon şirketidir. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
     "p2": "Her proje akustikten önce niyetle başlar. Sanatçıyla oturur, parçanın ne söylemek istediğini konuşur, ancak ondan sonra mikrofonu açarız. Aceleyi sevmeyiz — çünkü acele, kayıtta duyulur.",
     "p3": "Donanım önemlidir, kulak daha çok. Burada ekipman bir araçtır, kahraman değil. Sonuçta geriye kalan tek şey vardır: parça çaldığında odadaki sessizlik."

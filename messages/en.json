@@ -25,7 +25,9 @@
     "label": "ABOUT THE STUDIO",
     "image": "/images/studio/about-console.png",
     "imageCaption": "PARS STUDIOS · ISTANBUL · CALIFORNIA",
-    "heading": "Good sound is not an accident. It is a decision.",
+    "headingPre": "Good ",
+    "headingWords": ["sound", "music", "tone", "rhythm", "mixing"],
+    "headingPost": " is not an accident. It is a decision.",
     "p1": "Pars Studios is a music production company based in Irvine, CA, also serving Istanbul. We care about one thing: turning an idea into a record you feel in your chest. We do not chase trends — we build character.",
     "p2": "Every project starts with intent before acoustics. We sit with the artist, talk about what the track wants to say, and only then open a microphone. We dislike rushing — because a rush can be heard in the recording.",
     "p3": "Gear matters; the ear matters more. Here, equipment is a tool, not the hero. In the end only one thing remains: the silence in the room when the track plays."

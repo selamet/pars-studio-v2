@@ -9,6 +9,7 @@ interface RotatingWordProps {
   words: string[];
   /** Dwell time on each word before it swaps, in ms. */
   interval?: number;
+  /** Styling for the clip wrapper (display, color, italic, spacing). */
   className?: string;
 }
 
@@ -67,11 +68,9 @@ export default function RotatingWord({
   }, [reduced, words, interval]);
 
   return (
-    // Bottom padding gives descenders (y, g, ğ) room inside the clip box; the
-    // equal negative margin keeps the line spacing identical to the static lines.
-    <span
-      className={`accent-italic block overflow-hidden pb-[0.18em] -mb-[0.18em] ${className}`}
-    >
+    // `overflow-hidden` clips the blur-and-slide swap; the caller decides
+    // display/color/spacing (block line in the hero, inline in a heading).
+    <span className={`overflow-hidden ${className}`}>
       <span ref={wordRef} className="inline-block will-change-transform">
         {words[index]}
       </span>
