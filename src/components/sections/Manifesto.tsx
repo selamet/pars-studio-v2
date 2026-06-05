@@ -24,7 +24,7 @@ export default function Manifesto() {
                 alt={t('label')}
                 fill
                 sizes="(max-width: 768px) 100vw, 42vw"
-                className="object-cover opacity-85 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+                className="object-cover opacity-90 transition-all duration-700 hover:opacity-100"
               />
             </div>
             <figcaption className="meta mt-4 normal-case tracking-[0.18em] text-fg-dim">
