@@ -47,7 +47,7 @@ export default function Hero() {
                 rest of the headline, with the brass shimmer kept. */}
             <RotatingWord
               words={titleWords}
-              className="hero-rotating accent-italic block pb-[0.32em] -mb-[0.32em]"
+              className="hero-rotating accent-italic block pb-[0.45em] -mb-[0.45em]"
             />
             <span className="block">{t('titleLine3')}</span>
           </h1>
