@@ -30,24 +30,23 @@ export default function Hero() {
       )}
 
       <div className="hero-vignette relative z-10 flex h-full flex-col justify-start px-[clamp(20px,4vw,64px)] py-[clamp(80px,12vh,140px)] sm:justify-between">
-        {/* Meta row */}
-        <div className="mx-auto flex w-full max-w-page items-center justify-between">
+        {/* Meta row — stacked on mobile so the eyebrow sits directly under
+            the city line; back to left/right on sm and up. */}
+        <div className="mx-auto flex w-full max-w-page flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
           <span className="meta">{t('meta')}</span>
-          <span className="meta hidden sm:block">{t('eyebrow')}</span>
+          <span className="meta">{t('eyebrow')}</span>
         </div>
 
         {/* Title — sits in the upper third on mobile; centred by the
             space-between distribution on sm and up. */}
         <div className="mx-auto mt-[10vh] w-full max-w-page sm:mt-0">
-          <p className="meta mb-6 sm:hidden">{t('eyebrow')}</p>
-          <h1 className="max-w-title font-serif font-light leading-[0.96] tracking-[-0.018em] text-[clamp(54px,9.6vw,160px)]">
+          <h1 className="max-w-title font-serif font-light leading-[0.96] tracking-[-0.018em] text-[clamp(66px,9.6vw,160px)] sm:text-[clamp(54px,9.6vw,160px)]">
             <span className="block">{t('titleLine1')}</span>
             {/* Bottom padding gives descenders room; the negative margin keeps
-                the line spacing identical to the static lines. Same size as the
-                rest of the headline, with the brass shimmer kept. */}
+                the line spacing identical to the static lines. */}
             <RotatingWord
               words={titleWords}
-              className="hero-rotating accent-italic block pb-[0.6em] -mb-[0.6em]"
+              className="accent-italic block pb-[0.18em] -mb-[0.18em]"
             />
             <span className="block">{t('titleLine3')}</span>
           </h1>

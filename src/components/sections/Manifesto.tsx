@@ -37,16 +37,16 @@ export default function Manifesto() {
           {/* Text */}
           <div>
             <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(36px,4.4vw,68px)]">
-              {/* The colored word sits on its own line, bigger, single-line and
-                  shimmering, so the line below ("is not an accident…") never
-                  reflows when it swaps. Bottom padding gives italic descenders
-                  room inside the clip box; the negative margin keeps the
-                  baseline in place. */}
+              {/* "İyi ritim" / "Good rhythm" on its own line, the rest wraps
+                  below — so the swapping word never reflows the second line.
+                  pb gives the clip box room for italic descenders (g, y, ş, ğ)
+                  in both languages; the small -mb keeps the gap to the line
+                  below tidy without letting those descenders touch it. */}
               <span className="block">
                 {t('headingPre')}
                 <RotatingWord
                   words={headingWords}
-                  className="hero-rotating accent-italic inline-block whitespace-nowrap pb-[0.6em] -mb-[0.7em] text-[clamp(40px,5.6vw,88px)]"
+                  className="accent-italic inline-block pb-[0.28em] -mb-[0.48em]"
                 />
               </span>
               <span className="block">{t('headingPost')}</span>
