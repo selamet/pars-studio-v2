@@ -37,17 +37,18 @@ export default function Manifesto() {
           {/* Text */}
           <div>
             <h2 className="reveal-text max-w-[16ch] font-serif font-light leading-[1.05] tracking-[-0.012em] text-[clamp(36px,4.4vw,68px)]">
-              {t('headingPre')}
-              {/* overflow-hidden makes an inline-block's baseline its bottom
-                  edge, lifting the word; the negative margin drops the edge
-                  back onto the text baseline. The bottom padding gives italic
-                  descenders (y, g) room inside the clip box, and the extra
-                  negative margin keeps the baseline where it was. */}
-              <RotatingWord
-                words={headingWords}
-                className="accent-italic inline-block pb-[0.12em] -mb-[0.32em]"
-              />
-              {t('headingPost')}
+              {/* The colored word sits on its own line, bigger and single-line,
+                  so the line below ("is not an accident…") never reflows when it
+                  swaps. Bottom padding gives italic descenders room inside the
+                  clip box; the negative margin keeps the baseline in place. */}
+              <span className="block">
+                {t('headingPre')}
+                <RotatingWord
+                  words={headingWords}
+                  className="hero-rotating accent-italic inline-block whitespace-nowrap pb-[0.12em] -mb-[0.22em] text-[clamp(46px,5.6vw,88px)]"
+                />
+              </span>
+              <span className="block">{t('headingPost')}</span>
             </h2>
             <div className="mt-10 grid gap-7 text-[15px] leading-[1.65] text-fg/[0.78] sm:max-w-2xl">
               <p className="reveal-text">{t('p1')}</p>
