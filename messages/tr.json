@@ -131,8 +131,10 @@
     "colRole": "ROL",
     "previewSoon": "DİNLEME YAKINDA",
     "items": [
-      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Miks · Mastering", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
-      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Prodüksiyon · Miks", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" }
+      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
+      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" },
+      { "artist": "Ero", "project": "ALO", "year": "2025", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "3u3xhrPu6CvhJd92xl82O8" },
+      { "artist": "Jenga, thirteen", "project": "Anlatamam", "year": "2025", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "2prtgTnUOfMvJRoilD2Or2" }
     ]
   },
   "voices": {

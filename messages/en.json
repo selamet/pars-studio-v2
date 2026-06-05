@@ -131,8 +131,10 @@
     "colRole": "ROLE",
     "previewSoon": "PREVIEW COMING SOON",
     "items": [
-      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Mix · Master", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
-      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Production · Mix", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" }
+      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Recording · Production · Mix · Master", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
+      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Recording · Production · Mix · Master", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" },
+      { "artist": "Ero", "project": "ALO", "year": "2025", "role": "Recording · Production · Mix · Master", "spotifyId": "3u3xhrPu6CvhJd92xl82O8" },
+      { "artist": "Jenga, thirteen", "project": "Anlatamam", "year": "2025", "role": "Recording · Production · Mix · Master", "spotifyId": "2prtgTnUOfMvJRoilD2Or2" }
     ]
   },
   "voices": {
