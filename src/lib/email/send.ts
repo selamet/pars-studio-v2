@@ -1,6 +1,11 @@
 import 'server-only';
 import type { Reservation } from '@/lib/supabase/types';
-import { getResend, getFromAddress, getSiteUrl } from './resend';
+import {
+  getResend,
+  getFromAddress,
+  getReplyToAddress,
+  getSiteUrl,
+} from './resend';
 import {
   customerConfirmationEmail,
   customerStatusEmail,
@@ -15,7 +20,8 @@ async function safeSend(
   to: string | string[],
   subject: string,
   html: string,
-  label: string
+  label: string,
+  replyTo?: string | string[]
 ): Promise<void> {
   try {
     const resend = getResend();
@@ -28,6 +34,7 @@ async function safeSend(
       to,
       subject,
       html,
+      ...(replyTo ? { replyTo } : {}),
     });
     if (error) console.error(`[email:${label}] Resend error:`, error);
   } catch (err) {
@@ -39,7 +46,13 @@ export async function sendCustomerConfirmation(
   r: Reservation
 ): Promise<void> {
   const { subject, html } = customerConfirmationEmail(r);
-  await safeSend(r.customer_email, subject, html, 'customer-confirmation');
+  await safeSend(
+    r.customer_email,
+    subject,
+    html,
+    'customer-confirmation',
+    getReplyToAddress()
+  );
 }
 
 export async function sendStudioNotification(r: Reservation): Promise<void> {
@@ -49,7 +62,8 @@ export async function sendStudioNotification(r: Reservation): Promise<void> {
     return;
   }
   const { subject, html } = studioNotificationEmail(r, getSiteUrl());
-  await safeSend(to, subject, html, 'studio-notification');
+  // Reply-to the customer so the studio can answer the booking directly.
+  await safeSend(to, subject, html, 'studio-notification', r.customer_email);
 }
 
 export async function sendStatusUpdate(
@@ -57,5 +71,11 @@ export async function sendStatusUpdate(
   status: 'confirmed' | 'cancelled'
 ): Promise<void> {
   const { subject, html } = customerStatusEmail(r, status);
-  await safeSend(r.customer_email, subject, html, `status-${status}`);
+  await safeSend(
+    r.customer_email,
+    subject,
+    html,
+    `status-${status}`,
+    getReplyToAddress()
+  );
 }

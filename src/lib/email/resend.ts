@@ -15,6 +15,18 @@ export function getFromAddress(): string {
   return process.env.RESEND_FROM_EMAIL || 'Pars Studio <onboarding@resend.dev>';
 }
 
+/**
+ * Where customer replies should land — the studio inbox. Falls back to the
+ * notification address so a single env var is usually enough.
+ */
+export function getReplyToAddress(): string | undefined {
+  return (
+    process.env.REPLY_TO_EMAIL ||
+    process.env.STUDIO_NOTIFICATION_EMAIL ||
+    undefined
+  );
+}
+
 export function getSiteUrl(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ||
