@@ -29,15 +29,16 @@ export default function Hero() {
         <SpiralScene />
       )}
 
-      <div className="hero-vignette relative z-10 flex h-full flex-col justify-between px-[clamp(20px,4vw,64px)] py-[clamp(80px,12vh,140px)]">
+      <div className="hero-vignette relative z-10 flex h-full flex-col justify-start px-[clamp(20px,4vw,64px)] py-[clamp(80px,12vh,140px)] sm:justify-between">
         {/* Meta row */}
         <div className="mx-auto flex w-full max-w-page items-center justify-between">
           <span className="meta">{t('meta')}</span>
           <span className="meta hidden sm:block">{t('eyebrow')}</span>
         </div>
 
-        {/* Title */}
-        <div className="mx-auto w-full max-w-page">
+        {/* Title — sits in the upper third on mobile; centred by the
+            space-between distribution on sm and up. */}
+        <div className="mx-auto mt-[10vh] w-full max-w-page sm:mt-0">
           <p className="meta mb-6 sm:hidden">{t('eyebrow')}</p>
           <h1 className="max-w-title font-serif font-light leading-[0.96] tracking-[-0.018em] text-[clamp(54px,9.6vw,160px)]">
             <span className="block">{t('titleLine1')}</span>
@@ -52,8 +53,9 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Bottom */}
-        <div className="mx-auto flex w-full max-w-page flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        {/* Bottom — pinned to the bottom on mobile via mt-auto; the
+            space-between layout handles it from sm up. */}
+        <div className="mx-auto mt-auto flex w-full max-w-page flex-col gap-4 sm:mt-0 sm:flex-row sm:items-end sm:justify-between">
           <p className="max-w-md text-sm leading-[1.65] text-fg/70">
             {t('caption')}
           </p>
