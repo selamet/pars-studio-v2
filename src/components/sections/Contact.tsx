@@ -5,12 +5,13 @@ import { Button } from '@/components/ui/button';
 import WhatsappIcon from '@/components/WhatsappIcon';
 
 type SocialLink = { label: string; href: string };
+type Branch = { label: string; lines: string[] };
 
 /** Section 006 — big email link + three monospace columns. */
 export default function Contact() {
   const t = useTranslations('contact');
   const locale = useLocale();
-  const studioLines = t.raw('studioLines') as string[];
+  const branches = t.raw('branches') as Branch[];
   const socialLinks = t.raw('socialLinks') as SocialLink[];
   const bookHref = `/${locale}/booking`;
 
@@ -43,10 +44,20 @@ export default function Contact() {
         <div className="mt-[clamp(48px,8vh,112px)] grid gap-12 border-t hairline pt-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="reveal-text flex flex-col gap-4">
             <span className="meta">{t('studioTitle')}</span>
-            <div className="flex flex-col gap-1 text-[14px] text-fg/[0.7]">
-              {studioLines.map((line) => (
-                <span key={line}>{line}</span>
+            <div className="flex flex-col gap-5">
+              {branches.map((b) => (
+                <div key={b.label} className="flex flex-col gap-1">
+                  <span className="meta normal-case tracking-[0.12em] text-fg">
+                    {b.label}
+                  </span>
+                  <div className="flex flex-col text-[14px] text-fg/[0.7]">
+                    {b.lines.map((line) => (
+                      <span key={line}>{line}</span>
+                    ))}
+                  </div>
+                </div>
               ))}
+              <span className="text-[14px] text-fg/[0.7]">{t('hours')}</span>
             </div>
           </div>
 

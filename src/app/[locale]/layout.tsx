@@ -53,13 +53,13 @@ const jsonLd = {
   name: 'Pars Studios',
   url: 'https://parsstudio.com',
   description:
-    'Independent music production studio in Istanbul — recording, mixing, mastering and beat production.',
+    'Independent music production studio in Istanbul and California — recording, mixing, mastering and beat production.',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Şişli',
+    addressLocality: 'Kağıthane',
     addressRegion: 'Istanbul',
     addressCountry: 'TR',
-    streetAddress: 'Bomonti',
+    streetAddress: 'Bilgiç Sokak No:2',
   },
   telephone: '+90 531 393 20 83',
   email: 'online@pars-studios.com',

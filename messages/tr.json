@@ -12,7 +12,7 @@
     "close": "Kapat"
   },
   "hero": {
-    "meta": "SES · 001 · İSTANBUL · 41.0082°N",
+    "meta": "SES · 001 · İSTANBUL · CALIFORNIA",
     "eyebrow": "MÜZİK · ÜRETİM · DİSİPLİN",
     "titleLine1": "Ham sesi",
     "titleWords": ["karaktere", "ruhunuza", "duygulara", "hikâyene", "melodiye"],
@@ -24,9 +24,9 @@
     "section": "001",
     "label": "STÜDYO HAKKINDA",
     "image": "/images/studio/about.jpg",
-    "imageCaption": "PARS STUDIOS · İSTANBUL · 41.0082°N",
+    "imageCaption": "PARS STUDIOS · İSTANBUL · CALIFORNIA",
     "heading": "İyi ses bir tesadüf değil; bir karardır.",
-    "p1": "Pars Studios, İstanbul'da kurulu bağımsız bir prodüksiyon stüdyosudur. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
+    "p1": "Pars Studios, İstanbul ve California'da kurulu bağımsız bir prodüksiyon stüdyosudur. Tek bir işle ilgileniriz: bir fikri, dinleyenin göğsünde hissedeceği bir kayda dönüştürmek. Trend kovalamayız; karakter inşa ederiz.",
     "p2": "Her proje akustikten önce niyetle başlar. Sanatçıyla oturur, parçanın ne söylemek istediğini konuşur, ancak ondan sonra mikrofonu açarız. Aceleyi sevmeyiz — çünkü acele, kayıtta duyulur.",
     "p3": "Donanım önemlidir, kulak daha çok. Burada ekipman bir araçtır, kahraman değil. Sonuçta geriye kalan tek şey vardır: parça çaldığında odadaki sessizlik."
   },
@@ -196,11 +196,17 @@
     "heading": "Konuşalım",
     "email": "online@pars-studios.com",
     "studioTitle": "STÜDYO",
-    "studioLines": [
-      "Bomonti, Şişli",
-      "İstanbul, Türkiye",
-      "Hafta içi 11:00 — 22:00"
+    "branches": [
+      {
+        "label": "İSTANBUL",
+        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
+      },
+      {
+        "label": "CALIFORNIA",
+        "lines": ["Irvine, CA"]
+      }
     ],
+    "hours": "Hafta içi 11:00 — 22:00",
     "phoneTitle": "TELEFON",
     "phone": "+90 531 393 20 83",
     "whatsappNumber": "905313932083",
@@ -208,7 +214,7 @@
     "whatsappMessage": "Merhaba Pars Studios, rezervasyon hakkında bilgi almak istiyorum.",
     "whatsappAria": "WhatsApp ile konuşma başlat",
     "mapTitle": "HARİTA",
-    "mapQuery": "Bomonti, Şişli, İstanbul",
+    "mapQuery": "Bilgiç Sokak No:2, Kağıthane, İstanbul",
     "mapDirections": "Yol tarifi al",
     "socialTitle": "SOSYAL",
     "socialLinks": [
@@ -223,7 +229,7 @@
   "footer": {
     "copy": "© PARS STUDIOS — MMXXVI",
     "rights": "TÜM HAKLARI SAKLIDIR",
-    "city": "İSTANBUL",
+    "city": "İSTANBUL · CALIFORNIA",
     "poweredBy": "POWERED BY",
     "poweredByName": "SELAMET.DEV",
     "poweredByHref": "https://selamet.dev"
