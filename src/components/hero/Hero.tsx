@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { useReducedMotion } from '@/lib/use-reduced-motion';
+import RotatingWord from './RotatingWord';
 
 // WebGL is browser-only — never server-render it.
 const SpiralScene = dynamic(() => import('./SpiralScene'), { ssr: false });
@@ -10,6 +11,7 @@ const SpiralScene = dynamic(() => import('./SpiralScene'), { ssr: false });
 export default function Hero() {
   const t = useTranslations('hero');
   const reduced = useReducedMotion();
+  const titleWords = t.raw('titleWords') as string[];
 
   return (
     <section className="sticky top-0 z-0 h-[100svh] w-full overflow-hidden">
@@ -39,7 +41,7 @@ export default function Hero() {
           <p className="meta mb-6 sm:hidden">{t('eyebrow')}</p>
           <h1 className="max-w-title font-serif font-light leading-[0.96] tracking-[-0.018em] text-[clamp(54px,9.6vw,160px)]">
             <span className="block">{t('titleLine1')}</span>
-            <span className="accent-italic block">{t('titleLine2')}</span>
+            <RotatingWord words={titleWords} />
             <span className="block">{t('titleLine3')}</span>
           </h1>
         </div>
