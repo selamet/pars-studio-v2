@@ -133,17 +133,27 @@ export default function Contact() {
             </a>
           </div>
 
-          <div className="relative aspect-[16/7] w-full overflow-hidden border hairline bg-bg-soft">
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              t('mapQuery')
+            )}`}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={t('mapDirections')}
+            className="relative block aspect-[16/7] w-full overflow-hidden border hairline bg-bg-soft"
+          >
+            {/* pointer-events-none lets the click fall through to this anchor
+                instead of being captured by the embedded map. */}
             <iframe
               title={t('mapTitle')}
               src={`https://maps.google.com/maps?q=${encodeURIComponent(
                 t('mapQuery')
               )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
-              className="absolute inset-0 h-full w-full grayscale invert-[0.92] hue-rotate-180 contrast-[0.85] brightness-[0.95]"
+              className="pointer-events-none absolute inset-0 h-full w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-          </div>
+          </a>
         </div>
       </div>
     </section>
