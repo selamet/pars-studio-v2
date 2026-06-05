@@ -28,12 +28,12 @@
     "headingPre": "Good ",
     "headingWords": ["sound", "music", "tone", "rhythm", "mixing"],
     "headingPost": " is not an accident. It is a decision.",
-    "p1": "Pars Studios is an independent creative media studio based in Irvine, CA, and also serving Istanbul. Alongside recording, mixing and mastering, we produce film scores and title music, commercial music, music videos, and the editing and visual effects (FX) that go with them — all under one roof. We care about one thing: turning an idea into a work you feel in your chest and see on the screen. Rather than chasing trends, we make room for every artist to find their own voice — because what lasts over time is character, not imitation.",
+    "p1": "Pars Studios is an independent creative media studio based in Irvine, CA, and also serving Istanbul. Led by beat production — and alongside recording, mixing and mastering — we craft film scores and title music, commercial music, music videos, and the editing and visual effects (FX) that go with them, all under one roof. We care about one thing: turning an idea into a work you feel in your chest and see on the screen. Rather than chasing trends, we make room for every artist to find their own voice — because what lasts over time is character, not imitation.",
     "p2": "Every project — whether a track, a music video or a commercial — begins with intent long before the acoustics or the camera. We sit down with the artist first and talk, at length, about what the work wants to say and which emotion it carries; only then do we open a microphone or roll the camera. We don't like to rush, because a rush eventually bleeds into the recording and the edit, and the audience feels it. For us, waiting for the right moment is often worth more than the most expensive piece of gear.",
     "p3": "Gear matters, but the ear and the eye matter far more. Here, equipment is a tool, never the hero; whether it's a mix, a color grade or an FX pass, the real work is making the right call at the right moment. In the end only one thing remains: the silence that fills the room when the piece plays, and that instant when everyone quietly agrees, “that's it.” That is exactly what we're after."
   },
   "services": {
-    "section": "003",
+    "section": "002",
     "label": "SERVICES",
     "heading": "Services",
     "items": [
@@ -65,7 +65,7 @@
     ]
   },
   "rooms": {
-    "section": "004",
+    "section": "009",
     "label": "STUDIO",
     "heading": "Rooms",
     "items": [
@@ -92,7 +92,7 @@
     ]
   },
   "process": {
-    "section": "005",
+    "section": "003",
     "label": "PROCESS",
     "heading": "Working Flow",
     "items": [
@@ -124,7 +124,7 @@
     ]
   },
   "works": {
-    "section": "006",
+    "section": "004",
     "label": "SELECTED WORKS",
     "heading": "Archive",
     "colArtist": "ARTIST",
@@ -140,7 +140,7 @@
     ]
   },
   "voices": {
-    "section": "007",
+    "section": "005",
     "label": "VOICES",
     "heading": "What the room says.",
     "items": [
@@ -162,7 +162,7 @@
     ]
   },
   "faq": {
-    "section": "008",
+    "section": "006",
     "label": "FAQ",
     "heading": "Before you book.",
     "items": [
@@ -193,7 +193,7 @@
     ]
   },
   "contact": {
-    "section": "009",
+    "section": "007",
     "label": "CONTACT",
     "heading": "Let's talk",
     "email": "online@pars-studios.com",
@@ -237,7 +237,7 @@
     "poweredByHref": "https://selamet.dev"
   },
   "booking": {
-    "section": "010",
+    "section": "008",
     "label": "BOOKING",
     "heading": "Plan a session.",
     "intro": "Pick a date, a service and a duration in a few steps. Your confirmation lands in minutes.",
