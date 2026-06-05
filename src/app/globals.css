@@ -42,6 +42,35 @@
     color: var(--accent);
   }
 
+  /* Hero rotating accent — a soft brass glow on the band plus a slow
+     light-sweep across the glyphs, so the swapping word feels alive. */
+  .hero-rotating {
+    filter: drop-shadow(0 0 32px rgba(201, 169, 110, 0.3));
+  }
+
+  .hero-rotating > span {
+    background: linear-gradient(
+      100deg,
+      #b8965a 0%,
+      #f4e3bd 32%,
+      #fff7e6 50%,
+      #f4e3bd 68%,
+      #b8965a 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: hero-shimmer 7s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-rotating > span {
+      animation: none;
+    }
+  }
+
   /* Monospace meta / label row. */
   .meta {
     font-family: var(--font-mono), ui-monospace, monospace;
@@ -94,5 +123,12 @@
   .grain {
     background-repeat: repeat;
     background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Slow brass light-sweep for the hero's rotating accent word. */
+@keyframes hero-shimmer {
+  to {
+    background-position: -220% 0;
   }
 }
