@@ -144,18 +144,18 @@
     "items": [
       {
         "quote": "Parçayı başka bir şeye dönüştürmeye çalışmadılar. Önce dinlediler, sonra yerine oturttular. Miks, parça hep o yöne gitmesi gerekiyormuş gibi akıyor.",
-        "artist": "Ayla Devran",
-        "role": "Vokalist · Gece Yarısı Radyosu"
+        "artist": "A.D.",
+        "role": "Vokalist"
       },
       {
         "quote": "Beş saat geçti, hâlâ tek bir mikrofon açmamıştık. Çoğu stüdyonun atladığı kısım orası. Kayda geçtiğimizde take zaten oradaydı.",
-        "artist": "Kuzey Blok",
-        "role": "Prodüktör · Asfalt"
+        "artist": "K.B.",
+        "role": "Prodüktör"
       },
       {
         "quote": "Mastering şeffaf geri döndü — abartılı bir gürlük yok, kayıp bir hava yok. Referanslarımın yanında ait olduğu yere oturdu.",
-        "artist": "Selin Vardar",
-        "role": "Sanatçı · İz"
+        "artist": "S.V.",
+        "role": "Sanatçı"
       }
     ]
   },
