@@ -1,7 +1,7 @@
 import Hero from '@/components/hero/Hero';
 import Manifesto from '@/components/sections/Manifesto';
 import Services from '@/components/sections/Services';
-import Rooms from '@/components/sections/Rooms';
+// import Rooms from '@/components/sections/Rooms'; // temporarily disabled — re-enable later
 import Process from '@/components/sections/Process';
 import Works from '@/components/sections/Works';
 import Voices from '@/components/sections/Voices';
@@ -29,8 +29,10 @@ export default function LandingPage() {
         <SignalDivider />
         <Services />
         <SignalDivider />
+        {/* Rooms section temporarily disabled — re-enable later.
         <Rooms />
         <SignalDivider />
+        */}
         <Process />
         <SignalDivider />
         <Works />
