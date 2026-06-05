@@ -132,17 +132,7 @@
     "previewSoon": "PREVIEW COMING SOON",
     "items": [
       { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Mix · Master", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
-      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Production · Mix", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" },
-      { "artist": "Ayla Devran", "project": "Midnight Radio", "year": "2025", "role": "Mix · Master", "spotifyId": "0VjIjW4GlUZAMYd2vXMi3b" },
-      { "artist": "Kuzey Blok", "project": "Asphalt", "year": "2025", "role": "Record · Production", "spotifyId": "6K4t31amVTZDgR3sKmwUJJ" },
-      { "artist": "Mira Sönmez", "project": "Glass Heart", "year": "2024", "role": "Vocal Production", "spotifyId": "" },
-      { "artist": "Derin Akarsu", "project": "Against The Current", "year": "2024", "role": "Mix", "spotifyId": "" },
-      { "artist": "VHS Kids", "project": "Analog Summer", "year": "2024", "role": "Record · Mix", "spotifyId": "" },
-      { "artist": "Selin Vardar", "project": "Trace", "year": "2023", "role": "Master", "spotifyId": "" },
-      { "artist": "Boran Eren", "project": "Underside", "year": "2023", "role": "Beat Production", "spotifyId": "" },
-      { "artist": "Lara Moon", "project": "Neon Sorrow", "year": "2023", "role": "Mix · Master", "spotifyId": "" },
-      { "artist": "Tunç Arkın", "project": "Dry Noise", "year": "2022", "role": "Recording", "spotifyId": "" },
-      { "artist": "Eda Yıldırım", "project": "Silent City", "year": "2022", "role": "Production · Mix", "spotifyId": "" }
+      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Production · Mix", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" }
     ]
   },
   "voices": {
