@@ -149,7 +149,7 @@ export default function Contact() {
               src={`https://maps.google.com/maps?q=${encodeURIComponent(
                 t('mapQuery')
               )}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
-              className="pointer-events-none absolute inset-0 h-full w-full"
+              className="pointer-events-none absolute inset-0 h-full w-full brightness-[0.88]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
