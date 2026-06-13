@@ -1,13 +1,13 @@
 name: Supabase keep-alive
 
 # Supabase Free pauses a project after ~7 days with no requests. This job pings
-# the REST API every 3 days so the project never stays idle long enough to pause.
+# the REST API every day so the project never stays idle long enough to pause.
 # Even with RLS returning no rows for the anon key, the request still counts as
 # activity, which is all we need.
 
 on:
   schedule:
-    - cron: '0 6 */3 * *' # every 3 days at 06:00 UTC (well under the 7-day window)
+    - cron: '0 6 * * *' # every day at 06:00 UTC (well under the 7-day window)
   workflow_dispatch: {} # allow manual runs from the Actions tab
 
 jobs:
