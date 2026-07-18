@@ -6,9 +6,8 @@ import { useTranslations } from 'next-intl';
 import type {
   Reservation,
   ReservationStatus,
-} from '@/lib/supabase/types';
+} from '@/lib/types';
 import { SERVICES } from '@/lib/booking/services';
-import { createClient } from '@/lib/supabase/client';
 import {
   Table,
   TableBody,
@@ -29,11 +28,9 @@ type Filter = 'all' | ReservationStatus;
 export default function AdminDashboard({
   locale,
   reservations: initial,
-  email,
 }: {
   locale: Locale;
   reservations: Reservation[];
-  email: string | null;
 }) {
   const t = useTranslations('admin.dashboard');
   const tStatus = useTranslations('admin.status');
@@ -70,8 +67,7 @@ export default function AdminDashboard({
   }
 
   async function handleLogout() {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    await fetch('/api/admin/logout', { method: 'POST' });
     router.push(`/${locale}/admin/login`);
     router.refresh();
   }
@@ -93,11 +89,6 @@ export default function AdminDashboard({
             </div>
 
             <div className="flex flex-col items-start gap-3 md:items-end">
-              {email && (
-                <span className="font-mono text-[11px] uppercase tracking-meta text-fg-dim">
-                  {t('loggedInAs')} <span className="text-fg">{email}</span>
-                </span>
-              )}
               <Button variant="outline" size="sm" onClick={handleLogout}>
                 {t('logout')}
               </Button>

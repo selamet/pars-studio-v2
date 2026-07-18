@@ -1,7 +1,13 @@
 -- ─────────────────────────────────────────────────────────────
--- Pars Studio — reservations schema + RLS
--- Run this in the Supabase SQL Editor (one shot).
+-- Pars Studio — reservations schema
+-- Target: Neon (or any plain PostgreSQL 15+).
+-- Apply with:
+--   psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f db/schema.sql
+-- Access control is enforced in the app layer (no RLS here).
 -- ─────────────────────────────────────────────────────────────
+
+-- Needed for `session_date with =` inside the exclusion constraint.
+create extension if not exists btree_gist;
 
 create table public.reservations (
   id uuid primary key default gen_random_uuid(),
@@ -32,35 +38,22 @@ create table public.reservations (
   updated_at timestamptz not null default now()
 );
 
+-- Double-booking is impossible at the DB level: two pending/confirmed
+-- sessions on the same date must not overlap in [start, start+duration).
+-- The API pre-checks for a friendly 409, but this is the real guarantee.
+alter table public.reservations
+  add constraint reservations_no_overlap
+  exclude using gist (
+    session_date with =,
+    int4range(
+      extract(hour from start_time)::int,
+      extract(hour from start_time)::int + duration_hours
+    ) with &&
+  )
+  where (status in ('pending', 'confirmed'));
+
 create index reservations_session_date_idx on public.reservations (session_date);
 create index reservations_status_idx on public.reservations (status);
-
--- Row Level Security ------------------------------------------------
-alter table public.reservations enable row level security;
-
--- Anyone can insert (the booking form is public). Server-side zod
--- validation + the service-role client are the real gate; this policy
--- just keeps the anon key from doing anything else.
-create policy "Public can create reservations"
-  on public.reservations for insert
-  to anon, authenticated
-  with check (true);
-
--- Only authenticated users (the studio admin) can read/update/delete.
-create policy "Admins can read all reservations"
-  on public.reservations for select
-  to authenticated
-  using (true);
-
-create policy "Admins can update reservations"
-  on public.reservations for update
-  to authenticated
-  using (true);
-
-create policy "Admins can delete reservations"
-  on public.reservations for delete
-  to authenticated
-  using (true);
 
 -- updated_at trigger ------------------------------------------------
 create or replace function public.set_updated_at()

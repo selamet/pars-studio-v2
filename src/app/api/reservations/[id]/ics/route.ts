@@ -1,10 +1,13 @@
-import { createAdminClient } from '@/lib/supabase/admin';
+import { getPool, RESERVATION_COLUMNS } from '@/lib/db';
 import { getService } from '@/lib/booking/services';
 import { confirmationCode } from '@/lib/email/templates/shared';
-import type { Reservation } from '@/lib/supabase/types';
+import type { Reservation } from '@/lib/types';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function pad(n: number) {
   return String(n).padStart(2, '0');
@@ -21,18 +24,20 @@ export async function GET(
   _request: Request,
   { params }: { params: { id: string } }
 ) {
+  if (!UUID_RE.test(params.id)) {
+    return new Response('Not found', { status: 404 });
+  }
+
   try {
-    const supabase = createAdminClient();
-    const { data, error } = await supabase
-      .from('reservations')
-      .select('*')
-      .eq('id', params.id)
-      .single();
-    if (error || !data) {
+    const { rows } = await getPool().query(
+      `select ${RESERVATION_COLUMNS} from reservations where id = $1`,
+      [params.id]
+    );
+    const r = rows[0] as Reservation | undefined;
+    if (!r) {
       return new Response('Not found', { status: 404 });
     }
 
-    const r = data as Reservation;
     const svc =
       getService(r.service_type)?.name[r.locale] ?? r.service_type;
     const code = confirmationCode(r.id);

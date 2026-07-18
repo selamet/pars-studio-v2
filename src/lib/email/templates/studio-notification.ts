@@ -1,4 +1,4 @@
-import type { Reservation } from '@/lib/supabase/types';
+import type { Reservation } from '@/lib/types';
 import {
   COLORS as C,
   button,

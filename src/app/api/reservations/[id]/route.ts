@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { createClient } from '@/lib/supabase/server';
+import { isAdmin } from '@/lib/auth-server';
+import { getPool, RESERVATION_COLUMNS } from '@/lib/db';
 import { sendStatusUpdate } from '@/lib/email/send';
-import type { Reservation } from '@/lib/supabase/types';
+import type { Reservation } from '@/lib/types';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+const idSchema = z.string().uuid();
 
 const patchSchema = z.object({
   status: z
@@ -14,22 +17,15 @@ const patchSchema = z.object({
   admin_notes: z.string().max(2000).optional(),
 });
 
-/** Verify the admin session (defense-in-depth alongside middleware). */
-async function requireAuth() {
-  const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return user ? supabase : null;
-}
-
 export async function PATCH(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const supabase = await requireAuth();
-  if (!supabase) {
+  if (!(await isAdmin())) {
     return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  }
+  if (!idSchema.safeParse(params.id).success) {
+    return NextResponse.json({ error: 'not_found' }, { status: 404 });
   }
 
   let body: unknown;
@@ -44,32 +40,56 @@ export async function PATCH(
     return NextResponse.json({ error: 'validation' }, { status: 400 });
   }
 
+  const sets: string[] = [];
+  const values: unknown[] = [];
+  if (parsed.data.status !== undefined) {
+    values.push(parsed.data.status);
+    sets.push(`status = $${values.length}`);
+  }
+  if (parsed.data.admin_notes !== undefined) {
+    values.push(parsed.data.admin_notes);
+    sets.push(`admin_notes = $${values.length}`);
+  }
+  values.push(params.id);
+
   try {
-    const { data: before } = await supabase
-      .from('reservations')
-      .select('status')
-      .eq('id', params.id)
-      .single();
+    const pool = getPool();
+    const { rows: beforeRows } = await pool.query(
+      'select status from reservations where id = $1',
+      [params.id]
+    );
 
-    const { data: row, error } = await supabase
-      .from('reservations')
-      .update(parsed.data)
-      .eq('id', params.id)
-      .select('*')
-      .single();
-    if (error) throw error;
+    let row: Reservation | undefined;
+    try {
+      const { rows } = await pool.query(
+        `update reservations set ${sets.join(', ')}
+          where id = $${values.length}
+          returning ${RESERVATION_COLUMNS}`,
+        values
+      );
+      row = rows[0] as Reservation | undefined;
+    } catch (err) {
+      // 23P01: re-activating (e.g. cancelled → confirmed) would overlap a
+      // booking made in the meantime.
+      if ((err as { code?: string }).code === '23P01') {
+        return NextResponse.json({ code: 'slot_taken' }, { status: 409 });
+      }
+      throw err;
+    }
+    if (!row) {
+      return NextResponse.json({ error: 'not_found' }, { status: 404 });
+    }
 
-    const reservation = row as Reservation;
     const newStatus = parsed.data.status;
     if (
       newStatus &&
-      newStatus !== before?.status &&
+      newStatus !== beforeRows[0]?.status &&
       (newStatus === 'confirmed' || newStatus === 'cancelled')
     ) {
-      await sendStatusUpdate(reservation, newStatus);
+      await sendStatusUpdate(row, newStatus);
     }
 
-    return NextResponse.json(reservation);
+    return NextResponse.json(row);
   } catch (err) {
     console.error('[api:reservations:PATCH]', err);
     return NextResponse.json({ error: 'server_error' }, { status: 500 });
@@ -80,17 +100,17 @@ export async function DELETE(
   _request: Request,
   { params }: { params: { id: string } }
 ) {
-  const supabase = await requireAuth();
-  if (!supabase) {
+  if (!(await isAdmin())) {
     return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  }
+  if (!idSchema.safeParse(params.id).success) {
+    return NextResponse.json({ error: 'not_found' }, { status: 404 });
   }
 
   try {
-    const { error } = await supabase
-      .from('reservations')
-      .delete()
-      .eq('id', params.id);
-    if (error) throw error;
+    await getPool().query('delete from reservations where id = $1', [
+      params.id,
+    ]);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error('[api:reservations:DELETE]', err);

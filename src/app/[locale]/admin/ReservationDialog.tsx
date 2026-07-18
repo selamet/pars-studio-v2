@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
 import type {
   Reservation,
   ReservationStatus,
-} from '@/lib/supabase/types';
+} from '@/lib/types';
 import { SERVICES } from '@/lib/booking/services';
 
 type Locale = 'tr' | 'en';

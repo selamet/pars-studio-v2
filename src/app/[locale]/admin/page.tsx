@@ -1,8 +1,9 @@
 import { redirect } from 'next/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { locales, type Locale } from '@/i18n';
-import { createClient } from '@/lib/supabase/server';
-import type { Reservation } from '@/lib/supabase/types';
+import { isAdmin } from '@/lib/auth-server';
+import { getPool, RESERVATION_COLUMNS } from '@/lib/db';
+import type { Reservation } from '@/lib/types';
 import AdminDashboard from './AdminDashboard';
 
 export function generateStaticParams() {
@@ -18,35 +19,20 @@ export default async function AdminPage({
 }) {
   unstable_setRequestLocale(locale);
 
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  ) {
-    // Supabase not configured — show an empty dashboard rather than 500.
-    return <AdminDashboard locale={locale} reservations={[]} email={null} />;
+  if (!(await isAdmin())) redirect(`/${locale}/admin/login`);
+
+  let reservations: Reservation[] = [];
+  try {
+    const { rows } = await getPool().query(
+      `select ${RESERVATION_COLUMNS}
+         from reservations
+        order by session_date desc, start_time desc`
+    );
+    reservations = rows as Reservation[];
+  } catch (err) {
+    // DB unreachable — show an empty dashboard rather than 500.
+    console.error('[admin:page] fetch reservations:', err);
   }
 
-  const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) redirect(`/${locale}/admin/login`);
-
-  const { data, error } = await supabase
-    .from('reservations')
-    .select('*')
-    .order('session_date', { ascending: false })
-    .order('start_time', { ascending: false });
-
-  if (error) {
-    console.error('[admin:page] fetch reservations:', error);
-  }
-
-  return (
-    <AdminDashboard
-      locale={locale}
-      reservations={(data as Reservation[] | null) ?? []}
-      email={user.email ?? null}
-    />
-  );
+  return <AdminDashboard locale={locale} reservations={reservations} />;
 }

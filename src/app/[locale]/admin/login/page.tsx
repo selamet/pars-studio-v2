@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { locales, type Locale } from '@/i18n';
-import { createClient } from '@/lib/supabase/server';
+import { isAdmin } from '@/lib/auth-server';
 import LoginForm from './LoginForm';
 
 export function generateStaticParams() {
@@ -18,17 +18,8 @@ export default async function AdminLoginPage({
 }) {
   unstable_setRequestLocale(locale);
 
-  // If Supabase is configured and the user is already signed in, skip the form.
-  if (
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  ) {
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) redirect(`/${locale}/admin`);
-  }
+  // Already signed in → skip the form.
+  if (await isAdmin()) redirect(`/${locale}/admin`);
 
   return <LoginShell locale={locale} />;
 }

@@ -1,5 +1,5 @@
 import 'server-only';
-import type { Reservation } from '@/lib/supabase/types';
+import type { Reservation } from '@/lib/types';
 import {
   getResend,
   getFromAddress,

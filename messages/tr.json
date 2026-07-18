@@ -330,19 +330,16 @@
       "label": "STÜDYO PANELİ",
       "heading": "Giriş",
       "intro": "Sadece stüdyo ekibi. Rezervasyonları yönetmek için giriş yap.",
-      "email": "E-posta",
-      "emailPh": "ornek@pars-studios.com",
       "password": "Şifre",
       "passwordPh": "••••••••",
       "submit": "Giriş Yap",
       "submitting": "Giriş yapılıyor…",
-      "error": "E-posta veya şifre hatalı."
+      "error": "Şifre hatalı."
     },
     "dashboard": {
       "label": "REZERVASYONLAR",
       "heading": "Panel",
       "logout": "Çıkış",
-      "loggedInAs": "Giriş yapıldı:",
       "empty": "Henüz rezervasyon yok.",
       "emptyFilter": "Bu filtreyle eşleşen rezervasyon yok.",
       "filters": {
