@@ -48,6 +48,38 @@
     "p2": "Every project — whether a track, a music video or a commercial — begins with intent long before the acoustics or the camera. We sit down with the artist first and talk, at length, about what the work wants to say and which emotion it carries; only then do we open a microphone or roll the camera. We don't like to rush, because a rush eventually bleeds into the recording and the edit, and the audience feels it. For us, waiting for the right moment is often worth more than the most expensive piece of gear.",
     "p3": "Gear matters, but the ear and the eye matter far more. Here, equipment is a tool, never the hero; whether it's a mix, a color grade or an FX pass, the real work is making the right call at the right moment. In the end only one thing remains: the silence that fills the room when the piece plays, and that instant when everyone quietly agrees, “that's it.” That is exactly what we're after."
   },
+  "homeServices": {
+    "section": "002",
+    "label": "SERVICES",
+    "heading": "Services",
+    "items": [
+      {
+        "no": "01",
+        "name": "Recording",
+        "desc": "Tracking through a clean, accurate signal chain — analog to digital. Vocals, instruments and live room."
+      },
+      {
+        "no": "02",
+        "name": "Mixing",
+        "desc": "Detailed mixing that gives the track depth, space and balance. Stems and revisions included."
+      },
+      {
+        "no": "03",
+        "name": "Mastering",
+        "desc": "Consistent, transparent mastering ready for every platform. Optimised for digital and physical."
+      },
+      {
+        "no": "04",
+        "name": "Beat Production",
+        "desc": "Production built from scratch around the artist's world."
+      },
+      {
+        "no": "05",
+        "name": "Vocal Production",
+        "desc": "Performance direction, comping, tuning and aesthetic decisions. Putting the voice at the centre."
+      }
+    ]
+  },
   "services": {
     "eyebrow": "015",
     "label": "SERVICES",

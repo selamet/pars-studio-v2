@@ -9,7 +9,7 @@ type ServiceItem = {
 
 /** Section 002 — disciplines as hairline-bordered rows. */
 export default function Services() {
-  const t = useTranslations('services');
+  const t = useTranslations('homeServices');
   const items = t.raw('items') as ServiceItem[];
 
   return (
