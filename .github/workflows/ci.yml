@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # The build must not depend on a reachable API; pages fetch at request time.
+      NEXT_PUBLIC_API_URL: http://127.0.0.1:9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - name: Smoke test rendered pages
+        run: |
+          npx next start -p 3000 > server.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null http://127.0.0.1:3000/en/beats && break
+            sleep 1
+          done
+          failed=0
+          for path in /en /tr /en/beats /tr/beats /en/services /tr/services /en/booking /en/cart /en/account/login; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L "http://127.0.0.1:3000$path")
+            printf '%-22s %s\n' "$path" "$code"
+            [ "$code" = "200" ] || failed=1
+          done
+          if grep -q "MISSING_MESSAGE" server.log; then
+            echo "::error::next-intl reported missing translation keys"
+            grep "MISSING_MESSAGE" server.log | sort -u
+            failed=1
+          fi
+          exit $failed
