@@ -11,7 +11,9 @@
     "menu": "Menü",
     "close": "Kapat",
     "signIn": "Giriş",
-    "account": "Hesap"
+    "account": "Hesap",
+    "beats": "Beatler",
+    "shop": "Hizmetler"
   },
   "hero": {
     "meta": "CALIFORNIA · İSTANBUL",
@@ -558,5 +560,71 @@
       "generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
       "network": "Sunucuya ulaşılamıyor. Bağlantını kontrol et."
     }
+  },
+  "beats": {
+    "section": "010",
+    "label": "BEAT",
+    "heading": "Beatler.",
+    "intro": "Özgün prodüksiyonlar, lease ya da exclusive. Her parçayı dinle, lisansını seç, ödeme sonrası anında indir.",
+    "from": "başlangıç",
+    "empty": "Bu filtrelere uyan beat yok.",
+    "prev": "Önceki",
+    "next": "Sonraki",
+    "pageOf": "Sayfa {page} / {total}",
+    "backToBeats": "Tüm beatler",
+    "player": {
+      "play": "Önizlemeyi çal",
+      "pause": "Duraklat",
+      "unavailable": "Önizleme yakında",
+      "preview": "ÖNİZLEME",
+      "close": "Oynatıcıyı kapat"
+    },
+    "filters": {
+      "search": "Ara",
+      "searchPh": "Başlık, tür, etiket…",
+      "key": "Ton",
+      "bpmMin": "BPM min",
+      "bpmMax": "BPM maks",
+      "ordering": "Sırala",
+      "genre": "TÜR",
+      "clear": "Temizle",
+      "apply": "Uygula",
+      "order": {
+        "-published_at": "Önce en yeni",
+        "published_at": "Önce en eski",
+        "bpm": "BPM artan",
+        "-bpm": "BPM azalan",
+        "title": "Başlık A–Z"
+      }
+    },
+    "licenses": {
+      "heading": "LİSANS",
+      "none": "Bu beat için lisans yok.",
+      "terms": "Lisans şartları",
+      "addToCart": "Sepete ekle",
+      "checkoutSoon": "ÖDEME YAKINDA AÇILIYOR",
+      "files": {
+        "mp3": "MP3",
+        "wav": "WAV",
+        "stems": "Stemler"
+      }
+    }
+  },
+  "shop": {
+    "section": "011",
+    "label": "HİZMETLER",
+    "heading": "Mastering & miks.",
+    "intro": "Seansını gönder, cilalanmış olarak geri al. Sabit fiyat, net teslim süresi, revizyon dahil.",
+    "empty": "Hizmetler hazırlanıyor. Yakında tekrar bak.",
+    "turnaround": "TESLİM",
+    "revisions": "REVİZYON",
+    "maxStems": "MAKS DOSYA",
+    "days": "{count} gün",
+    "order": "Sipariş ver",
+    "ratesLabel": "STÜDYO SAATİ",
+    "ratesHeading": "Saatlik ücretler",
+    "ratesIntro": "Odayı saatlik ayırt. Kayıt, vokal prodüksiyon ve beat seansları saat başına fiyatlanır, ödemeyle onaylanır.",
+    "hour": "saat",
+    "book": "Seans ayırt"
   }
 }

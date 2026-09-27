@@ -4,6 +4,106 @@
  */
 
 export interface paths {
+    "/api/v1/catalog/beats/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Published beats */
+        get: operations["catalog_beats_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog/beats/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Beat with purchasable licenses */
+        get: operations["catalog_beats_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog/services/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Active mastering / mixing products */
+        get: operations["catalog_services_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog/services/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["catalog_services_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog/studio-rates/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Hourly studio rates */
+        get: operations["catalog_studio_rates_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/catalog/studio-rates/{service_type}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["catalog_studio_rates_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/me": {
         parameters: {
             query?: never;
@@ -26,10 +126,112 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        BeatDetail: {
+            readonly id: number;
+            slug: string;
+            title: string;
+            bpm: number;
+            /** @description Musical key, e.g. Am, F#m, C */
+            key?: string;
+            genre?: string;
+            tags?: string[];
+            duration_seconds?: number | null;
+            readonly cover_url: string | null;
+            readonly preview_url: string | null;
+            readonly min_price_usd: string | null;
+            /** Format: date-time */
+            published_at?: string | null;
+            description?: string;
+            readonly licenses: components["schemas"]["BeatLicense"][];
+        };
+        BeatLicense: {
+            readonly id: number;
+            tier: components["schemas"]["TierEnum"];
+            readonly tier_label: string;
+            /** Format: decimal */
+            price_usd: string;
+            readonly includes: string[];
+            /** @description License terms shown before purchase. */
+            terms?: string;
+        };
+        BeatList: {
+            readonly id: number;
+            slug: string;
+            title: string;
+            bpm: number;
+            /** @description Musical key, e.g. Am, F#m, C */
+            key?: string;
+            genre?: string;
+            tags?: string[];
+            duration_seconds?: number | null;
+            readonly cover_url: string | null;
+            readonly preview_url: string | null;
+            readonly min_price_usd: string | null;
+            /** Format: date-time */
+            published_at?: string | null;
+        };
+        /**
+         * @description * `mastering` - Mastering
+         *     * `mixing` - Mixing
+         * @enum {string}
+         */
+        KindEnum: "mastering" | "mixing";
+        PaginatedBeatListList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["BeatList"][];
+        };
         PatchedUserRequest: {
             first_name?: string;
             last_name?: string;
         };
+        ServiceProduct: {
+            readonly id: number;
+            slug: string;
+            name: string;
+            kind: components["schemas"]["KindEnum"];
+            readonly kind_label: string;
+            /** Format: decimal */
+            price_usd: string;
+            turnaround_days?: number;
+            included_revisions?: number;
+            /** @description How many source files the customer may upload. */
+            max_stems?: number;
+            description?: string;
+        };
+        /**
+         * @description * `recording` - Recording
+         *     * `mixing` - Mixing session
+         *     * `mastering` - Mastering session
+         *     * `beat` - Beat production
+         *     * `vocal` - Vocal production
+         * @enum {string}
+         */
+        ServiceTypeEnum: "recording" | "mixing" | "mastering" | "beat" | "vocal";
+        StudioRate: {
+            service_type: components["schemas"]["ServiceTypeEnum"];
+            readonly service_type_label: string;
+            /** Format: decimal */
+            hourly_price_usd: string;
+        };
+        /**
+         * @description * `mp3_lease` - MP3 Lease
+         *     * `wav_lease` - WAV Lease
+         *     * `trackout` - Trackout (stems)
+         *     * `exclusive` - Exclusive
+         * @enum {string}
+         */
+        TierEnum: "mp3_lease" | "wav_lease" | "trackout" | "exclusive";
         User: {
             readonly id: number;
             /**
@@ -52,6 +254,153 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    catalog_beats_list: {
+        parameters: {
+            query?: {
+                bpm_max?: number;
+                bpm_min?: number;
+                genre?: string;
+                key?: string;
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+                tag?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedBeatListList"];
+                };
+            };
+        };
+    };
+    catalog_beats_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BeatDetail"];
+                };
+            };
+        };
+    };
+    catalog_services_list: {
+        parameters: {
+            query?: {
+                /**
+                 * @description * `mastering` - Mastering
+                 *     * `mixing` - Mixing
+                 */
+                kind?: "mastering" | "mixing";
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceProduct"][];
+                };
+            };
+        };
+    };
+    catalog_services_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceProduct"];
+                };
+            };
+        };
+    };
+    catalog_studio_rates_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StudioRate"][];
+                };
+            };
+        };
+    };
+    catalog_studio_rates_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                service_type: "recording" | "mixing" | "mastering" | "beat" | "vocal";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StudioRate"];
+                };
+            };
+        };
+    };
     me_retrieve: {
         parameters: {
             query?: never;
