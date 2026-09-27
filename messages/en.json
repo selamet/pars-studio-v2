@@ -613,7 +613,7 @@
     "account": {
       "label": "ACCOUNT",
       "heading": "Your account.",
-      "intro": "Profile details and security. Orders and downloads arrive here soon.",
+      "intro": "Profile, security and everything you have bought or booked with us.",
       "loading": "Loading…",
       "emailLabel": "EMAIL",
       "unverified": "Email not verified yet. Check your inbox for the verification link.",
@@ -631,7 +631,8 @@
       "logout": "Sign out",
       "orders": "My orders & downloads",
       "services": "Mastering & mixing jobs",
-      "bookings": "Studio sessions"
+      "bookings": "Studio sessions",
+      "navLabel": "YOUR PAGES"
     },
     "errors": {
       "generic": "Something went wrong. Please try again.",

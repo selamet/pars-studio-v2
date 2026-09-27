@@ -13,6 +13,7 @@ export default function AccountPage({ params: { locale } }: { params: { locale: 
   const t = useTranslations('auth');
   return (
     <AuthShell
+      width="wide"
       eyebrow={t('eyebrow')}
       label={t('account.label')}
       heading={t('account.heading')}

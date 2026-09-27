@@ -613,7 +613,7 @@
     "account": {
       "label": "HESAP",
       "heading": "Hesabın.",
-      "intro": "Profil bilgileri ve güvenlik. Siparişler ve indirmeler yakında burada.",
+      "intro": "Profil, güvenlik ve bizden satın aldığın ya da ayırttığın her şey.",
       "loading": "Yükleniyor…",
       "emailLabel": "E-POSTA",
       "unverified": "E-posta henüz doğrulanmadı. Doğrulama bağlantısı için gelen kutunu kontrol et.",
@@ -631,7 +631,8 @@
       "logout": "Çıkış yap",
       "orders": "Siparişlerim ve indirmeler",
       "services": "Mastering & miks işleri",
-      "bookings": "Stüdyo seansları"
+      "bookings": "Stüdyo seansları",
+      "navLabel": "SAYFALARIN"
     },
     "errors": {
       "generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",

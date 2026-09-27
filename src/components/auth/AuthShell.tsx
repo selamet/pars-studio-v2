@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
 /**
- * Page frame shared by every account screen: eyebrow row, serif heading,
- * intro and a narrow column for the form. Native scroll (no Lenis), like
- * the booking page.
+ * Page frame shared by every account screen: eyebrow row, serif heading and
+ * intro. `narrow` centres a form-sized column (login, signup, reset); `wide`
+ * spans the shell for hubs and lists. Native scroll (no Lenis), like the
+ * booking page.
  */
 export default function AuthShell({
   eyebrow,
@@ -12,6 +13,7 @@ export default function AuthShell({
   intro,
   children,
   footer,
+  width = 'narrow',
 }: {
   eyebrow: string;
   label: string;
@@ -19,23 +21,31 @@ export default function AuthShell({
   intro?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
+  width?: 'narrow' | 'wide';
 }) {
+  const wide = width === 'wide';
   return (
     <main>
       <section className="section min-h-screen pt-[clamp(160px,18vh,240px)]">
         <div className="shell">
-          <div className="mx-auto w-full max-w-md">
-            <header className="mb-12">
+          <div className={wide ? 'w-full' : 'mx-auto w-full max-w-md'}>
+            <header className={wide ? 'mb-[clamp(40px,6vh,72px)]' : 'mb-12'}>
               <div className="flex items-center gap-5">
                 <span className="meta !text-accent">{eyebrow}</span>
                 <span className="h-px w-12 bg-rule" aria-hidden />
                 <span className="meta">{label}</span>
               </div>
-              <h1 className="mt-7 font-serif font-light leading-[1.04] tracking-[-0.012em] text-[clamp(34px,4.5vw,64px)]">
+              <h1
+                className={
+                  wide
+                    ? 'mt-7 max-w-[18ch] font-serif font-light leading-[1.04] tracking-[-0.012em] text-[clamp(34px,5vw,78px)]'
+                    : 'mt-7 font-serif font-light leading-[1.04] tracking-[-0.012em] text-[clamp(34px,4.5vw,64px)]'
+                }
+              >
                 {heading}
               </h1>
               {intro && (
-                <p className="mt-5 text-[15px] leading-[1.7] text-fg/[0.7]">{intro}</p>
+                <p className="mt-5 max-w-xl text-[15px] leading-[1.7] text-fg/[0.7]">{intro}</p>
               )}
             </header>
 
