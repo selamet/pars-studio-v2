@@ -73,7 +73,7 @@ export default function OpengraphImage() {
           }}
         >
           <span>Recording · Mixing · Mastering · Beat Production</span>
-          <span style={{ fontSize: 18, letterSpacing: 4 }}>parsstudio.com</span>
+          <span style={{ fontSize: 18, letterSpacing: 4 }}>studiospars.com</span>
         </div>
       </div>
     ),

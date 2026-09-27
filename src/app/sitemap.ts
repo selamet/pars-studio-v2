@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-const BASE = 'https://parsstudio.com';
+const BASE = 'https://studiospars.com';
 const LOCALES = ['en', 'tr'] as const;
-const PATHS = ['', '/booking'] as const;
+const PATHS = ['', '/beats', '/services', '/booking', '/privacy'] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
