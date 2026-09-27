@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { formatUsd } from '@/lib/api/catalog';
 import type { Order } from '@/lib/api/orders';
+import { reservationIcsUrl } from '@/lib/api/bookings';
 import DownloadButton from './DownloadButton';
 
 const TONE: Record<string, 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'neutral'> = {
@@ -58,6 +59,18 @@ export default function OrderSummary({
                 {item.downloads.map((grant) => (
                   <DownloadButton key={grant.id} grant={grant} onUsed={onDownloadUsed} />
                 ))}
+              </div>
+            )}
+            {item.item_type === 'booking' && item.reservation && (
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="meta">
+                  {t('reservationStatus')}: {t(`reservation.${item.reservation.status ?? 'hold'}` as never)}
+                </span>
+                {item.reservation.status === 'confirmed' && (
+                  <a href={reservationIcsUrl(item.reservation.id)} className="meta underline underline-offset-4 hover:text-fg">
+                    {t('addToCalendar')}
+                  </a>
+                )}
               </div>
             )}
             {item.item_type === 'service' && order.status === 'paid' && (

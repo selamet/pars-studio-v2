@@ -323,22 +323,14 @@
     "label": "REZERVASYON",
     "heading": "Bir oturum planla.",
     "intro": "Birkaç adımda tarihi, hizmeti ve süreyi seç. Onay e-postan dakikalar içinde gelir.",
-    "back": "Geri",
     "steps": {
       "service": "HİZMET",
       "schedule": "TARİH & SAAT",
       "details": "DETAY",
       "review": "ÖZET"
     },
-    "service": {
-      "label": "Hizmet seç",
-      "pickPrompt": "Bir hizmet seç",
-      "durationOptions": "Mümkün süreler"
-    },
     "schedule": {
       "dateLabel": "Tarih",
-      "datePlaceholder": "GG.AA.YYYY",
-      "datePicker": "Takvim aç",
       "durationLabel": "Süre",
       "hour": "saat",
       "hours": "saat",
@@ -346,7 +338,6 @@
       "timeHint": "Stüdyo 10:00 — 22:00. Pazar kapalı.",
       "loading": "Müsaitlik kontrol ediliyor…",
       "noSlots": "Bu tarih için uygun saat yok. Başka bir tarih dene.",
-      "slotTaken": "dolu",
       "weekdays": [
         "Pa",
         "Pt",
@@ -369,13 +360,12 @@
         "Ekim",
         "Kasım",
         "Aralık"
-      ]
+      ],
+      "closedDay": "Stüdyo o gün kapalı."
     },
     "details": {
       "name": "Ad Soyad",
       "namePh": "Adınız ve soyadınız",
-      "email": "E-posta",
-      "emailPh": "ornek@mail.com",
       "phone": "Telefon",
       "phonePh": "+90 5xx xxx xx xx",
       "artist": "Sanatçı adı",
@@ -389,111 +379,64 @@
       "referencesPh": "Spotify, YouTube ya da Drive linkleri"
     },
     "review": {
-      "title": "Özet",
       "service": "Hizmet",
       "date": "Tarih",
       "time": "Saat",
       "duration": "Süre",
-      "name": "İsim",
-      "email": "E-posta",
-      "phone": "Telefon",
-      "consent": "Göndererek iletişim bilgilerinin sadece bu rezervasyon için kullanılacağını kabul ediyorsun."
+      "price": "Ücret"
     },
-    "submit": "Rezervasyonu Gönder",
-    "submitting": "Gönderiliyor…",
-    "next": "Devam",
     "errors": {
       "name": "Lütfen geçerli bir ad gir.",
-      "email": "Geçerli bir e-posta gir.",
       "phone": "Geçerli bir telefon numarası gir.",
       "service": "Bir hizmet seç.",
       "date": "Bir tarih seç.",
       "time": "Bir saat seç.",
-      "duration": "Süre seç.",
-      "tooLong": "Çok uzun.",
-      "slotTaken": "Bu saat artık müsait değil. Lütfen başka bir saat seç.",
-      "server": "Bir şeyler ters gitti. Lütfen tekrar dene."
+      "duration": "Süre seç."
     },
-    "success": {
-      "label": "REZERVASYON ALINDI",
-      "heading": "Teşekkürler. Mesajın stüdyoya ulaştı.",
-      "body": "Onayını içeren bir e-posta gönderdik. Stüdyo ekibi 24 saat içinde dönüş yapar.",
-      "codeLabel": "ONAY KODU",
-      "summary": "Oturum Bilgileri",
-      "downloadIcs": "Takvime ekle (.ics)",
-      "another": "Başka bir oturum planla",
-      "home": "Ana sayfa"
-    }
-  },
-  "admin": {
-    "login": {
-      "label": "STÜDYO PANELİ",
-      "heading": "Giriş",
-      "intro": "Sadece stüdyo ekibi. Rezervasyonları yönetmek için giriş yap.",
-      "password": "Şifre",
-      "passwordPh": "••••••••",
-      "submit": "Giriş Yap",
-      "submitting": "Giriş yapılıyor…",
-      "error": "Şifre hatalı."
-    },
-    "dashboard": {
-      "label": "REZERVASYONLAR",
-      "heading": "Panel",
-      "logout": "Çıkış",
-      "empty": "Henüz rezervasyon yok.",
-      "emptyFilter": "Bu filtreyle eşleşen rezervasyon yok.",
-      "filters": {
-        "all": "Tümü",
-        "pending": "Bekliyor",
-        "confirmed": "Onaylı",
-        "completed": "Tamamlandı",
-        "cancelled": "İptal"
+    "loadingConfig": "Stüdyo saatleri yükleniyor…",
+    "noRates": "Online rezervasyon hazırlanıyor. Seans için stüdyoyla iletişime geç.",
+    "cartTitle": "Stüdyo seansı",
+    "addToCart": "Seansı sepete ekle",
+    "inCart": "Sepette · görüntüle",
+    "holdNote": "Ödemeye başladığında saat {minutes} dakika senin için tutulur. Ödeme tamamlanınca kesinleşir.",
+    "serviceInfo": {
+      "recording": {
+        "name": "Kayıt",
+        "desc": "Profesyonel stüdyo kaydı — vokal, enstrüman ve canlı oda. Doğru sinyal zinciri, gürültüsüz tracking."
       },
-      "columns": {
-        "date": "TARİH",
-        "time": "SAAT",
-        "service": "HİZMET",
-        "customer": "MÜŞTERİ",
-        "status": "DURUM",
-        "code": "KOD"
+      "mixing": {
+        "name": "Miks",
+        "desc": "Parçaya derinlik, alan ve denge. Stem teslimat ve revizyon dahil oturum."
+      },
+      "mastering": {
+        "name": "Mastering",
+        "desc": "Yayına hazır, tutarlı ve şeffaf mastering. Dijital ve fiziksel formatlar için."
+      },
+      "beat": {
+        "name": "Beat Prodüksiyon",
+        "desc": "Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon."
+      },
+      "vocal": {
+        "name": "Vokal Prodüksiyon",
+        "desc": "Performans yönetimi, comp, tuning ve estetik karar. Vokali parçanın merkezine oturtmak."
       }
     },
-    "status": {
-      "pending": "Bekliyor",
-      "confirmed": "Onaylı",
-      "cancelled": "İptal",
-      "completed": "Tamamlandı"
-    },
-    "dialog": {
-      "title": "Rezervasyon Detayı",
-      "code": "ONAY KODU",
-      "createdAt": "Oluşturuldu",
-      "customer": "Müşteri",
-      "name": "İsim",
-      "email": "E-posta",
-      "phone": "Telefon",
-      "artist": "Sanatçı adı",
-      "session": "Oturum",
-      "date": "Tarih",
-      "time": "Saat",
-      "duration": "Süre",
-      "service": "Hizmet",
-      "project": "Proje",
-      "references": "Referanslar",
-      "notes": "Admin Notları",
-      "notesPh": "Sadece stüdyo görür…",
-      "statusLabel": "Durumu değiştir",
-      "save": "Kaydet",
-      "saving": "Kaydediliyor…",
-      "saved": "Kaydedildi.",
-      "delete": "Sil",
-      "deleteConfirm": "Bu rezervasyonu kalıcı olarak sil?",
-      "deleting": "Siliniyor…",
-      "downloadIcs": "Takvime ekle (.ics)",
-      "close": "Kapat",
-      "hour": "saat",
-      "hours": "saat",
-      "error": "Bir hata oluştu. Tekrar dene."
+    "mine": {
+      "eyebrow": "016",
+      "label": "SEANSLAR",
+      "heading": "Seansların.",
+      "intro": "Ayırttığın ve ödediğin stüdyo saatleri.",
+      "loading": "Yükleniyor…",
+      "empty": "Henüz seans yok.",
+      "book": "Seans planla",
+      "ics": "Takvime ekle",
+      "status": {
+        "hold": "Ödeme bekleniyor",
+        "confirmed": "Onaylandı",
+        "cancelled": "İptal edildi",
+        "completed": "Tamamlandı",
+        "expired": "Süresi doldu"
+      }
     }
   },
   "auth": {
@@ -584,7 +527,8 @@
       "passwordChanged": "Şifre değiştirildi.",
       "logout": "Çıkış yap",
       "orders": "Siparişlerim ve indirmeler",
-      "services": "Mastering & miks işleri"
+      "services": "Mastering & miks işleri",
+      "bookings": "Stüdyo seansları"
     },
     "errors": {
       "generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
@@ -680,8 +624,11 @@
       "invalid": "Bu kombinasyon birlikte satın alınamaz. Sepeti düzenleyip tekrar dene.",
       "unverified": "Ödemeden önce e-postanı doğrula. Bağlantı gelen kutunda.",
       "network": "Sunucuya ulaşılamıyor. Bağlantını kontrol et.",
-      "generic": "Ödeme başlatılamadı. Lütfen tekrar dene."
-    }
+      "generic": "Ödeme başlatılamadı. Lütfen tekrar dene.",
+      "slotTaken": "O stüdyo saati az önce alındı. Sepette işaretlendi; başka bir saat seç.",
+      "paymentUnavailable": "Ödeme geçici olarak kullanılamıyor. Birkaç dakika sonra tekrar dene."
+    },
+    "holdNote": "Sepetteki stüdyo saatleri ödemeye başladığında tutulur, ödeme tamamlanınca kesinleşir."
   },
   "checkout": {
     "eyebrow": "013",
@@ -724,6 +671,15 @@
       "unavailable": "Bağlantı süresi doldu ya da indirme hakkı bitti",
       "missing": "Dosya henüz yüklenmedi, stüdyoya haber verildi",
       "failed": "İndirme bağlantısı oluşturulamadı"
+    },
+    "reservationStatus": "SEANS",
+    "addToCalendar": "Takvime ekle",
+    "reservation": {
+      "hold": "ödeme bekleniyor",
+      "confirmed": "onaylandı",
+      "cancelled": "iptal edildi",
+      "completed": "tamamlandı",
+      "expired": "süresi doldu"
     }
   }
 }

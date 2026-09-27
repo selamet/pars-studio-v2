@@ -12,7 +12,10 @@ export type DownloadLink = components['schemas']['DownloadLink'];
 export type CheckoutConflict = {
   detail: string;
   code: string;
-  line: { type: string; id: number } | null;
+  line:
+    | { type: 'beat_license' | 'service'; id: number }
+    | { type: 'booking'; service_type: string; session_date: string; start_time: string; duration_hours: number }
+    | null;
 };
 
 export async function startCheckout(body: CheckoutRequest): Promise<CheckoutResponse> {

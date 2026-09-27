@@ -3,12 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { DISABLED_WEEKDAYS } from '@/lib/booking/services';
 import { cn } from '@/lib/utils';
-
-type Locale = 'tr' | 'en';
-
-const MAX_MONTHS_AHEAD = 3;
 
 function toIso(d: Date): string {
   const y = d.getFullYear();
@@ -34,18 +29,25 @@ function addMonths(d: Date, n: number): Date {
 export default function DateCalendar({
   value,
   onChange,
-  locale,
+  disabledWeekdays,
+  maxDaysAhead,
 }: {
   value: string;
   onChange: (iso: string) => void;
-  locale: Locale;
+  /** JavaScript getDay() values (0 = Sunday) the studio is closed on. */
+  disabledWeekdays: number[];
+  maxDaysAhead: number;
 }) {
   const t = useTranslations('booking.schedule');
   const months = t.raw('months') as string[];
   const weekdays = t.raw('weekdays') as string[];
 
   const today = useMemo(() => startOfDay(new Date()), []);
-  const maxDate = useMemo(() => addMonths(today, MAX_MONTHS_AHEAD), [today]);
+  const maxDate = useMemo(() => {
+    const d = new Date(today);
+    d.setDate(d.getDate() + maxDaysAhead);
+    return d;
+  }, [today, maxDaysAhead]);
 
   const [view, setView] = useState<Date>(() => {
     if (value) {
@@ -59,68 +61,52 @@ export default function DateCalendar({
 
   const canPrev =
     view.getFullYear() > today.getFullYear() ||
-    (view.getFullYear() === today.getFullYear() &&
-      view.getMonth() > today.getMonth());
+    (view.getFullYear() === today.getFullYear() && view.getMonth() > today.getMonth());
   const canNext =
     view.getFullYear() < maxDate.getFullYear() ||
-    (view.getFullYear() === maxDate.getFullYear() &&
-      view.getMonth() < maxDate.getMonth());
+    (view.getFullYear() === maxDate.getFullYear() && view.getMonth() < maxDate.getMonth());
 
   return (
     <div className="border hairline bg-bg-soft/40 p-5 md:p-6">
-      {/* Header */}
       <div className="mb-5 flex items-center justify-between">
         <button
           type="button"
           onClick={() => canPrev && setView(addMonths(view, -1))}
           disabled={!canPrev}
           aria-label="previous month"
-          className="h-8 w-8 flex items-center justify-center text-fg-dim transition-colors hover:text-fg disabled:opacity-25"
+          className="flex h-8 w-8 items-center justify-center text-fg-dim transition-colors hover:text-fg disabled:opacity-25"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
         <div className="font-mono text-[11px] uppercase tracking-meta text-fg">
-          {locale === 'tr'
-            ? `${months[view.getMonth()]} ${view.getFullYear()}`
-            : `${months[view.getMonth()]} ${view.getFullYear()}`}
+          {months[view.getMonth()]} {view.getFullYear()}
         </div>
         <button
           type="button"
           onClick={() => canNext && setView(addMonths(view, 1))}
           disabled={!canNext}
           aria-label="next month"
-          className="h-8 w-8 flex items-center justify-center text-fg-dim transition-colors hover:text-fg disabled:opacity-25"
+          className="flex h-8 w-8 items-center justify-center text-fg-dim transition-colors hover:text-fg disabled:opacity-25"
         >
           <ChevronRight className="h-4 w-4" />
         </button>
       </div>
 
-      {/* Weekday header */}
       <div className="grid grid-cols-7 gap-1 pb-2">
         {weekdays.map((w) => (
-          <div
-            key={w}
-            className="text-center font-mono text-[10px] uppercase tracking-[0.18em] text-fg-dim/60"
-          >
+          <div key={w} className="text-center font-mono text-[10px] uppercase tracking-[0.18em] text-fg-dim/60">
             {w}
           </div>
         ))}
       </div>
 
-      {/* Day grid */}
       <div className="grid grid-cols-7 gap-1">
         {days.map((d, i) => {
-          if (!d) {
-            return <div key={`e-${i}`} className="aspect-square" />;
-          }
+          if (!d) return <div key={`e-${i}`} className="aspect-square" />;
           const iso = toIso(d);
-          const disabled =
-            d < today ||
-            d > maxDate ||
-            DISABLED_WEEKDAYS.includes(d.getDay());
+          const disabled = d < today || d > maxDate || disabledWeekdays.includes(d.getDay());
           const selected = iso === value;
           const isToday = iso === toIso(today);
-
           return (
             <button
               key={iso}
@@ -129,15 +115,13 @@ export default function DateCalendar({
               onClick={() => onChange(iso)}
               aria-pressed={selected}
               className={cn(
-                'aspect-square flex items-center justify-center font-mono text-[12px] transition-all duration-200 border',
-                'tracking-[0.05em]',
+                'flex aspect-square items-center justify-center border font-mono text-[12px] tracking-[0.05em] transition-all duration-200',
                 selected
                   ? 'border-accent bg-accent text-bg'
                   : isToday
-                  ? 'border-fg-dim/40 text-fg'
-                  : 'border-transparent text-fg-dim hover:border-fg-dim/40 hover:text-fg',
-                disabled &&
-                  'cursor-not-allowed text-fg-dim/20 hover:border-transparent hover:text-fg-dim/20'
+                    ? 'border-fg-dim/40 text-fg'
+                    : 'border-transparent text-fg-dim hover:border-fg-dim/40 hover:text-fg',
+                disabled && 'cursor-not-allowed text-fg-dim/20 hover:border-transparent hover:text-fg-dim/20'
               )}
             >
               {d.getDate()}
@@ -149,14 +133,11 @@ export default function DateCalendar({
   );
 }
 
-/** A 6x7 grid (with leading/trailing nulls) for the given month. */
 function buildGrid(view: Date): (Date | null)[] {
   const year = view.getFullYear();
   const month = view.getMonth();
-  const first = new Date(year, month, 1);
-  const startOffset = first.getDay(); // 0..6, Sunday-first
+  const startOffset = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-
   const cells: (Date | null)[] = [];
   for (let i = 0; i < startOffset; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d));

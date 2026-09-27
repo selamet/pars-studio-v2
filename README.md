@@ -3,8 +3,9 @@
 
 Dark, cinematic landing page for **Pars Studio** — a music recording, mixing,
 mastering and beat-production studio in Istanbul. Editorial / vinyl-sleeve mood,
-fully bilingual (Turkish default + English), with a Three.js spiral-of-covers
-hero. This is **Part 1** of a two-part project; the booking system is Part 2.
+fully bilingual (English default + Turkish), with a Three.js spiral-of-covers
+hero — plus the storefront (beats, mastering/mixing, paid studio bookings)
+backed by the Django API in `pars-studio-api`.
 
 ---
 
@@ -21,7 +22,7 @@ hero. This is **Part 1** of a two-part project; the booking system is Part 2.
 | UI primitives  | shadcn/ui (`button`, `sheet`) + Lucide icons      |
 | Deploy target  | Vercel                                            |
 
-No Supabase / Resend yet — those arrive in Part 2 (see bottom).
+All data, auth, payments and email live in the API; this app only needs `NEXT_PUBLIC_*` variables.
 
 ---
 
@@ -124,23 +125,24 @@ visible knobs:
 
 ---
 
-## Part 2 — Booking System (added next)
+## Storefront & accounts
 
-Not built yet. The foundation is laid so it drops in cleanly:
+Everything dynamic talks to the Django API (`pars-studio-api`, `NEXT_PUBLIC_API_URL`)
+with a session cookie on the parent domain:
 
-- **`/booking` route** — every "Rezervasyon / Book" CTA (navbar, mobile sheet,
-  Contact section) already links to `/${locale}/booking`. Add
-  `src/app/[locale]/booking/page.tsx` and the links go live.
-- **Supabase** — add `src/lib/supabase.ts`; env keys are pre-stubbed in
-  `.env.example` (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
-  `SUPABASE_SERVICE_ROLE_KEY`). Bookings table + admin auth live here.
-- **Resend** — booking confirmation + studio notification emails
-  (`RESEND_API_KEY`, `STUDIO_NOTIFICATION_EMAIL`, already in `.env.example`).
-- An empty route group `src/app/[locale]/(sections)/` is reserved so booking
-  and admin routes can be grouped without touching the landing layout.
+```
+src/lib/api/               typed client + helpers; schema.d.ts is generated (`npm run api:types`)
+src/components/auth/       sign-in/up, verification, password reset, account
+src/components/cart/       localStorage cart, checkout → Stripe
+src/components/beats/      storefront cards, filters, license picker
+src/components/orders/     orders, downloads
+src/components/services/   mastering/mixing jobs: uploads, deliverables, revisions
+src/components/booking/    studio booking (rules + availability from the API) → cart line
+src/app/[locale]/…         beats, services, cart, checkout/success, booking, account/*
+```
 
-Copy this repo's `.env.example` to `.env.local` when Part 2 starts. Part 1
-needs no environment variables at all.
+Run the API locally (`uv run manage.py runserver` in `pars-studio-api`) and
+`npm run dev`; the cookie works across ports on localhost.
 
 ---
 
