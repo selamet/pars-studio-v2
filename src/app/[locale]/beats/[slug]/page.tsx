@@ -105,7 +105,7 @@ export default async function BeatPage({ params: { locale, slug } }: Props) {
 
               <section>
                 <h2 className="meta mb-5">{t('licenses.heading')}</h2>
-                <LicensePicker licenses={beat.licenses} />
+                <LicensePicker beat={beat} licenses={beat.licenses} locale={locale} />
               </section>
             </div>
           </div>

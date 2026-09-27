@@ -17,6 +17,7 @@ import {
 import { cn } from '@/lib/utils';
 import LangSwitcher from './LangSwitcher';
 import { useAuth } from '@/components/auth/AuthProvider';
+import CartButton from '@/components/cart/CartButton';
 
 export default function Navbar() {
   const t = useTranslations('nav');
@@ -131,6 +132,8 @@ export default function Navbar() {
             <UserRound className="h-4 w-4" />
             <span className="hidden xl:inline">{accountLabel}</span>
           </Link>
+
+          <CartButton locale={locale} />
 
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href={bookHref}>{t('book')}</Link>

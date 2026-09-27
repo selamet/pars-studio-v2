@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
@@ -31,6 +32,12 @@ export default function AccountPanel({ locale }: { locale: string }) {
         <span className="meta">{t('emailLabel')}</span>
         <p className="font-serif text-2xl">{user.email}</p>
         {!user.email_verified && <FormNotice>{t('unverified')}</FormNotice>}
+      </section>
+
+      <section className="border-t border-rule pt-8">
+        <Button asChild size="lg" variant="outline" className="w-full">
+          <Link href={`/${locale}/account/orders`}>{t('orders')}</Link>
+        </Button>
       </section>
 
       <ProfileForm
