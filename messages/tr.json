@@ -48,6 +48,38 @@
     "p2": "Her proje, ister bir parça ister bir klip ya da bir reklam filmi olsun, akustikten ve kameradan çok önce niyetle başlar. Önce sanatçıyla oturur; işin ne anlatmak istediğini, hangi duyguyu taşıdığını uzun uzun konuşuruz. Mikrofonu da kamerayı da ancak bundan sonra açarız. Aceleyi sevmeyiz, çünkü acele eninde sonunda kayda ve kurguya sızar; dinleyen ve izleyen onu fark eder. Bizim için doğru anı beklemek, çoğu zaman en pahalı ekipmandan daha değerlidir.",
     "p3": "Donanım önemlidir, ama kulak ve göz çok daha fazlası. Burada ekipman bir araçtır, asla kahraman değil; ister bir miks, ister bir renk düzenlemesi ya da FX işlemi olsun, asıl iş doğru kararı doğru anda verebilmektir. Sonuçta geriye tek bir şey kalır: eser oynadığında odaya çöken o sessizlik ve herkesin aynı anda “işte bu” dediği o an. Peşinde olduğumuz şey tam olarak budur."
   },
+  "homeServices": {
+    "section": "002",
+    "label": "HİZMETLER",
+    "heading": "Hizmetler",
+    "items": [
+      {
+        "no": "01",
+        "name": "Kayıt",
+        "desc": "Analog hattan dijitale, gürültüsüz ve doğru sinyal zinciriyle tracking. Vokal, enstrüman ve canlı oda kaydı."
+      },
+      {
+        "no": "02",
+        "name": "Miks",
+        "desc": "Parçaya derinlik, alan ve denge kazandıran detaylı miks. Stem teslimat ve revizyon dahil."
+      },
+      {
+        "no": "03",
+        "name": "Mastering",
+        "desc": "Yayın platformlarına hazır, tutarlı ve şeffaf mastering. Dijital ve fiziksel formatlar için optimizasyon."
+      },
+      {
+        "no": "04",
+        "name": "Beat Prodüksiyon",
+        "desc": "Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon."
+      },
+      {
+        "no": "05",
+        "name": "Vokal Prodüksiyon",
+        "desc": "Performans yönetimi, comp, tuning ve estetik karar. Vokali parçanın merkezine oturtmak."
+      }
+    ]
+  },
   "services": {
     "eyebrow": "015",
     "label": "HİZMETLER",
