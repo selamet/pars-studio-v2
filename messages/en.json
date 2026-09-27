@@ -554,7 +554,8 @@
       "newPassword": "New password",
       "changePassword": "Change password",
       "passwordChanged": "Password changed.",
-      "logout": "Sign out"
+      "logout": "Sign out",
+      "orders": "My orders & downloads"
     },
     "errors": {
       "generic": "Something went wrong. Please try again.",
@@ -602,12 +603,12 @@
       "none": "No licenses available for this beat.",
       "terms": "License terms",
       "addToCart": "Add to cart",
-      "checkoutSoon": "CHECKOUT OPENS SOON",
       "files": {
         "mp3": "MP3",
         "wav": "WAV",
         "stems": "Stems"
-      }
+      },
+      "inCart": "In cart · view"
     }
   },
   "shop": {
@@ -625,6 +626,75 @@
     "ratesHeading": "Hourly rates",
     "ratesIntro": "Book the room by the hour. Recording, vocal production and beat sessions are priced per hour and confirmed on payment.",
     "hour": "hour",
-    "book": "Book a session"
+    "book": "Book a session",
+    "inCart": "In cart"
+  },
+  "cart": {
+    "section": "012",
+    "label": "CART",
+    "heading": "Your cart.",
+    "title": "Cart",
+    "loading": "Loading…",
+    "empty": "Your cart is empty.",
+    "browse": "Browse beats",
+    "total": "TOTAL",
+    "checkout": "Checkout",
+    "signInToCheckout": "Sign in to checkout",
+    "redirecting": "Redirecting to payment…",
+    "remove": "Remove",
+    "continue": "Continue shopping",
+    "lineUnavailable": "No longer available",
+    "cancelled": "Payment was cancelled. Your cart is untouched.",
+    "stripeNote": "Payment is handled by Stripe on a secure page. Card details never touch our servers.",
+    "errors": {
+      "unavailable": "One item is no longer available and was marked in your cart. Remove it and try again.",
+      "invalid": "This combination cannot be purchased together. Adjust the cart and try again.",
+      "unverified": "Verify your email address before checking out. Check your inbox for the link.",
+      "network": "Cannot reach the server. Check your connection.",
+      "generic": "Checkout could not start. Please try again."
+    }
+  },
+  "checkout": {
+    "eyebrow": "013",
+    "label": "PAYMENT",
+    "heading": "Thank you.",
+    "intro": "We are confirming your payment with Stripe.",
+    "missingOrder": "No order reference found.",
+    "signInToSee": "Sign in to see your order and downloads.",
+    "signIn": "Sign in",
+    "confirming": "Confirming payment…",
+    "slow": "Confirmation is taking longer than usual. Your order page will update as soon as Stripe notifies us.",
+    "paid": "Order {number} is paid. Your files are ready below and a confirmation email is on its way.",
+    "notPaid": "This order was not paid. You can try again from your cart.",
+    "viewOrder": "View order",
+    "backToCart": "Back to cart"
+  },
+  "orders": {
+    "eyebrow": "014",
+    "label": "ORDERS",
+    "heading": "Your orders.",
+    "intro": "Every purchase, its status and downloads.",
+    "detailHeading": "Order details.",
+    "loading": "Loading…",
+    "empty": "No orders yet.",
+    "browse": "Browse beats",
+    "notFound": "Order not found.",
+    "backToOrders": "All orders",
+    "total": "TOTAL",
+    "itemCount": "{count, plural, one {# item} other {# items}}",
+    "serviceNext": "UPLOAD YOUR FILES — COMING WITH THE NEXT RELEASE",
+    "status": {
+      "pending": "Pending payment",
+      "paid": "Paid",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    },
+    "download": {
+      "remaining": "{count} left",
+      "unavailable": "Link expired or downloads used up",
+      "missing": "File not uploaded yet, the studio was notified",
+      "failed": "Could not create a download link"
+    }
   }
 }

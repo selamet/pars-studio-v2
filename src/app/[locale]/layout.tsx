@@ -9,6 +9,7 @@ import Navbar from '@/components/nav/Navbar';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import { PlayerProvider } from '@/components/player/PlayerProvider';
 import PlayerBar from '@/components/player/PlayerBar';
+import { CartProvider } from '@/components/cart/CartProvider';
 import Grain from '@/components/Grain';
 import WhatsappButton from '@/components/WhatsappButton';
 
@@ -104,11 +105,13 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Grain />
           <AuthProvider>
-            <PlayerProvider>
-              <Navbar />
-              <Providers>{children}</Providers>
-              <PlayerBar />
-            </PlayerProvider>
+            <CartProvider>
+              <PlayerProvider>
+                <Navbar />
+                <Providers>{children}</Providers>
+                <PlayerBar />
+              </PlayerProvider>
+            </CartProvider>
           </AuthProvider>
           <WhatsappButton />
         </NextIntlClientProvider>

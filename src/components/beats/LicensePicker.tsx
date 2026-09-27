@@ -1,20 +1,29 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { formatUsd, type BeatLicense } from '@/lib/api/catalog';
+import { useCart } from '@/components/cart/CartProvider';
+import { formatUsd, type BeatDetail, type BeatLicense } from '@/lib/api/catalog';
 import { cn } from '@/lib/utils';
 
-/**
- * Tier selector for a beat. Selection state lives here; the checkout action
- * is wired in phase 3 (cart), so the CTA is present but inert for now.
- */
-export default function LicensePicker({ licenses }: { licenses: BeatLicense[] }) {
+/** Tier selector for a beat; the selected license goes into the cart (one license per beat). */
+export default function LicensePicker({
+  beat,
+  licenses,
+  locale,
+}: {
+  beat: Pick<BeatDetail, 'slug' | 'title' | 'cover_url'>;
+  licenses: BeatLicense[];
+  locale: string;
+}) {
   const t = useTranslations('beats.licenses');
+  const { add, has } = useCart();
   const [selectedId, setSelectedId] = useState<number | null>(licenses[0]?.id ?? null);
   const selected = licenses.find((l) => l.id === selectedId) ?? null;
+  const inCart = selected ? has('beat_license', selected.id) : false;
 
   if (licenses.length === 0) {
     return <p className="meta">{t('none')}</p>;
@@ -73,10 +82,31 @@ export default function LicensePicker({ licenses }: { licenses: BeatLicense[] })
               </p>
             </details>
           )}
-          <Button type="button" size="lg" className="w-full" disabled data-license-id={selected.id}>
-            {t('addToCart')} · {formatUsd(selected.price_usd)}
-          </Button>
-          <p className="meta text-center">{t('checkoutSoon')}</p>
+          {inCart ? (
+            <Button asChild size="lg" variant="outline" className="w-full">
+              <Link href={`/${locale}/cart`}>{t('inCart')}</Link>
+            </Button>
+          ) : (
+            <Button
+              type="button"
+              size="lg"
+              className="w-full"
+              onClick={() =>
+                add({
+                  type: 'beat_license',
+                  id: selected.id,
+                  title: `${beat.title} — ${selected.tier_label}`,
+                  subtitle: selected.includes.map((k) => t(`files.${k}` as never)).join(' · '),
+                  price: selected.price_usd,
+                  href: `/${locale}/beats/${beat.slug}`,
+                  coverUrl: beat.cover_url,
+                  beatSlug: beat.slug,
+                })
+              }
+            >
+              {t('addToCart')} · {formatUsd(selected.price_usd)}
+            </Button>
+          )}
         </div>
       )}
     </div>

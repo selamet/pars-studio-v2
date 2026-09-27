@@ -4,6 +4,7 @@ import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n';
 import { fetchServices, fetchStudioRates, formatUsd } from '@/lib/api/catalog';
 import { Button } from '@/components/ui/button';
+import AddServiceButton from '@/components/shop/AddServiceButton';
 
 // Rendered per request (data is cached by the fetchers) so a deploy never
 // bakes an empty page when the API is unreachable at build time.
@@ -68,9 +69,7 @@ export default async function ServicesPage({ params: { locale } }: { params: { l
                   </dl>
                   <footer className="mt-auto flex items-center justify-between">
                     <span className="font-mono text-[18px]">{formatUsd(service.price_usd)}</span>
-                    <Button type="button" size="sm" disabled>
-                      {t('order')}
-                    </Button>
+                    <AddServiceButton service={service} locale={locale} />
                   </footer>
                 </li>
               ))}

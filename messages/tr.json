@@ -554,7 +554,8 @@
       "newPassword": "Yeni şifre",
       "changePassword": "Şifreyi değiştir",
       "passwordChanged": "Şifre değiştirildi.",
-      "logout": "Çıkış yap"
+      "logout": "Çıkış yap",
+      "orders": "Siparişlerim ve indirmeler"
     },
     "errors": {
       "generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
@@ -602,12 +603,12 @@
       "none": "Bu beat için lisans yok.",
       "terms": "Lisans şartları",
       "addToCart": "Sepete ekle",
-      "checkoutSoon": "ÖDEME YAKINDA AÇILIYOR",
       "files": {
         "mp3": "MP3",
         "wav": "WAV",
         "stems": "Stemler"
-      }
+      },
+      "inCart": "Sepette · görüntüle"
     }
   },
   "shop": {
@@ -625,6 +626,75 @@
     "ratesHeading": "Saatlik ücretler",
     "ratesIntro": "Odayı saatlik ayırt. Kayıt, vokal prodüksiyon ve beat seansları saat başına fiyatlanır, ödemeyle onaylanır.",
     "hour": "saat",
-    "book": "Seans ayırt"
+    "book": "Seans ayırt",
+    "inCart": "Sepette"
+  },
+  "cart": {
+    "section": "012",
+    "label": "SEPET",
+    "heading": "Sepetin.",
+    "title": "Sepet",
+    "loading": "Yükleniyor…",
+    "empty": "Sepetin boş.",
+    "browse": "Beatlere göz at",
+    "total": "TOPLAM",
+    "checkout": "Ödemeye geç",
+    "signInToCheckout": "Ödeme için giriş yap",
+    "redirecting": "Ödeme sayfasına yönlendiriliyor…",
+    "remove": "Kaldır",
+    "continue": "Alışverişe devam et",
+    "lineUnavailable": "Artık satışta değil",
+    "cancelled": "Ödeme iptal edildi. Sepetin olduğu gibi duruyor.",
+    "stripeNote": "Ödeme Stripe’ın güvenli sayfasında alınır. Kart bilgileri sunucularımıza hiç uğramaz.",
+    "errors": {
+      "unavailable": "Bir ürün artık satışta değil ve sepette işaretlendi. Kaldırıp tekrar dene.",
+      "invalid": "Bu kombinasyon birlikte satın alınamaz. Sepeti düzenleyip tekrar dene.",
+      "unverified": "Ödemeden önce e-postanı doğrula. Bağlantı gelen kutunda.",
+      "network": "Sunucuya ulaşılamıyor. Bağlantını kontrol et.",
+      "generic": "Ödeme başlatılamadı. Lütfen tekrar dene."
+    }
+  },
+  "checkout": {
+    "eyebrow": "013",
+    "label": "ÖDEME",
+    "heading": "Teşekkürler.",
+    "intro": "Ödemeni Stripe ile doğruluyoruz.",
+    "missingOrder": "Sipariş referansı bulunamadı.",
+    "signInToSee": "Siparişini ve indirmelerini görmek için giriş yap.",
+    "signIn": "Giriş yap",
+    "confirming": "Ödeme doğrulanıyor…",
+    "slow": "Doğrulama normalden uzun sürüyor. Stripe bize bildirir bildirmez sipariş sayfan güncellenecek.",
+    "paid": "{number} numaralı sipariş ödendi. Dosyaların aşağıda, onay e-postası da yolda.",
+    "notPaid": "Bu sipariş ödenmedi. Sepetinden tekrar deneyebilirsin.",
+    "viewOrder": "Siparişi gör",
+    "backToCart": "Sepete dön"
+  },
+  "orders": {
+    "eyebrow": "014",
+    "label": "SİPARİŞLER",
+    "heading": "Siparişlerin.",
+    "intro": "Tüm alışverişlerin, durumları ve indirmeler.",
+    "detailHeading": "Sipariş detayı.",
+    "loading": "Yükleniyor…",
+    "empty": "Henüz sipariş yok.",
+    "browse": "Beatlere göz at",
+    "notFound": "Sipariş bulunamadı.",
+    "backToOrders": "Tüm siparişler",
+    "total": "TOPLAM",
+    "itemCount": "{count} ürün",
+    "serviceNext": "DOSYALARINI YÜKLE — BİR SONRAKİ SÜRÜMLE GELİYOR",
+    "status": {
+      "pending": "Ödeme bekleniyor",
+      "paid": "Ödendi",
+      "failed": "Başarısız",
+      "cancelled": "İptal edildi",
+      "refunded": "İade edildi"
+    },
+    "download": {
+      "remaining": "{count} hak",
+      "unavailable": "Bağlantı süresi doldu ya da indirme hakkı bitti",
+      "missing": "Dosya henüz yüklenmedi, stüdyoya haber verildi",
+      "failed": "İndirme bağlantısı oluşturulamadı"
+    }
   }
 }

@@ -104,6 +104,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/checkout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Validate the cart, create a pending order and a Stripe Checkout session */
+        post: operations["checkout_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/downloads/{id}/link": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Mint a short-lived download URL for a purchased file */
+        post: operations["downloads_link_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/me": {
         parameters: {
             query?: never;
@@ -120,6 +154,40 @@ export interface paths {
         head?: never;
         /** @description The authenticated user's profile. Name fields are editable; email is managed by allauth. */
         patch: operations["me_partial_update"];
+        trace?: never;
+    };
+    "/api/v1/orders/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The customer's own orders, newest first. */
+        get: operations["orders_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/orders/{number}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The customer's own orders, newest first. */
+        get: operations["orders_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
 }
@@ -170,12 +238,96 @@ export interface components {
             /** Format: date-time */
             published_at?: string | null;
         };
+        CheckoutItemRequest: {
+            type: components["schemas"]["TypeEnum"];
+            id: number;
+        };
+        CheckoutRequest: {
+            items: components["schemas"]["CheckoutItemRequest"][];
+            /** @default en */
+            locale: components["schemas"]["LocaleEnum"];
+        };
+        CheckoutResponse: {
+            order_number: string;
+            /** Format: uri */
+            checkout_url: string;
+        };
+        DownloadGrant: {
+            readonly id: number;
+            file_kind: components["schemas"]["FileKindEnum"];
+            readonly file_kind_label: string;
+            readonly available: boolean;
+            readonly remaining: number;
+            download_count?: number;
+            max_downloads?: number;
+            /** Format: date-time */
+            expires_at: string;
+        };
+        DownloadLink: {
+            /** Format: uri */
+            url: string;
+            expires_in: number;
+            file_name: string;
+        };
+        /**
+         * @description * `mp3` - MP3
+         *     * `wav` - WAV
+         *     * `stems` - Stems (ZIP)
+         * @enum {string}
+         */
+        FileKindEnum: "mp3" | "wav" | "stems";
+        /**
+         * @description * `beat_license` - Beat license
+         *     * `service` - Service
+         *     * `booking` - Studio booking
+         * @enum {string}
+         */
+        ItemTypeEnum: "beat_license" | "service" | "booking";
         /**
          * @description * `mastering` - Mastering
          *     * `mixing` - Mixing
          * @enum {string}
          */
         KindEnum: "mastering" | "mixing";
+        /**
+         * @description * `en` - en
+         *     * `tr` - tr
+         * @enum {string}
+         */
+        LocaleEnum: "en" | "tr";
+        Order: {
+            readonly number: string;
+            status?: components["schemas"]["StatusEnum"];
+            readonly status_label: string;
+            currency?: string;
+            /** Format: decimal */
+            subtotal?: string;
+            /** Format: decimal */
+            total?: string;
+            locale?: string;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            paid_at?: string | null;
+            /** Format: date-time */
+            expires_at?: string | null;
+            readonly items: components["schemas"]["OrderItem"][];
+        };
+        OrderItem: {
+            readonly id: number;
+            item_type: components["schemas"]["ItemTypeEnum"];
+            title: string;
+            description?: string;
+            /** Format: decimal */
+            unit_price: string;
+            quantity?: number;
+            /** Format: decimal */
+            line_total: string;
+            readonly beat_slug: string;
+            readonly license_tier: string;
+            readonly service_slug: string;
+            readonly downloads: components["schemas"]["DownloadGrant"][];
+        };
         PaginatedBeatListList: {
             /** @example 123 */
             count: number;
@@ -190,6 +342,21 @@ export interface components {
              */
             previous?: string | null;
             results: components["schemas"]["BeatList"][];
+        };
+        PaginatedOrderList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["Order"][];
         };
         PatchedUserRequest: {
             first_name?: string;
@@ -218,6 +385,15 @@ export interface components {
          * @enum {string}
          */
         ServiceTypeEnum: "recording" | "mixing" | "mastering" | "beat" | "vocal";
+        /**
+         * @description * `pending` - Pending payment
+         *     * `paid` - Paid
+         *     * `failed` - Payment failed
+         *     * `cancelled` - Cancelled
+         *     * `refunded` - Refunded
+         * @enum {string}
+         */
+        StatusEnum: "pending" | "paid" | "failed" | "cancelled" | "refunded";
         StudioRate: {
             service_type: components["schemas"]["ServiceTypeEnum"];
             readonly service_type_label: string;
@@ -232,6 +408,12 @@ export interface components {
          * @enum {string}
          */
         TierEnum: "mp3_lease" | "wav_lease" | "trackout" | "exclusive";
+        /**
+         * @description * `beat_license` - beat_license
+         *     * `service` - service
+         * @enum {string}
+         */
+        TypeEnum: "beat_license" | "service";
         User: {
             readonly id: number;
             /**
@@ -401,6 +583,52 @@ export interface operations {
             };
         };
     };
+    checkout_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CheckoutRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["CheckoutRequest"];
+                "multipart/form-data": components["schemas"]["CheckoutRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CheckoutResponse"];
+                };
+            };
+        };
+    };
+    downloads_link_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DownloadLink"];
+                };
+            };
+        };
+    };
     me_retrieve: {
         parameters: {
             query?: never;
@@ -441,6 +669,53 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["User"];
+                };
+            };
+        };
+    };
+    orders_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedOrderList"];
+                };
+            };
+        };
+    };
+    orders_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                number: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Order"];
                 };
             };
         };

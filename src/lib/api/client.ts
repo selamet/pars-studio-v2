@@ -17,13 +17,22 @@ export class ApiError extends Error {
   status: number;
   code: string;
   fieldErrors: FieldErrors;
+  /** The raw error payload, for endpoints that add fields (e.g. checkout's `line`). */
+  data: unknown;
 
-  constructor(status: number, code: string, message: string, fieldErrors: FieldErrors = {}) {
+  constructor(
+    status: number,
+    code: string,
+    message: string,
+    fieldErrors: FieldErrors = {},
+    data: unknown = undefined
+  ) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
     this.code = code;
     this.fieldErrors = fieldErrors;
+    this.data = data;
   }
 }
 
@@ -94,7 +103,7 @@ function toApiError(status: number, data: unknown): ApiError {
         message = err.message;
       }
     }
-    return new ApiError(status, code, message, fieldErrors);
+    return new ApiError(status, code, message, fieldErrors, payload);
   }
 
   // DRF envelope: { detail, code, errors?: { field: [msg] } }
@@ -106,6 +115,7 @@ function toApiError(status: number, data: unknown): ApiError {
     status,
     String(payload.code ?? 'error'),
     String(payload.detail ?? 'Request failed'),
-    fieldErrors
+    fieldErrors,
+    payload
   );
 }
