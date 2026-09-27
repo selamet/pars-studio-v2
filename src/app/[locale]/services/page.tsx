@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { locales, type Locale } from '@/i18n';
+import type { Locale } from '@/i18n';
 import { fetchServices, fetchStudioRates, formatUsd } from '@/lib/api/catalog';
 import { Button } from '@/components/ui/button';
 
-export const revalidate = 60;
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+// Rendered per request (data is cached by the fetchers) so a deploy never
+// bakes an empty page when the API is unreachable at build time.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'shop' });

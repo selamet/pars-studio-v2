@@ -19,14 +19,27 @@ export type BeatQuery = Partial<
 
 export const BEAT_ORDERINGS = ['-published_at', 'published_at', 'bpm', '-bpm', 'title'] as const;
 
+/**
+ * GET from the API. A missing resource resolves to null; an unreachable API is
+ * logged and also resolves to null so pages degrade to their empty state
+ * instead of failing a build or a request.
+ */
 async function get<T>(path: string, revalidate = 60): Promise<T | null> {
-  const res = await fetch(`${API_URL}${path}`, {
-    headers: { Accept: 'application/json' },
-    next: { revalidate },
-  });
-  if (res.status === 404) return null;
-  if (!res.ok) throw new Error(`API ${res.status} for ${path}`);
-  return (await res.json()) as T;
+  try {
+    const res = await fetch(`${API_URL}${path}`, {
+      headers: { Accept: 'application/json' },
+      next: { revalidate },
+    });
+    if (res.status === 404) return null;
+    if (!res.ok) {
+      console.error(`[catalog] API ${res.status} for ${path}`);
+      return null;
+    }
+    return (await res.json()) as T;
+  } catch (error) {
+    console.error(`[catalog] API unreachable for ${path}:`, (error as Error).message);
+    return null;
+  }
 }
 
 export function beatQueryString(query: BeatQuery): string {
