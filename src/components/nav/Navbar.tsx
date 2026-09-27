@@ -45,11 +45,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Landing sections (anchors) followed by store routes (always real links).
   const links = [
-    { href: sectionHref('studio'), label: t('studio') },
-    { href: sectionHref('services'), label: t('services') },
-    { href: sectionHref('process'), label: t('process') },
-    { href: sectionHref('contact'), label: t('contact') },
+    { href: sectionHref('studio'), label: t('studio'), route: false },
+    { href: `/${locale}/beats`, label: t('beats'), route: true },
+    { href: `/${locale}/services`, label: t('shop'), route: true },
+    { href: sectionHref('process'), label: t('process'), route: false },
+    { href: sectionHref('contact'), label: t('contact'), route: false },
   ];
 
   const bookHref = `/${locale}/booking`;
@@ -85,10 +87,10 @@ export default function Navbar() {
         </Link>
 
         {/* Center links — desktop */}
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-9 lg:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 lg:flex xl:gap-9">
           {links.map((l) => (
             <li key={l.href}>
-              {isLanding ? (
+              {isLanding && !l.route ? (
                 <a
                   href={l.href}
                   className="font-mono text-[11px] uppercase tracking-meta text-fg transition-opacity duration-300 hover:opacity-60"
@@ -111,7 +113,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4 text-fg sm:gap-5">
           <LangSwitcher />
 
-          <span className="hidden items-center gap-2 lg:flex">
+          <span className="hidden items-center gap-2 2xl:flex">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
             <span className="font-mono text-[11px] uppercase tracking-meta">
               {t('status')}
@@ -127,7 +129,7 @@ export default function Navbar() {
             )}
           >
             <UserRound className="h-4 w-4" />
-            <span className="hidden md:inline">{accountLabel}</span>
+            <span className="hidden xl:inline">{accountLabel}</span>
           </Link>
 
           <Button asChild size="sm" className="hidden sm:inline-flex">
@@ -151,7 +153,7 @@ export default function Navbar() {
                 {links.map((l) => (
                   <li key={l.href}>
                     <SheetClose asChild>
-                      {isLanding ? (
+                      {isLanding && !l.route ? (
                         <a
                           href={l.href}
                           className="font-serif text-3xl text-fg transition-colors hover:text-accent"

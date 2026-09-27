@@ -7,6 +7,8 @@ import { locales, type Locale } from '@/i18n';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/nav/Navbar';
 import { AuthProvider } from '@/components/auth/AuthProvider';
+import { PlayerProvider } from '@/components/player/PlayerProvider';
+import PlayerBar from '@/components/player/PlayerBar';
 import Grain from '@/components/Grain';
 import WhatsappButton from '@/components/WhatsappButton';
 
@@ -102,8 +104,11 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Grain />
           <AuthProvider>
-            <Navbar />
-            <Providers>{children}</Providers>
+            <PlayerProvider>
+              <Navbar />
+              <Providers>{children}</Providers>
+              <PlayerBar />
+            </PlayerProvider>
           </AuthProvider>
           <WhatsappButton />
         </NextIntlClientProvider>

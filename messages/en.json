@@ -11,7 +11,9 @@
     "menu": "Menu",
     "close": "Close",
     "signIn": "Sign in",
-    "account": "Account"
+    "account": "Account",
+    "beats": "Beats",
+    "shop": "Services"
   },
   "hero": {
     "meta": "CALIFORNIA · ISTANBUL",
@@ -558,5 +560,71 @@
       "generic": "Something went wrong. Please try again.",
       "network": "Cannot reach the server. Check your connection."
     }
+  },
+  "beats": {
+    "section": "010",
+    "label": "BEATS",
+    "heading": "Beats.",
+    "intro": "Original productions, ready to lease or own. Preview every track, pick a license, download instantly after checkout.",
+    "from": "from",
+    "empty": "No beats match these filters yet.",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} / {total}",
+    "backToBeats": "All beats",
+    "player": {
+      "play": "Play preview",
+      "pause": "Pause",
+      "unavailable": "Preview coming soon",
+      "preview": "PREVIEW",
+      "close": "Close player"
+    },
+    "filters": {
+      "search": "Search",
+      "searchPh": "Title, genre, tag…",
+      "key": "Key",
+      "bpmMin": "BPM min",
+      "bpmMax": "BPM max",
+      "ordering": "Sort",
+      "genre": "GENRE",
+      "clear": "Clear",
+      "apply": "Apply",
+      "order": {
+        "-published_at": "Newest first",
+        "published_at": "Oldest first",
+        "bpm": "BPM ascending",
+        "-bpm": "BPM descending",
+        "title": "Title A–Z"
+      }
+    },
+    "licenses": {
+      "heading": "LICENSE",
+      "none": "No licenses available for this beat.",
+      "terms": "License terms",
+      "addToCart": "Add to cart",
+      "checkoutSoon": "CHECKOUT OPENS SOON",
+      "files": {
+        "mp3": "MP3",
+        "wav": "WAV",
+        "stems": "Stems"
+      }
+    }
+  },
+  "shop": {
+    "section": "011",
+    "label": "SERVICES",
+    "heading": "Mastering & mixing.",
+    "intro": "Send your session, get it back polished. Fixed prices, clear turnaround, revisions included.",
+    "empty": "Services are being set up. Check back soon.",
+    "turnaround": "TURNAROUND",
+    "revisions": "REVISIONS",
+    "maxStems": "MAX FILES",
+    "days": "{count, plural, one {# day} other {# days}}",
+    "order": "Order",
+    "ratesLabel": "STUDIO TIME",
+    "ratesHeading": "Hourly rates",
+    "ratesIntro": "Book the room by the hour. Recording, vocal production and beat sessions are priced per hour and confirmed on payment.",
+    "hour": "hour",
+    "book": "Book a session"
   }
 }
