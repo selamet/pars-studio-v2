@@ -706,6 +706,25 @@
     "book": "Seans ayırt",
     "inCart": "Sepette"
   },
+  "catalog": {
+    "kinds": {
+      "mastering": "Mastering",
+      "mixing": "Miks"
+    },
+    "serviceTypes": {
+      "recording": "Kayıt",
+      "mixing": "Miks seansı",
+      "mastering": "Mastering seansı",
+      "beat": "Beat prodüksiyon",
+      "vocal": "Vokal prodüksiyon"
+    },
+    "tiers": {
+      "mp3_lease": "MP3 Lisans",
+      "wav_lease": "WAV Lisans",
+      "trackout": "Trackout (stemler)",
+      "exclusive": "Exclusive"
+    }
+  },
   "cart": {
     "section": "012",
     "label": "SEPET",

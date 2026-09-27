@@ -1,22 +1,24 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import type { Locale } from '@/i18n';
-import { fetchBeat } from '@/lib/api/catalog';
-import PlayButton from '@/components/player/PlayButton';
-import LicensePicker from '@/components/beats/LicensePicker';
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n";
+import { fetchBeat, localizedCopy } from "@/lib/api/catalog";
+import PlayButton from "@/components/player/PlayButton";
+import LicensePicker from "@/components/beats/LicensePicker";
 
 type Props = { params: { locale: Locale; slug: string } };
 
-export async function generateMetadata({ params: { locale, slug } }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params: { locale, slug },
+}: Props): Promise<Metadata> {
   const beat = await fetchBeat(slug);
   if (!beat) return {};
-  const t = await getTranslations({ locale, namespace: 'beats' });
+  const t = await getTranslations({ locale, namespace: "beats" });
   return {
-    title: `${beat.title} — ${t('heading')} — Pars Studios`,
-    description: beat.description || t('intro'),
+    title: `${beat.title} — ${t("heading")} — Pars Studios`,
+    description: localizedCopy(beat, "description", locale) || t("intro"),
     openGraph: beat.cover_url ? { images: [beat.cover_url] } : undefined,
   };
 }
@@ -25,11 +27,12 @@ export default async function BeatPage({ params: { locale, slug } }: Props) {
   unstable_setRequestLocale(locale);
   const beat = await fetchBeat(slug);
   if (!beat) notFound();
-  const t = await getTranslations('beats');
+  const t = await getTranslations("beats");
+  const description = localizedCopy(beat, "description", locale);
 
   const meta = [beat.genre, beat.bpm ? `${beat.bpm} BPM` : null, beat.key]
     .filter(Boolean)
-    .join(' · ');
+    .join(" · ");
   const track = beat.preview_url
     ? {
         id: beat.slug,
@@ -44,8 +47,11 @@ export default async function BeatPage({ params: { locale, slug } }: Props) {
     <main>
       <section className="section pt-[clamp(140px,16vh,220px)]">
         <div className="shell">
-          <Link href={`/${locale}/beats`} className="meta transition-colors hover:text-fg">
-            ← {t('backToBeats')}
+          <Link
+            href={`/${locale}/beats`}
+            className="meta transition-colors hover:text-fg"
+          >
+            ← {t("backToBeats")}
           </Link>
 
           <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20">
@@ -68,9 +74,9 @@ export default async function BeatPage({ params: { locale, slug } }: Props) {
                 track={track}
                 size="lg"
                 label={{
-                  play: t('player.play'),
-                  pause: t('player.pause'),
-                  unavailable: t('player.unavailable'),
+                  play: t("player.play"),
+                  pause: t("player.pause"),
+                  unavailable: t("player.unavailable"),
                 }}
                 className="absolute bottom-6 right-6"
               />
@@ -82,9 +88,9 @@ export default async function BeatPage({ params: { locale, slug } }: Props) {
                 <h1 className="mt-5 font-serif font-light leading-[1.04] tracking-[-0.012em] text-[clamp(34px,4.5vw,64px)]">
                   {beat.title}
                 </h1>
-                {beat.description && (
+                {description && (
                   <p className="mt-6 max-w-xl whitespace-pre-line text-[15px] leading-[1.7] text-fg/[0.7]">
-                    {beat.description}
+                    {description}
                   </p>
                 )}
                 {(beat.tags ?? []).length > 0 && (
@@ -104,8 +110,12 @@ export default async function BeatPage({ params: { locale, slug } }: Props) {
               </header>
 
               <section>
-                <h2 className="meta mb-5">{t('licenses.heading')}</h2>
-                <LicensePicker beat={beat} licenses={beat.licenses} locale={locale} />
+                <h2 className="meta mb-5">{t("licenses.heading")}</h2>
+                <LicensePicker
+                  beat={beat}
+                  licenses={beat.licenses}
+                  locale={locale}
+                />
               </section>
             </div>
           </div>

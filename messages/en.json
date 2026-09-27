@@ -706,6 +706,25 @@
     "book": "Book a session",
     "inCart": "In cart"
   },
+  "catalog": {
+    "kinds": {
+      "mastering": "Mastering",
+      "mixing": "Mixing"
+    },
+    "serviceTypes": {
+      "recording": "Recording",
+      "mixing": "Mixing session",
+      "mastering": "Mastering session",
+      "beat": "Beat production",
+      "vocal": "Vocal production"
+    },
+    "tiers": {
+      "mp3_lease": "MP3 Lease",
+      "wav_lease": "WAV Lease",
+      "trackout": "Trackout (stems)",
+      "exclusive": "Exclusive"
+    }
+  },
   "cart": {
     "section": "012",
     "label": "CART",

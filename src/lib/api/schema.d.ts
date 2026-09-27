@@ -446,6 +446,8 @@ export interface components {
             /** Format: date-time */
             published_at?: string | null;
             description?: string;
+            /** @description Turkish description; falls back to English. */
+            description_tr?: string;
             readonly licenses: components["schemas"]["BeatLicense"][];
         };
         BeatLicense: {
@@ -839,6 +841,8 @@ export interface components {
             readonly id: number;
             slug: string;
             name: string;
+            /** @description Turkish name; falls back to name. */
+            name_tr?: string;
             kind: components["schemas"]["KindEnum"];
             readonly kind_label: string;
             /** Format: decimal */
@@ -848,6 +852,8 @@ export interface components {
             /** @description How many source files the customer may upload. */
             max_stems?: number;
             description?: string;
+            /** @description Turkish description; falls back to English. */
+            description_tr?: string;
         };
         /**
          * @description * `recording` - Recording
