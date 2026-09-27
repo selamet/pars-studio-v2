@@ -61,7 +61,9 @@ export default function OrderSummary({
               </div>
             )}
             {item.item_type === 'service' && order.status === 'paid' && (
-              <p className="meta">{t('serviceNext')}</p>
+              <Link href={`/${locale}/account/services`} className="meta underline underline-offset-4 hover:text-fg">
+                {t('serviceNext')}
+              </Link>
             )}
           </li>
         ))}

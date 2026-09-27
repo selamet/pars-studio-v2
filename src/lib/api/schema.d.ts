@@ -190,6 +190,143 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/service-orders/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The customer's mastering/mixing jobs. */
+        get: operations["service_orders_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The customer's mastering/mixing jobs. */
+        get: operations["service_orders_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** @description The customer's mastering/mixing jobs. */
+        patch: operations["service_orders_partial_update"];
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/accept/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description The customer's mastering/mixing jobs. */
+        post: operations["service_orders_accept_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/files/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description After a direct PUT to R2, register the object as a customer upload. */
+        post: operations["service_orders_files_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/files/{file_id}/link/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description The customer's mastering/mixing jobs. */
+        post: operations["service_orders_files_link_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/files/presign/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description The customer's mastering/mixing jobs. */
+        post: operations["service_orders_files_presign_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/files/upload/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Local/dev fallback for environments without R2: the file body comes to Django. */
+        post: operations["service_orders_files_upload_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/service-orders/{id}/request-revision/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description The customer's mastering/mixing jobs. */
+        post: operations["service_orders_request_revision_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -252,6 +389,19 @@ export interface components {
             /** Format: uri */
             checkout_url: string;
         };
+        ConfirmUploadRequest: {
+            key: string;
+            file_name: string;
+            size: number;
+            /** @default  */
+            content_type: string;
+        };
+        /**
+         * @description * `customer_upload` - Customer upload
+         *     * `studio_deliverable` - Studio deliverable
+         * @enum {string}
+         */
+        DirectionEnum: "customer_upload" | "studio_deliverable";
         DownloadGrant: {
             readonly id: number;
             file_kind: components["schemas"]["FileKindEnum"];
@@ -289,15 +439,24 @@ export interface components {
          * @enum {string}
          */
         KindEnum: "mastering" | "mixing";
+        LocalUploadRequest: {
+            key: string;
+            /** Format: binary */
+            file: string;
+        };
         /**
          * @description * `en` - en
          *     * `tr` - tr
          * @enum {string}
          */
         LocaleEnum: "en" | "tr";
+        MessageRequest: {
+            /** @default  */
+            message: string;
+        };
         Order: {
             readonly number: string;
-            status?: components["schemas"]["StatusEnum"];
+            status?: components["schemas"]["OrderStatusEnum"];
             readonly status_label: string;
             currency?: string;
             /** Format: decimal */
@@ -328,6 +487,15 @@ export interface components {
             readonly service_slug: string;
             readonly downloads: components["schemas"]["DownloadGrant"][];
         };
+        /**
+         * @description * `pending` - Pending payment
+         *     * `paid` - Paid
+         *     * `failed` - Payment failed
+         *     * `cancelled` - Cancelled
+         *     * `refunded` - Refunded
+         * @enum {string}
+         */
+        OrderStatusEnum: "pending" | "paid" | "failed" | "cancelled" | "refunded";
         PaginatedBeatListList: {
             /** @example 123 */
             count: number;
@@ -358,10 +526,118 @@ export interface components {
             previous?: string | null;
             results: components["schemas"]["Order"][];
         };
+        PaginatedServiceOrderList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["ServiceOrder"][];
+        };
+        PatchedServiceOrderRequest: {
+            /** @description Customer brief: references, loudness, vibe. */
+            notes?: string;
+            reference_links?: string;
+        };
         PatchedUserRequest: {
             first_name?: string;
             last_name?: string;
         };
+        PresignRequestRequest: {
+            file_name: string;
+            size: number;
+            /** @default  */
+            content_type: string;
+        };
+        PresignResponse: {
+            direct: boolean;
+            key: string;
+            upload_url: string;
+            method: string;
+            headers: {
+                [key: string]: string;
+            };
+        };
+        ServiceEvent: {
+            readonly id: number;
+            from_status?: string;
+            to_status: string;
+            readonly to_status_label: string;
+            message?: string;
+            readonly by_studio: boolean;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        ServiceEventRequest: {
+            from_status?: string;
+            to_status: string;
+            message?: string;
+        };
+        ServiceFile: {
+            readonly id: number;
+            direction: components["schemas"]["DirectionEnum"];
+            readonly direction_label: string;
+            original_name: string;
+            /** Format: int64 */
+            size?: number;
+            content_type?: string;
+            /** @description 0 = original delivery, 1+ = revision rounds */
+            round?: number;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        ServiceFileRequest: {
+            direction: components["schemas"]["DirectionEnum"];
+            original_name: string;
+            /** Format: int64 */
+            size?: number;
+            content_type?: string;
+            /** @description 0 = original delivery, 1+ = revision rounds */
+            round?: number;
+        };
+        ServiceOrder: {
+            readonly id: number;
+            readonly order_number: string;
+            readonly product_name: string;
+            readonly product_kind: string;
+            readonly status: components["schemas"]["ServiceOrderStatusEnum"];
+            readonly status_label: string;
+            /** @description Customer brief: references, loudness, vibe. */
+            notes?: string;
+            reference_links?: string;
+            readonly included_revisions: number;
+            readonly revisions_used: number;
+            readonly revisions_left: number;
+            readonly max_files: number;
+            readonly accepts_uploads: boolean;
+            /** Format: date-time */
+            readonly due_at: string | null;
+            /** Format: date-time */
+            readonly delivered_at: string | null;
+            /** Format: date-time */
+            readonly completed_at: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+            readonly files: components["schemas"]["ServiceFile"][];
+            readonly events: components["schemas"]["ServiceEvent"][];
+        };
+        /**
+         * @description * `awaiting_files` - Awaiting files
+         *     * `received` - Files received
+         *     * `in_progress` - In progress
+         *     * `delivered` - Delivered
+         *     * `revision_requested` - Revision requested
+         *     * `completed` - Completed
+         * @enum {string}
+         */
+        ServiceOrderStatusEnum: "awaiting_files" | "received" | "in_progress" | "delivered" | "revision_requested" | "completed";
         ServiceProduct: {
             readonly id: number;
             slug: string;
@@ -385,15 +661,6 @@ export interface components {
          * @enum {string}
          */
         ServiceTypeEnum: "recording" | "mixing" | "mastering" | "beat" | "vocal";
-        /**
-         * @description * `pending` - Pending payment
-         *     * `paid` - Paid
-         *     * `failed` - Payment failed
-         *     * `cancelled` - Cancelled
-         *     * `refunded` - Refunded
-         * @enum {string}
-         */
-        StatusEnum: "pending" | "paid" | "failed" | "cancelled" | "refunded";
         StudioRate: {
             service_type: components["schemas"]["ServiceTypeEnum"];
             readonly service_type_label: string;
@@ -716,6 +983,231 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Order"];
+                };
+            };
+        };
+    };
+    service_orders_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedServiceOrderList"];
+                };
+            };
+        };
+    };
+    service_orders_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceOrder"];
+                };
+            };
+        };
+    };
+    service_orders_partial_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["PatchedServiceOrderRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["PatchedServiceOrderRequest"];
+                "multipart/form-data": components["schemas"]["PatchedServiceOrderRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceOrder"];
+                };
+            };
+        };
+    };
+    service_orders_accept_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceOrder"];
+                };
+            };
+        };
+    };
+    service_orders_files_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ConfirmUploadRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["ConfirmUploadRequest"];
+                "multipart/form-data": components["schemas"]["ConfirmUploadRequest"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceFile"];
+                };
+            };
+        };
+    };
+    service_orders_files_link_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                file_id: string;
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DownloadLink"];
+                };
+            };
+        };
+    };
+    service_orders_files_presign_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PresignRequestRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["PresignRequestRequest"];
+                "multipart/form-data": components["schemas"]["PresignRequestRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PresignResponse"];
+                };
+            };
+        };
+    };
+    service_orders_files_upload_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LocalUploadRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["LocalUploadRequest"];
+                "multipart/form-data": components["schemas"]["LocalUploadRequest"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceFile"];
+                };
+            };
+        };
+    };
+    service_orders_request_revision_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["MessageRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["MessageRequest"];
+                "multipart/form-data": components["schemas"]["MessageRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ServiceOrder"];
                 };
             };
         };
