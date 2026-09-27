@@ -348,7 +348,78 @@
     "city": "CALIFORNIA · İSTANBUL",
     "poweredBy": "crafted by",
     "poweredByName": "selamet.dev",
-    "poweredByHref": "https://selamet.dev"
+    "poweredByHref": "https://selamet.dev",
+    "privacy": "Gizlilik politikası"
+  },
+  "privacy": {
+    "section": "YASAL",
+    "label": "GİZLİLİK POLİTİKASI",
+    "heading": "Gizlilik politikası.",
+    "intro": "studiospars.com'u kullanırken hangi verileri topladığımız, neden topladığımız ve bizim adımıza kimlerin işlediği. Kısa ve açık tuttuk; anlaşılmayan bir şey olursa bize yazın.",
+    "effective": "YÜRÜRLÜK 27 EYLÜL 2026",
+    "contactLead": "Verilerinizle ilgili soru ve talepler için:",
+    "contactEmail": "online@pars-studios.com",
+    "sections": [
+      {
+        "heading": "Biz kimiz",
+        "paragraphs": [
+          "Pars Studios, İstanbul ve California'da faaliyet gösteren, beat lisansı, miks ve mastering hizmeti ve stüdyo rezervasyonu satan bir kayıt stüdyosudur ve studiospars.com'u işletir. Burada açıklanan kişisel verilerin veri sorumlusu Pars Studios'tur."
+        ]
+      },
+      {
+        "heading": "Ne topluyoruz",
+        "paragraphs": [
+          "Hesap: e-posta adresiniz, isteğe bağlı görünen adınız ve yalnızca hash olarak sakladığımız şifreniz. Google ile giriş yaparsanız Google'ın bizimle paylaştığı e-posta adresi, ad ve profil fotoğrafını alırız; Google şifrenizi hiçbir zaman görmeyiz.",
+          "Siparişler: satın aldığınız ürünler, tutarlar, para birimi, fatura bilgileri ve bir Stripe ödeme referansı. Kart numaraları Stripe'ın ödeme sayfasına girilir ve sunucularımıza hiçbir zaman ulaşmaz.",
+          "Hizmet siparişleri: miks veya mastering için yüklediğiniz ses dosyaları, notlarınız ve referanslarınız ile size geri teslim ettiğimiz dosyalar.",
+          "Rezervasyonlar: stüdyo saati ayırırken girdiğiniz tarih, saat, hizmet türü ve notlar.",
+          "Teknik veriler: güvenlik ve hata ayıklama için sunucu kayıtlarında tutulan IP adresi, tarayıcı ve istek zamanları."
+        ]
+      },
+      {
+        "heading": "Neden kullanıyoruz",
+        "paragraphs": [
+          "Hesabınızı oluşturmak ve korumak, satın aldığınız lisans ve dosyaları teslim etmek, rezervasyonlarınızı yürütmek ve doğrulama bağlantısı, makbuz ve sipariş durumu gibi işlemsel e-postaları göndermek için.",
+          "Dolandırıcılık ve kötüye kullanımı önlemek, yasaların gerektirdiği muhasebe kayıtlarını tutmak ve mesajlarınızı yanıtlamak için.",
+          "Siz istemedikçe pazarlama e-postası göndermeyiz, reklam takipçisi çalıştırmayız ve verilerinizi asla satmayız."
+        ]
+      },
+      {
+        "heading": "Çerezler ve yerel depolama",
+        "paragraphs": [
+          "Oturumunuzun açık kalması ve formların sahte gönderilememesi için bir oturum çerezi ve bir CSRF çerezi kullanırız. İkisi de zorunludur ve oturumunuz bittiğinde ya da çıkış yaptığınızda silinir.",
+          "Sepetiniz tarayıcınızın yerel depolamasında tutulur ve ödeme adımına geçene kadar bize gönderilmez."
+        ]
+      },
+      {
+        "heading": "Bizim adımıza veri işleyenler",
+        "paragraphs": [
+          "Ödemeler için Stripe, isteğe bağlı giriş için Google, dosya depolama için Cloudflare R2, e-posta gönderimi için Resend, barındırma için Vercel ve Hetzner. Her işleyici yalnızca kendi görevi için gereken veriyi alır ve kendi gizlilik koşullarına bağlıdır.",
+          "Veriler bu sağlayıcıların sunduğu güvenceler kapsamında Avrupa Birliği ve Amerika Birleşik Devletleri'nde işlenebilir."
+        ]
+      },
+      {
+        "heading": "Ne kadar saklıyoruz",
+        "paragraphs": [
+          "Hesabınız ve sipariş geçmişiniz siz silinmesini isteyene kadar saklanır. Muhasebe kayıtları, hesap silinse bile vergi mevzuatının gerektirdiği süre boyunca tutulur.",
+          "Satın alınan indirmeler lisansınızda belirtilen süre boyunca erişilebilir kalır (varsayılan 30 gün, talep üzerine uzatılabilir). Hizmet siparişi için yüklediğiniz dosyalar ve ürettiğimiz teslimatlar, sipariş açıkken ve revizyon ile yeniden indirmenin mümkün olması için sonrasında sınırlı bir süre saklanır, ardından silinir.",
+          "Sunucu kayıtları düzenli olarak döndürülür ve en fazla 90 gün tutulur."
+        ]
+      },
+      {
+        "heading": "Haklarınız",
+        "paragraphs": [
+          "Kişisel verilerinize erişmeyi, düzeltilmesini, dışa aktarılmasını veya silinmesini ya da belirli bir kullanıma itiraz etmeyi istediğiniz zaman talep edebilirsiniz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) veya AB Genel Veri Koruma Tüzüğü (GDPR) kapsamında, ilgili denetim otoritesine şikâyet hakkı dâhil bu yasaların tanıdığı haklara sahipsiniz.",
+          "Bir hakkınızı kullanmak için hesabınızdaki adresten bize e-posta gönderin. 30 gün içinde yanıtlarız."
+        ]
+      },
+      {
+        "heading": "Değişiklikler",
+        "paragraphs": [
+          "Bu politika değiştiğinde yukarıdaki yürürlük tarihini güncelleriz; önemli değişikliklerde hesap sahiplerini e-posta ile bilgilendiririz."
+        ]
+      }
+    ]
   },
   "booking": {
     "section": "008",

@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   title: 'Pars Studios — Creative Media',
   description:
     'Pars Studios — Irvine CA merkezli, İstanbul’da da hizmet veren bağımsız yaratıcı medya stüdyosu. Kayıt, miks, mastering, film müziği, reklam müziği, video klip çekim, kurgu ve görsel efekt (FX).',
-  metadataBase: new URL('https://parsstudio.com'),
+  metadataBase: new URL('https://studiospars.com'),
   openGraph: {
     type: 'website',
     siteName: 'Pars Studios',
@@ -55,7 +55,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
   name: 'Pars Studios',
-  url: 'https://parsstudio.com',
+  url: 'https://studiospars.com',
   description:
     'Independent creative media studio in California and Istanbul — recording, mixing, mastering, film scoring, commercial music, music videos, editing and visual effects.',
   address: {

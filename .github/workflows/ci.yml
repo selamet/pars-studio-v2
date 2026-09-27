@@ -28,7 +28,7 @@ jobs:
             sleep 1
           done
           failed=0
-          for path in /en /tr /en/beats /tr/beats /en/services /tr/services /en/booking /en/cart /en/account/login; do
+          for path in /en /tr /en/beats /tr/beats /en/services /tr/services /en/booking /en/cart /en/account/login /en/privacy /tr/privacy; do
             code=$(curl -s -o /dev/null -w '%{http_code}' -L "http://127.0.0.1:3000$path")
             printf '%-22s %s\n' "$path" "$code"
             [ "$code" = "200" ] || failed=1

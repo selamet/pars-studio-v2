@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/tr/admin/', '/en/admin/'],
       },
     ],
-    sitemap: 'https://parsstudio.com/sitemap.xml',
+    sitemap: 'https://studiospars.com/sitemap.xml',
   };
 }
