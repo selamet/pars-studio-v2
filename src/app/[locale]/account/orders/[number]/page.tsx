@@ -12,7 +12,7 @@ export default function OrderPage({
   unstable_setRequestLocale(locale);
   const t = useTranslations('orders');
   return (
-    <AuthShell eyebrow={t('eyebrow')} label={t('label')} heading={t('detailHeading')}>
+    <AuthShell width="wide" eyebrow={t('eyebrow')} label={t('label')} heading={t('detailHeading')}>
       <OrderDetail locale={locale} number={number} />
     </AuthShell>
   );

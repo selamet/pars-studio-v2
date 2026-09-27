@@ -12,7 +12,7 @@ export default function ServiceOrderPage({
   unstable_setRequestLocale(locale);
   const t = useTranslations('services');
   return (
-    <AuthShell eyebrow={t('eyebrow')} label={t('label')} heading={t('detailHeading')}>
+    <AuthShell width="wide" eyebrow={t('eyebrow')} label={t('label')} heading={t('detailHeading')}>
       <ServiceDetail locale={locale} id={id} />
     </AuthShell>
   );

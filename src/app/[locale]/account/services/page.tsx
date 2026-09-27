@@ -12,7 +12,7 @@ export default function ServicesAccountPage({ params: { locale } }: { params: { 
   unstable_setRequestLocale(locale);
   const t = useTranslations('services');
   return (
-    <AuthShell eyebrow={t('eyebrow')} label={t('label')} heading={t('heading')} intro={t('intro')}>
+    <AuthShell width="wide" eyebrow={t('eyebrow')} label={t('label')} heading={t('heading')} intro={t('intro')}>
       <ServiceList locale={locale} />
     </AuthShell>
   );

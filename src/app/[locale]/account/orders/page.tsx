@@ -12,7 +12,7 @@ export default function OrdersPage({ params: { locale } }: { params: { locale: L
   unstable_setRequestLocale(locale);
   const t = useTranslations('orders');
   return (
-    <AuthShell eyebrow={t('eyebrow')} label={t('label')} heading={t('heading')} intro={t('intro')}>
+    <AuthShell width="wide" eyebrow={t('eyebrow')} label={t('label')} heading={t('heading')} intro={t('intro')}>
       <OrderList locale={locale} />
     </AuthShell>
   );

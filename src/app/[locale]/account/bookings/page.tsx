@@ -12,7 +12,7 @@ export default function MyBookingsPage({ params: { locale } }: { params: { local
   unstable_setRequestLocale(locale);
   const t = useTranslations('booking.mine');
   return (
-    <AuthShell eyebrow={t('eyebrow')} label={t('label')} heading={t('heading')} intro={t('intro')}>
+    <AuthShell width="wide" eyebrow={t('eyebrow')} label={t('label')} heading={t('heading')} intro={t('intro')}>
       <BookingList locale={locale} />
     </AuthShell>
   );

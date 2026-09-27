@@ -26,52 +26,70 @@ export default function AccountPanel({ locale }: { locale: string }) {
     return <p className="meta animate-pulse">{t('loading')}</p>;
   }
 
+  const pages = [
+    { href: `/${locale}/account/orders`, label: t('orders') },
+    { href: `/${locale}/account/services`, label: t('services') },
+    { href: `/${locale}/account/bookings`, label: t('bookings') },
+  ];
+
   return (
-    <div className="flex flex-col gap-14">
-      <section className="flex flex-col gap-4">
-        <span className="meta">{t('emailLabel')}</span>
-        <p className="font-serif text-2xl">{user.email}</p>
-        {!user.email_verified && <FormNotice>{t('unverified')}</FormNotice>}
-      </section>
+    <div className="grid gap-14 border-t hairline pt-10 lg:grid-cols-12 lg:gap-x-16">
+      <aside className="flex flex-col gap-12 lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+        <section className="flex flex-col gap-4">
+          <span className="meta">{t('emailLabel')}</span>
+          <p className="break-all font-serif text-2xl md:text-3xl">{user.email}</p>
+          {!user.email_verified && <FormNotice>{t('unverified')}</FormNotice>}
+        </section>
 
-      <section className="border-t border-rule pt-8">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Button asChild size="lg" variant="outline" className="w-full">
-            <Link href={`/${locale}/account/orders`}>{t('orders')}</Link>
+        <nav aria-label={t('navLabel')} className="flex flex-col gap-4">
+          <span className="meta">{t('navLabel')}</span>
+          <ul className="border-t hairline">
+            {pages.map((page, index) => (
+              <li key={page.href} className="border-b hairline">
+                <Link
+                  href={page.href}
+                  className="group grid grid-cols-[40px_1fr_auto] items-baseline gap-4 py-5 transition-all duration-300 hover:pl-3"
+                >
+                  <span className="meta">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="font-serif text-xl font-light leading-tight text-fg transition-colors group-hover:text-accent md:text-2xl">
+                    {page.label}
+                  </span>
+                  <span className="meta text-fg-dim transition-colors group-hover:text-accent" aria-hidden>
+                    &rarr;
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      <div className="flex flex-col gap-14 lg:col-span-7">
+        <ProfileForm
+          firstName={user.first_name ?? ''}
+          lastName={user.last_name ?? ''}
+          onSaved={refresh}
+          t={t}
+          tErr={tErr}
+        />
+
+        <PasswordForm t={t} tErr={tErr} />
+
+        <section className="border-t border-rule pt-8">
+          <Button
+            type="button"
+            variant="outline"
+            size="lg"
+            className="w-full sm:w-auto"
+            onClick={async () => {
+              await logout();
+              router.push(`/${locale}`);
+            }}
+          >
+            {t('logout')}
           </Button>
-          <Button asChild size="lg" variant="outline" className="w-full">
-            <Link href={`/${locale}/account/services`}>{t('services')}</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="w-full">
-            <Link href={`/${locale}/account/bookings`}>{t('bookings')}</Link>
-          </Button>
-        </div>
-      </section>
-
-      <ProfileForm
-        firstName={user.first_name ?? ''}
-        lastName={user.last_name ?? ''}
-        onSaved={refresh}
-        t={t}
-        tErr={tErr}
-      />
-
-      <PasswordForm t={t} tErr={tErr} />
-
-      <section className="border-t border-rule pt-8">
-        <Button
-          type="button"
-          variant="outline"
-          size="lg"
-          className="w-full"
-          onClick={async () => {
-            await logout();
-            router.push(`/${locale}`);
-          }}
-        >
-          {t('logout')}
-        </Button>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
