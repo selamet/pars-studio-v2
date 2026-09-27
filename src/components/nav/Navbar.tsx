@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Menu } from 'lucide-react';
+import { Menu, UserRound } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -16,11 +16,13 @@ import {
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import LangSwitcher from './LangSwitcher';
+import { useAuth } from '@/components/auth/AuthProvider';
 
 export default function Navbar() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
+  const { status, user } = useAuth();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -51,6 +53,12 @@ export default function Navbar() {
   ];
 
   const bookHref = `/${locale}/booking`;
+  const accountHref =
+    status === 'authenticated' ? `/${locale}/account` : `/${locale}/account/login`;
+  const accountLabel =
+    status === 'authenticated'
+      ? user?.first_name || t('account')
+      : t('signIn');
 
   return (
     <header
@@ -110,6 +118,18 @@ export default function Navbar() {
             </span>
           </span>
 
+          <Link
+            href={accountHref}
+            aria-label={accountLabel}
+            className={cn(
+              'hidden items-center gap-2 font-mono text-[11px] uppercase tracking-meta transition-opacity duration-300 hover:opacity-60 sm:flex',
+              status === 'loading' && 'invisible'
+            )}
+          >
+            <UserRound className="h-4 w-4" />
+            <span className="hidden md:inline">{accountLabel}</span>
+          </Link>
+
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href={bookHref}>{t('book')}</Link>
           </Button>
@@ -150,6 +170,15 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
+              <SheetClose asChild>
+                <Link
+                  href={accountHref}
+                  className="mt-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-meta text-fg transition-colors hover:text-accent"
+                >
+                  <UserRound className="h-4 w-4" />
+                  {accountLabel}
+                </Link>
+              </SheetClose>
               <SheetClose asChild>
                 <Button asChild className="mt-auto w-full">
                   <Link href={bookHref}>{t('book')}</Link>

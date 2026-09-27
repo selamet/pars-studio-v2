@@ -6,6 +6,7 @@ import { Fraunces, Manrope, JetBrains_Mono } from 'next/font/google';
 import { locales, type Locale } from '@/i18n';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/nav/Navbar';
+import { AuthProvider } from '@/components/auth/AuthProvider';
 import Grain from '@/components/Grain';
 import WhatsappButton from '@/components/WhatsappButton';
 
@@ -100,8 +101,10 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider messages={messages}>
           <Grain />
-          <Navbar />
-          <Providers>{children}</Providers>
+          <AuthProvider>
+            <Navbar />
+            <Providers>{children}</Providers>
+          </AuthProvider>
           <WhatsappButton />
         </NextIntlClientProvider>
       </body>
