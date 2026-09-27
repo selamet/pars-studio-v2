@@ -13,3 +13,6 @@ next-env.d.ts
 # Local editor / assistant settings
 .claude/
 *.tsbuildinfo
+.env*
+!.env.example
+.vercel/
