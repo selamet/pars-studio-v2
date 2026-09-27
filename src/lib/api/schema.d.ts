@@ -4,6 +4,94 @@
  */
 
 export interface paths {
+    "/api/v1/bookings/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The customer's own reservations. */
+        get: operations["bookings_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/bookings/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description The customer's own reservations. */
+        get: operations["bookings_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/bookings/{id}/ics/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Calendar file
+         * @description The customer's own reservations.
+         */
+        get: operations["bookings_ics_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/bookings/availability": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Free start hours for a day */
+        get: operations["bookings_availability_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/bookings/config": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Scheduling rules */
+        get: operations["bookings_config_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/catalog/beats/": {
         parameters: {
             query?: never;
@@ -331,6 +419,17 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        Availability: {
+            /** Format: date */
+            date: string;
+            service_type: string;
+            closed: boolean;
+            slots: components["schemas"]["AvailabilitySlot"][];
+        };
+        AvailabilitySlot: {
+            start: string;
+            durations: number[];
+        };
         BeatDetail: {
             readonly id: number;
             slug: string;
@@ -375,9 +474,48 @@ export interface components {
             /** Format: date-time */
             published_at?: string | null;
         };
+        BookingConfig: {
+            open_hour: number;
+            close_hour: number;
+            closed_weekdays: number[];
+            max_advance_days: number;
+            hold_minutes: number;
+            durations: {
+                [key: string]: number[];
+            };
+            service_types: {
+                [key: string]: string;
+            }[];
+        };
+        /**
+         * @description * `1` - 1
+         *     * `2` - 2
+         *     * `4` - 4
+         *     * `8` - 8
+         * @enum {integer}
+         */
+        BookingLineDurationHoursEnum: 1 | 2 | 4 | 8;
+        /** @description Fields a `booking` cart line must carry into checkout. */
+        BookingLineRequest: {
+            service_type: components["schemas"]["ServiceTypeEnum"];
+            /** Format: date */
+            session_date: string;
+            /** Format: time */
+            start_time: string;
+            duration_hours: components["schemas"]["BookingLineDurationHoursEnum"];
+            customer_name: string;
+            customer_phone: string;
+            /** @default  */
+            artist_name: string;
+            /** @default  */
+            project_description: string;
+            /** @default  */
+            reference_links: string;
+        };
         CheckoutItemRequest: {
             type: components["schemas"]["TypeEnum"];
-            id: number;
+            id?: number;
+            booking?: components["schemas"]["BookingLineRequest"];
         };
         CheckoutRequest: {
             items: components["schemas"]["CheckoutItemRequest"][];
@@ -486,6 +624,7 @@ export interface components {
             readonly license_tier: string;
             readonly service_slug: string;
             readonly downloads: components["schemas"]["DownloadGrant"][];
+            readonly reservation: components["schemas"]["Reservation"];
         };
         /**
          * @description * `pending` - Pending payment
@@ -526,6 +665,21 @@ export interface components {
             previous?: string | null;
             results: components["schemas"]["Order"][];
         };
+        PaginatedReservationList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["Reservation"][];
+        };
         PaginatedServiceOrderList: {
             /** @example 123 */
             count: number;
@@ -565,6 +719,49 @@ export interface components {
                 [key: string]: string;
             };
         };
+        Reservation: {
+            readonly id: number;
+            readonly code: string;
+            service_type: components["schemas"]["ServiceTypeEnum"];
+            readonly service_type_label: string;
+            /** Format: date */
+            session_date: string;
+            /** Format: time */
+            start_time: string;
+            /** Format: time */
+            readonly end_time: string;
+            duration_hours: components["schemas"]["ReservationDurationHoursEnum"];
+            status?: components["schemas"]["ReservationStatusEnum"];
+            readonly status_label: string;
+            /** Format: decimal */
+            price_usd: string;
+            customer_name: string;
+            artist_name?: string;
+            project_description?: string;
+            reference_links?: string;
+            /** Format: date-time */
+            hold_expires_at?: string | null;
+            readonly order_number: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        /**
+         * @description * `1` - 1 h
+         *     * `2` - 2 h
+         *     * `4` - 4 h
+         *     * `8` - 8 h
+         * @enum {integer}
+         */
+        ReservationDurationHoursEnum: 1 | 2 | 4 | 8;
+        /**
+         * @description * `hold` - Held (awaiting payment)
+         *     * `confirmed` - Confirmed
+         *     * `cancelled` - Cancelled
+         *     * `completed` - Completed
+         *     * `expired` - Expired (unpaid)
+         * @enum {string}
+         */
+        ReservationStatusEnum: "hold" | "confirmed" | "cancelled" | "completed" | "expired";
         ServiceEvent: {
             readonly id: number;
             from_status?: string;
@@ -678,9 +875,10 @@ export interface components {
         /**
          * @description * `beat_license` - beat_license
          *     * `service` - service
+         *     * `booking` - booking
          * @enum {string}
          */
-        TypeEnum: "beat_license" | "service";
+        TypeEnum: "beat_license" | "service" | "booking";
         User: {
             readonly id: number;
             /**
@@ -703,6 +901,116 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    bookings_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedReservationList"];
+                };
+            };
+        };
+    };
+    bookings_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Reservation"];
+                };
+            };
+        };
+    };
+    bookings_ics_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/calendar": string;
+                };
+            };
+        };
+    };
+    bookings_availability_retrieve: {
+        parameters: {
+            query: {
+                /** @description YYYY-MM-DD */
+                date: string;
+                service_type: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Availability"];
+                };
+            };
+        };
+    };
+    bookings_config_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookingConfig"];
+                };
+            };
+        };
+    };
     catalog_beats_list: {
         parameters: {
             query?: {

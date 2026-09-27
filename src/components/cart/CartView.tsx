@@ -13,6 +13,7 @@ import { AuthLink } from '@/components/auth/AuthShell';
 import { ApiError } from '@/lib/api/client';
 import { formatUsd } from '@/lib/api/catalog';
 import { startCheckout, type CheckoutConflict } from '@/lib/api/orders';
+import { bookingKey } from '@/lib/api/bookings';
 import { useCart } from './CartProvider';
 
 export default function CartView({ locale }: { locale: string }) {
@@ -36,17 +37,33 @@ export default function CartView({ locale }: { locale: string }) {
     setError(null);
     try {
       const { checkout_url } = await startCheckout({
-        items: sellable.map((l) => ({ type: l.type, id: l.id })),
+        items: sellable.map((l) =>
+          l.type === 'booking' && l.booking
+            ? { type: 'booking' as const, booking: l.booking }
+            : { type: l.type, id: l.id }
+        ),
         locale: locale as 'en' | 'tr',
       });
       window.location.assign(checkout_url);
     } catch (err) {
       if (err instanceof ApiError && err.status === 409) {
         const line = (err.data as Partial<CheckoutConflict> | undefined)?.line;
-        if (line) markUnavailable(line.type, line.id);
-        setError(err.code === 'invalid' ? t('errors.invalid') : t('errors.unavailable'));
+        if (line?.type === 'booking') {
+          markUnavailable(bookingKey({ session_date: line.session_date, start_time: line.start_time }));
+        } else if (line) {
+          markUnavailable(`${line.type}:${line.id}`);
+        }
+        setError(
+          err.code === 'slot_taken'
+            ? t('errors.slotTaken')
+            : err.code === 'invalid'
+              ? t('errors.invalid')
+              : t('errors.unavailable')
+        );
       } else if (err instanceof ApiError && err.code === 'email_unverified') {
         setError(t('errors.unverified'));
+      } else if (err instanceof ApiError && err.code === 'payment_unavailable') {
+        setError(t('errors.paymentUnavailable'));
       } else if (err instanceof ApiError && err.code === 'network') {
         setError(t('errors.network'));
       } else {
@@ -131,6 +148,9 @@ export default function CartView({ locale }: { locale: string }) {
               : t('signInToCheckout')}
         </Button>
         <p className="text-[12px] leading-[1.6] text-fg-dim">{t('stripeNote')}</p>
+        {lines.some((l) => l.type === 'booking') && (
+          <p className="text-[12px] leading-[1.6] text-fg-dim">{t('holdNote')}</p>
+        )}
         <p className="text-[13px] text-fg-dim">
           <AuthLink href={`/${locale}/beats`}>{t('continue')}</AuthLink>
         </p>

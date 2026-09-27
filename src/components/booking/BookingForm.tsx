@@ -2,577 +2,363 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { useForm, Controller } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useTranslations } from 'next-intl';
-import {
-  reservationSchema,
-  type ReservationInput,
-} from '@/lib/validation/reservation';
-import {
-  SERVICES,
-  TIME_SLOTS,
-  type ServiceDef,
-  type Duration,
-} from '@/lib/booking/services';
-import {
-  unavailableStartTimes,
-  type BookedSlot,
-} from '@/lib/booking/availability';
+import { useRouter } from 'next/navigation';
+import { useFormatter, useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useAuth } from '@/components/auth/AuthProvider';
+import { useCart } from '@/components/cart/CartProvider';
+import { FormNotice } from '@/components/auth/Field';
+import {
+  bookingKey,
+  fetchAvailability,
+  fetchBookingConfig,
+  type AvailabilitySlot,
+  type BookingConfig,
+} from '@/lib/api/bookings';
+import { fetchStudioRates, formatUsd, type StudioRate } from '@/lib/api/catalog';
 import { cn } from '@/lib/utils';
 import DateCalendar from './DateCalendar';
-import BookingSuccess from './BookingSuccess';
 
 type Locale = 'tr' | 'en';
-type ServerError = { code: 'slot_taken' } | { code: 'server' } | null;
 
+/**
+ * Four-step booking flow driven by the API: rules and rates come from
+ * `/bookings/config` and `/catalog/studio-rates`, free start hours from
+ * `/bookings/availability`. The result is a cart line; payment confirms it.
+ */
 export default function BookingForm({ locale }: { locale: Locale }) {
   const t = useTranslations('booking');
-  const tErr = useTranslations('booking.errors');
+  const format = useFormatter();
+  const router = useRouter();
+  const { user } = useAuth();
+  const { add, has } = useCart();
 
-  const [success, setSuccess] = useState<{
-    id: string;
-    code: string;
-    data: ReservationInput;
-  } | null>(null);
-  const [booked, setBooked] = useState<BookedSlot[]>([]);
+  const [config, setConfig] = useState<BookingConfig | null>(null);
+  const [rates, setRates] = useState<StudioRate[]>([]);
+  const [service, setService] = useState<string>('');
+  const [date, setDate] = useState('');
+  const [duration, setDuration] = useState<number | null>(null);
+  const [start, setStart] = useState('');
+  const [slots, setSlots] = useState<AvailabilitySlot[] | null>(null);
+  const [closed, setClosed] = useState(false);
   const [loadingSlots, setLoadingSlots] = useState(false);
-  const [serverError, setServerError] = useState<ServerError>(null);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [artist, setArtist] = useState('');
+  const [project, setProject] = useState('');
+  const [refs, setRefs] = useState('');
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    control,
-    formState: { errors, isSubmitting, isValid },
-  } = useForm<ReservationInput>({
-    resolver: zodResolver(reservationSchema),
-    mode: 'onChange',
-    defaultValues: {
-      customerName: '',
-      customerEmail: '',
-      customerPhone: '',
-      artistName: '',
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      serviceType: undefined as any,
-      sessionDate: '',
-      startTime: '',
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      durationHours: undefined as any,
-      projectDescription: '',
-      referenceLinks: '',
-      locale,
-    },
-  });
+  useEffect(() => {
+    Promise.all([fetchBookingConfig(), fetchStudioRates()])
+      .then(([cfg, r]) => {
+        setConfig(cfg);
+        setRates(r);
+      })
+      .catch(() => setConfig(null));
+  }, []);
 
-  const serviceType = watch('serviceType');
-  const sessionDate = watch('sessionDate');
-  const durationHours = watch('durationHours');
-  const startTime = watch('startTime');
+  useEffect(() => {
+    if (user && !name) setName([user.first_name, user.last_name].filter(Boolean).join(' '));
+  }, [user, name]);
 
-  const selectedService: ServiceDef | undefined = useMemo(
-    () => SERVICES.find((s) => s.id === serviceType),
-    [serviceType]
+  const serviceTypes = useMemo(
+    () => (config?.service_types ?? []).filter((s) => rates.some((r) => r.service_type === s.id)),
+    [config, rates]
   );
+  const durations = service && config ? (config.durations[service] ?? []) : [];
+  const rate = rates.find((r) => r.service_type === service);
 
-  // Reset dependent fields when the service changes.
+  // Pick a default duration when the service changes.
   useEffect(() => {
-    if (!selectedService) return;
-    if (durationHours && !selectedService.durations.includes(durationHours)) {
-      setValue('durationHours', selectedService.minDuration, {
-        shouldValidate: true,
-      });
-    } else if (!durationHours) {
-      setValue('durationHours', selectedService.minDuration, {
-        shouldValidate: true,
-      });
+    if (durations.length && (duration === null || !durations.includes(duration))) {
+      setDuration(durations[0]);
     }
-  }, [selectedService, durationHours, setValue]);
+  }, [service, durations, duration]);
 
-  // Fetch booked slots whenever the date changes.
+  // Fetch availability for the chosen day + service.
   useEffect(() => {
-    if (!sessionDate) {
-      setBooked([]);
+    if (!date || !service) {
+      setSlots(null);
       return;
     }
     let cancelled = false;
     setLoadingSlots(true);
-    fetch(`/api/reservations?date=${sessionDate}`)
-      .then((r) => (r.ok ? r.json() : []))
-      .then((data: BookedSlot[]) => {
-        if (!cancelled) setBooked(Array.isArray(data) ? data : []);
+    fetchAvailability(date, service)
+      .then((a) => {
+        if (cancelled) return;
+        setSlots(a.slots);
+        setClosed(a.closed);
       })
-      .catch(() => {
-        if (!cancelled) setBooked([]);
-      })
-      .finally(() => {
-        if (!cancelled) setLoadingSlots(false);
-      });
+      .catch(() => !cancelled && setSlots([]))
+      .finally(() => !cancelled && setLoadingSlots(false));
     return () => {
       cancelled = true;
     };
-  }, [sessionDate]);
+  }, [date, service]);
 
-  const unavailable = useMemo(
-    () =>
-      durationHours
-        ? unavailableStartTimes(booked, durationHours)
-        : new Set<string>(),
-    [booked, durationHours]
-  );
-
-  // Clear startTime if it's no longer valid.
+  // Drop the start time when it stops fitting the chosen duration.
+  const startOptions = useMemo(() => {
+    if (!config) return [];
+    const hours: string[] = [];
+    for (let h = config.open_hour; h < config.close_hour; h++) hours.push(`${String(h).padStart(2, '0')}:00`);
+    return hours;
+  }, [config]);
+  const fits = (time: string) =>
+    !!slots?.some((s) => s.start === time && duration !== null && s.durations.includes(duration));
   useEffect(() => {
-    if (startTime && unavailable.has(startTime)) {
-      setValue('startTime', '', { shouldValidate: true });
-    }
-  }, [unavailable, startTime, setValue]);
+    if (start && slots && !fits(start)) setStart('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slots, duration]);
 
-  async function onSubmit(values: ReservationInput) {
-    setServerError(null);
-    try {
-      const res = await fetch('/api/reservations', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(values),
-      });
+  const price = rate && duration ? Number(rate.hourly_price_usd) * duration : null;
+  const line = service && date && duration && start
+    ? {
+        service_type: service as never,
+        session_date: date,
+        start_time: `${start}:00`,
+        duration_hours: duration as never,
+        customer_name: name.trim(),
+        customer_phone: phone.trim(),
+        artist_name: artist.trim(),
+        project_description: project.trim(),
+        reference_links: refs.trim(),
+      }
+    : null;
+  const inCart = line ? has('booking', 0, bookingKey(line)) : false;
 
-      if (res.status === 409) {
-        setServerError({ code: 'slot_taken' });
-        return;
-      }
-      if (!res.ok) {
-        setServerError({ code: 'server' });
-        return;
-      }
-      const json = (await res.json()) as { id: string; confirmationCode: string };
-      setSuccess({ id: json.id, code: json.confirmationCode, data: values });
-    } catch {
-      setServerError({ code: 'server' });
-    }
+  function submit(e: React.FormEvent) {
+    e.preventDefault();
+    const next: Record<string, string> = {};
+    if (!service) next.service = t('errors.service');
+    if (!date) next.date = t('errors.date');
+    if (!duration) next.duration = t('errors.duration');
+    if (!start) next.time = t('errors.time');
+    if (name.trim().length < 2) next.name = t('errors.name');
+    if (phone.trim().length < 7) next.phone = t('errors.phone');
+    setErrors(next);
+    if (Object.keys(next).length || !line || price === null) return;
+    const serviceLabel = serviceTypes.find((s) => s.id === service)?.label ?? service;
+    add({
+      type: 'booking',
+      id: 0,
+      title: `${t('cartTitle')} — ${serviceLabel}`,
+      subtitle: `${format.dateTime(new Date(`${date}T00:00:00`), { dateStyle: 'medium' })} · ${start} · ${duration} ${duration === 1 ? t('schedule.hour') : t('schedule.hours')}`,
+      price: price.toFixed(2),
+      href: `/${locale}/booking`,
+      booking: line,
+    });
+    router.push(`/${locale}/cart`);
   }
 
-  if (success) {
-    return (
-      <BookingSuccess
-        locale={locale}
-        id={success.id}
-        code={success.code}
-        data={success.data}
-      />
-    );
-  }
-
-  const allDurations: Duration[] = [1, 2, 4, 8];
+  if (config === null) return <p className="meta animate-pulse">{t('loadingConfig')}</p>;
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-[clamp(64px,10vh,128px)]"
-      noValidate
-    >
-      {/* ─── 01. SERVICE ─────────────────────────────────────────── */}
+    <form onSubmit={submit} className="flex flex-col gap-[clamp(64px,10vh,128px)]" noValidate>
+      {/* 01 SERVICE */}
       <fieldset className="flex flex-col gap-8">
-        <legend className="flex w-full items-center gap-5">
-          <span className="meta !text-accent">01</span>
-          <span className="h-px w-12 bg-rule" aria-hidden />
-          <span className="meta">{t('steps.service')}</span>
-        </legend>
-
-        <Controller
-          control={control}
-          name="serviceType"
-          render={({ field }) => (
-            <ul className="border-t hairline">
-              {SERVICES.map((s) => {
-                const active = field.value === s.id;
-                return (
-                  <li key={s.id} className="border-b hairline">
-                    <button
-                      type="button"
-                      onClick={() => field.onChange(s.id)}
-                      className={cn(
-                        'group block w-full text-left transition-all duration-300 hover:bg-[rgba(255,255,255,0.015)] hover:pl-4',
-                        active && 'pl-4 bg-[rgba(201,169,110,0.04)]'
-                      )}
-                      aria-pressed={active}
-                    >
-                      <div className="grid grid-cols-[48px_1fr] items-center gap-6 py-6 md:grid-cols-[64px_1fr_1fr] md:gap-10 md:py-8">
-                        <span
-                          className={cn(
-                            'meta transition-colors',
-                            active && '!text-accent'
-                          )}
-                        >
-                          {s.no}
-                        </span>
-                        <h3
-                          className={cn(
-                            'font-serif text-2xl font-light leading-tight transition-colors md:text-3xl',
-                            active ? 'text-accent' : 'text-fg'
-                          )}
-                        >
-                          {s.name[locale]}
-                        </h3>
-                        <p className="hidden max-w-md text-[13px] leading-[1.6] text-fg/[0.55] md:block">
-                          {s.description[locale]}
-                        </p>
-                      </div>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        />
-        {errors.serviceType && (
-          <ErrorLine>{tErr(errors.serviceType.message?.split('.').pop() || 'service')}</ErrorLine>
-        )}
+        <Legend no="01" label={t('steps.service')} />
+        <ul className="border-t hairline">
+          {serviceTypes.map((s, i) => {
+            const active = service === s.id;
+            const r = rates.find((x) => x.service_type === s.id);
+            return (
+              <li key={s.id} className="border-b hairline">
+                <button
+                  type="button"
+                  onClick={() => setService(s.id)}
+                  aria-pressed={active}
+                  className={cn(
+                    'group block w-full text-left transition-all duration-300 hover:bg-[rgba(255,255,255,0.015)] hover:pl-4',
+                    active && 'bg-[rgba(201,169,110,0.04)] pl-4'
+                  )}
+                >
+                  <div className="grid grid-cols-[48px_1fr_auto] items-center gap-6 py-6 md:grid-cols-[64px_1fr_1fr_auto] md:gap-10 md:py-8">
+                    <span className={cn('meta transition-colors', active && '!text-accent')}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className={cn('font-serif text-2xl font-light leading-tight transition-colors md:text-3xl', active ? 'text-accent' : 'text-fg')}>
+                      {t.has(`serviceInfo.${s.id}` as never) ? t(`serviceInfo.${s.id}.name` as never) : s.label}
+                    </h3>
+                    <p className="hidden max-w-md text-[13px] leading-[1.6] text-fg/[0.55] md:block">
+                      {t.has(`serviceInfo.${s.id}` as never) ? t(`serviceInfo.${s.id}.desc` as never) : ''}
+                    </p>
+                    <span className="font-mono text-[13px] text-fg-dim">
+                      {r ? `${formatUsd(r.hourly_price_usd)}/${t('schedule.hour')}` : ''}
+                    </span>
+                  </div>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        {serviceTypes.length === 0 && <FormNotice>{t('noRates')}</FormNotice>}
+        {errors.service && <ErrorLine>{errors.service}</ErrorLine>}
       </fieldset>
 
-      {/* ─── 02. SCHEDULE ────────────────────────────────────────── */}
-      <fieldset
-        className={cn(
-          'flex flex-col gap-10 transition-opacity duration-500',
-          !selectedService && 'pointer-events-none opacity-40'
-        )}
-      >
-        <legend className="flex w-full items-center gap-5">
-          <span className="meta !text-accent">02</span>
-          <span className="h-px w-12 bg-rule" aria-hidden />
-          <span className="meta">{t('steps.schedule')}</span>
-        </legend>
-
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          {/* Date */}
+      {/* 02 SCHEDULE */}
+      <fieldset className={cn('flex flex-col gap-10 transition-opacity duration-500', !service && 'pointer-events-none opacity-40')}>
+        <Legend no="02" label={t('steps.schedule')} />
+        <div className="grid gap-12 md:grid-cols-2">
           <div className="flex flex-col gap-4">
-            <Label htmlFor="sessionDate">{t('schedule.dateLabel')}</Label>
-            <Controller
-              control={control}
-              name="sessionDate"
-              render={({ field }) => (
-                <DateCalendar
-                  value={field.value}
-                  onChange={field.onChange}
-                  locale={locale}
-                />
-              )}
+            <Label>{t('schedule.dateLabel')}</Label>
+            <DateCalendar
+              value={date}
+              onChange={setDate}
+              disabledWeekdays={config.closed_weekdays}
+              maxDaysAhead={config.max_advance_days}
             />
-            {errors.sessionDate && (
-              <ErrorLine>{tErr('date')}</ErrorLine>
-            )}
+            {errors.date && <ErrorLine>{errors.date}</ErrorLine>}
           </div>
-
-          {/* Duration + Time */}
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-4">
               <Label>{t('schedule.durationLabel')}</Label>
-              <Controller
-                control={control}
-                name="durationHours"
-                render={({ field }) => (
-                  <div className="flex flex-wrap gap-3">
-                    {allDurations.map((d) => {
-                      const enabled =
-                        !selectedService || selectedService.durations.includes(d);
-                      const active = field.value === d;
-                      return (
-                        <button
-                          key={d}
-                          type="button"
-                          disabled={!enabled}
-                          onClick={() => field.onChange(d)}
-                          className={cn(
-                            'h-11 min-w-[64px] border font-mono text-[11px] uppercase tracking-meta transition-all duration-300',
-                            active
-                              ? 'border-accent text-accent'
-                              : 'border-rule text-fg-dim hover:border-fg-dim hover:text-fg',
-                            !enabled && 'opacity-25'
-                          )}
-                          aria-pressed={active}
-                        >
-                          {d}
-                          <span className="ml-1 normal-case tracking-[0.12em]">
-                            {d === 1 ? t('schedule.hour') : t('schedule.hours')}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              />
+              <div className="flex flex-wrap gap-2">
+                {durations.map((d) => (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => setDuration(d)}
+                    aria-pressed={duration === d}
+                    className={cn(
+                      'h-11 border px-5 font-mono text-[12px] tracking-[0.18em] transition-all duration-300',
+                      duration === d ? 'border-accent text-accent' : 'border-rule text-fg-dim hover:border-fg-dim hover:text-fg'
+                    )}
+                  >
+                    {d}
+                    <span className="ml-1 normal-case tracking-[0.12em]">{d === 1 ? t('schedule.hour') : t('schedule.hours')}</span>
+                  </button>
+                ))}
+              </div>
+              {errors.duration && <ErrorLine>{errors.duration}</ErrorLine>}
             </div>
-
             <div className="flex flex-col gap-4">
               <Label>{t('schedule.timeLabel')}</Label>
-              <Controller
-                control={control}
-                name="startTime"
-                render={({ field }) => (
-                  <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-                    {TIME_SLOTS.map((slot) => {
-                      const taken = unavailable.has(slot);
-                      const active = field.value === slot;
-                      return (
-                        <button
-                          key={slot}
-                          type="button"
-                          disabled={taken || !sessionDate || !durationHours}
-                          onClick={() => field.onChange(slot)}
-                          className={cn(
-                            'relative h-11 border font-mono text-[12px] tracking-[0.18em] transition-all duration-300',
-                            active
-                              ? 'border-accent text-accent'
-                              : 'border-rule text-fg-dim hover:border-fg-dim hover:text-fg',
-                            taken &&
-                              'cursor-not-allowed border-rule/40 text-fg-dim/30 line-through hover:border-rule/40 hover:text-fg-dim/30'
-                          )}
-                          aria-pressed={active}
-                        >
-                          {slot}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              />
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                {startOptions.map((time) => {
+                  const available = fits(time);
+                  const active = start === time;
+                  return (
+                    <button
+                      key={time}
+                      type="button"
+                      disabled={!available || !date}
+                      onClick={() => setStart(time)}
+                      aria-pressed={active}
+                      className={cn(
+                        'relative h-11 border font-mono text-[12px] tracking-[0.18em] transition-all duration-300',
+                        active ? 'border-accent text-accent' : 'border-rule text-fg-dim hover:border-fg-dim hover:text-fg',
+                        !available && 'cursor-not-allowed border-rule/40 text-fg-dim/30 line-through hover:border-rule/40 hover:text-fg-dim/30'
+                      )}
+                    >
+                      {time}
+                    </button>
+                  );
+                })}
+              </div>
               <p className="meta normal-case tracking-[0.12em] text-fg-dim/70">
                 {loadingSlots
                   ? t('schedule.loading')
-                  : t('schedule.timeHint')}
+                  : closed
+                    ? t('schedule.closedDay')
+                    : slots && slots.length === 0 && date
+                      ? t('schedule.noSlots')
+                      : t('schedule.timeHint')}
               </p>
-              {errors.startTime && (
-                <ErrorLine>{tErr('time')}</ErrorLine>
-              )}
+              {errors.time && <ErrorLine>{errors.time}</ErrorLine>}
             </div>
           </div>
         </div>
       </fieldset>
 
-      {/* ─── 03. DETAILS ─────────────────────────────────────────── */}
-      <fieldset
-        className={cn(
-          'flex flex-col gap-10 transition-opacity duration-500',
-          (!sessionDate || !startTime) && 'pointer-events-none opacity-40'
-        )}
-      >
-        <legend className="flex w-full items-center gap-5">
-          <span className="meta !text-accent">03</span>
-          <span className="h-px w-12 bg-rule" aria-hidden />
-          <span className="meta">{t('steps.details')}</span>
-        </legend>
-
-        <div className="grid gap-8 md:grid-cols-2 md:gap-x-12">
-          <Field
-            id="customerName"
-            label={t('details.name')}
-            placeholder={t('details.namePh')}
-            register={register('customerName')}
-            error={errors.customerName?.message}
-            tErr={tErr}
-          />
-          <Field
-            id="customerEmail"
-            label={t('details.email')}
-            placeholder={t('details.emailPh')}
-            type="email"
-            register={register('customerEmail')}
-            error={errors.customerEmail?.message}
-            tErr={tErr}
-          />
-          <Field
-            id="customerPhone"
-            label={t('details.phone')}
-            placeholder={t('details.phonePh')}
-            type="tel"
-            register={register('customerPhone')}
-            error={errors.customerPhone?.message}
-            tErr={tErr}
-          />
-          <Field
-            id="artistName"
-            label={`${t('details.artist')}  ${t('details.artistOptional')}`}
-            placeholder={t('details.artistPh')}
-            register={register('artistName')}
-            error={errors.artistName?.message}
-            tErr={tErr}
-          />
-
-          <div className="flex flex-col gap-3 md:col-span-2">
-            <Label htmlFor="projectDescription">
-              {t('details.project')}{' '}
-              <span className="normal-case tracking-[0.12em] text-fg-dim/70">
-                {t('details.projectOptional')}
-              </span>
-            </Label>
-            <Textarea
-              id="projectDescription"
-              placeholder={t('details.projectPh')}
-              rows={3}
-              {...register('projectDescription')}
-            />
+      {/* 03 DETAILS */}
+      <fieldset className={cn('flex flex-col gap-10 transition-opacity duration-500', !start && 'pointer-events-none opacity-40')}>
+        <Legend no="03" label={t('steps.details')} />
+        <div className="grid gap-10 md:grid-cols-2">
+          <Field id="name" label={t('details.name')} placeholder={t('details.namePh')} value={name} onChange={setName} error={errors.name} autoComplete="name" />
+          <Field id="phone" label={t('details.phone')} placeholder={t('details.phonePh')} value={phone} onChange={setPhone} error={errors.phone} autoComplete="tel" type="tel" />
+          <Field id="artist" label={`${t('details.artist')} ${t('details.artistOptional')}`} placeholder={t('details.artistPh')} value={artist} onChange={setArtist} />
+          <div className="md:col-span-2 flex flex-col gap-3">
+            <Label htmlFor="project">{t('details.project')} <span className="text-fg-dim">{t('details.projectOptional')}</span></Label>
+            <Textarea id="project" rows={3} placeholder={t('details.projectPh')} value={project} onChange={(e) => setProject(e.target.value)} />
           </div>
-
-          <div className="flex flex-col gap-3 md:col-span-2">
-            <Label htmlFor="referenceLinks">
-              {t('details.references')}{' '}
-              <span className="normal-case tracking-[0.12em] text-fg-dim/70">
-                {t('details.referencesOptional')}
-              </span>
-            </Label>
-            <Textarea
-              id="referenceLinks"
-              placeholder={t('details.referencesPh')}
-              rows={2}
-              {...register('referenceLinks')}
-            />
+          <div className="md:col-span-2 flex flex-col gap-3">
+            <Label htmlFor="refs">{t('details.references')} <span className="text-fg-dim">{t('details.referencesOptional')}</span></Label>
+            <Textarea id="refs" rows={2} placeholder={t('details.referencesPh')} value={refs} onChange={(e) => setRefs(e.target.value)} />
           </div>
         </div>
       </fieldset>
 
-      {/* ─── 04. REVIEW + SUBMIT ─────────────────────────────────── */}
-      <fieldset className="flex flex-col gap-10">
-        <legend className="flex w-full items-center gap-5">
-          <span className="meta !text-accent">04</span>
-          <span className="h-px w-12 bg-rule" aria-hidden />
-          <span className="meta">{t('steps.review')}</span>
-        </legend>
-
-        <ReviewBlock
-          locale={locale}
-          values={watch()}
-          service={selectedService}
-        />
-
-        {serverError && (
-          <p className="border border-accent/50 px-4 py-3 font-mono text-[12px] uppercase tracking-meta text-accent">
-            {serverError.code === 'slot_taken'
-              ? tErr('slotTaken')
-              : tErr('server')}
-          </p>
+      {/* 04 REVIEW */}
+      <fieldset className={cn('flex flex-col gap-8 transition-opacity duration-500', !start && 'pointer-events-none opacity-40')}>
+        <Legend no="04" label={t('steps.review')} />
+        <dl className="grid gap-x-10 gap-y-4 border-y border-rule py-6 sm:grid-cols-2">
+          <Row k={t('review.service')} v={serviceTypes.find((s) => s.id === service)?.label ?? '—'} />
+          <Row k={t('review.date')} v={date ? format.dateTime(new Date(`${date}T00:00:00`), { dateStyle: 'long' }) : '—'} />
+          <Row k={t('review.time')} v={start || '—'} />
+          <Row k={t('review.duration')} v={duration ? `${duration} ${duration === 1 ? t('schedule.hour') : t('schedule.hours')}` : '—'} />
+          <Row k={t('review.price')} v={price !== null ? formatUsd(price) : '—'} />
+        </dl>
+        <p className="text-[12px] leading-[1.6] text-fg-dim">{t('holdNote', { minutes: config.hold_minutes })}</p>
+        {inCart ? (
+          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+            <Link href={`/${locale}/cart`}>{t('inCart')}</Link>
+          </Button>
+        ) : (
+          <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={!line}>
+            {t('addToCart')}
+          </Button>
         )}
-
-        <div className="flex flex-col items-start gap-5 border-t hairline pt-10 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-md text-[12px] leading-[1.7] text-fg-dim">
-            {t('review.consent')}
-          </p>
-          <div className="flex items-center gap-4">
-            <Button asChild variant="ghost" size="lg">
-              <Link href={`/${locale}`}>{t('back')}</Link>
-            </Button>
-            <Button
-              type="submit"
-              size="lg"
-              disabled={isSubmitting || !isValid}
-            >
-              {isSubmitting ? t('submitting') : t('submit')}
-            </Button>
-          </div>
-        </div>
       </fieldset>
     </form>
   );
 }
 
-/* ───────────────────────── helpers ───────────────────────── */
+function Legend({ no, label }: { no: string; label: string }) {
+  return (
+    <legend className="flex w-full items-center gap-5">
+      <span className="meta !text-accent">{no}</span>
+      <span className="h-px w-12 bg-rule" aria-hidden />
+      <span className="meta">{label}</span>
+    </legend>
+  );
+}
+
+function Row({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-6">
+      <dt className="meta">{k}</dt>
+      <dd className="font-mono text-[14px] text-fg">{v}</dd>
+    </div>
+  );
+}
 
 function ErrorLine({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-mono text-[11px] uppercase tracking-meta text-accent">
-      {children}
-    </p>
-  );
+  return <p className="font-mono text-[11px] uppercase tracking-meta text-accent">{children}</p>;
 }
 
 function Field({
   id,
   label,
-  placeholder,
-  type = 'text',
-  register,
+  value,
+  onChange,
   error,
-  tErr,
+  ...rest
 }: {
   id: string;
   label: string;
-  placeholder?: string;
-  type?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register: any;
+  value: string;
+  onChange: (v: string) => void;
   error?: string;
-  tErr: (key: string) => string;
-}) {
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>) {
   return (
     <div className="flex flex-col gap-3">
       <Label htmlFor={id}>{label}</Label>
-      <Input id={id} type={type} placeholder={placeholder} {...register} />
-      {error && <ErrorLine>{tErr(error.split('.').pop() || 'name')}</ErrorLine>}
+      <Input id={id} value={value} onChange={(e) => onChange(e.target.value)} {...rest} />
+      {error && <ErrorLine>{error}</ErrorLine>}
     </div>
   );
-}
-
-function ReviewBlock({
-  locale,
-  values,
-  service,
-}: {
-  locale: Locale;
-  values: Partial<ReservationInput>;
-  service: ServiceDef | undefined;
-}) {
-  const t = useTranslations('booking');
-  const rows: Array<[string, string]> = [];
-  if (service) rows.push([t('review.service'), service.name[locale]]);
-  if (values.sessionDate)
-    rows.push([t('review.date'), formatDateDisplay(values.sessionDate, locale)]);
-  if (values.startTime) rows.push([t('review.time'), values.startTime]);
-  if (values.durationHours)
-    rows.push([
-      t('review.duration'),
-      `${values.durationHours} ${
-        values.durationHours === 1 ? t('schedule.hour') : t('schedule.hours')
-      }`,
-    ]);
-  if (values.customerName) rows.push([t('review.name'), values.customerName]);
-  if (values.customerEmail) rows.push([t('review.email'), values.customerEmail]);
-  if (values.customerPhone) rows.push([t('review.phone'), values.customerPhone]);
-
-  if (rows.length === 0) {
-    return (
-      <div className="border hairline bg-bg-soft/40 px-6 py-10 text-center">
-        <span className="meta">{t('review.title')}</span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="border hairline bg-bg-soft/40 px-6 py-8 md:px-10 md:py-10">
-      <span className="meta">{t('review.title')}</span>
-      <dl className="mt-6 grid gap-x-10 gap-y-4 md:grid-cols-2">
-        {rows.map(([k, v]) => (
-          <div key={k} className="flex items-baseline justify-between gap-6 border-b hairline pb-3">
-            <dt className="meta">{k}</dt>
-            <dd className="font-serif text-[15px] text-fg text-right">{v}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
-  );
-}
-
-function formatDateDisplay(iso: string, locale: Locale): string {
-  const [y, m, d] = iso.split('-').map(Number);
-  if (locale === 'tr') {
-    return `${String(d).padStart(2, '0')}.${String(m).padStart(2, '0')}.${y}`;
-  }
-  const months = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-  ];
-  return `${months[m - 1]} ${d}, ${y}`;
 }

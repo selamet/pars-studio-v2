@@ -42,6 +42,9 @@ export default function AccountPanel({ locale }: { locale: string }) {
           <Button asChild size="lg" variant="outline" className="w-full">
             <Link href={`/${locale}/account/services`}>{t('services')}</Link>
           </Button>
+          <Button asChild size="lg" variant="outline" className="w-full">
+            <Link href={`/${locale}/account/bookings`}>{t('bookings')}</Link>
+          </Button>
         </div>
       </section>
 

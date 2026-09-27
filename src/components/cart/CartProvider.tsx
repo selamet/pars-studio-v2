@@ -8,11 +8,13 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { bookingKey, type BookingLine } from '@/lib/api/bookings';
 
 export type CartLine = {
-  /** `${type}:${id}` */
+  /** `${type}:${id}`, or `booking:<date>:<time>` for studio sessions */
   key: string;
-  type: 'beat_license' | 'service';
+  type: 'beat_license' | 'service' | 'booking';
+  /** 0 for booking lines (they carry `booking` instead). */
   id: number;
   title: string;
   subtitle?: string;
@@ -21,8 +23,15 @@ export type CartLine = {
   coverUrl?: string | null;
   /** For beat licenses: the beat slug, so one license per beat is enforced. */
   beatSlug?: string;
+  /** For studio sessions: everything checkout needs to hold the slot. */
+  booking?: BookingLine;
   unavailable?: boolean;
 };
+
+export function lineKey(line: Pick<CartLine, 'type' | 'id' | 'booking'>): string {
+  if (line.type === 'booking' && line.booking) return bookingKey(line.booking);
+  return `${line.type}:${line.id}`;
+}
 
 type CartContextValue = {
   lines: CartLine[];
@@ -31,9 +40,9 @@ type CartContextValue = {
   hydrated: boolean;
   add: (line: Omit<CartLine, 'key'>) => void;
   remove: (key: string) => void;
-  markUnavailable: (type: string, id: number) => void;
+  markUnavailable: (key: string) => void;
   clear: () => void;
-  has: (type: CartLine['type'], id: number) => boolean;
+  has: (type: CartLine['type'], id: number, key?: string) => boolean;
 };
 
 const STORAGE_KEY = 'pars.cart.v1';
@@ -73,7 +82,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [lines, hydrated]);
 
   const add = useCallback((line: Omit<CartLine, 'key'>) => {
-    const key = `${line.type}:${line.id}`;
+    const key = lineKey(line);
     setLines((current) => {
       const kept = current.filter(
         (l) =>
@@ -89,15 +98,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setLines((current) => current.filter((l) => l.key !== key));
   }, []);
 
-  const markUnavailable = useCallback((type: string, id: number) => {
-    setLines((current) =>
-      current.map((l) => (l.type === type && l.id === id ? { ...l, unavailable: true } : l))
-    );
+  const markUnavailable = useCallback((key: string) => {
+    setLines((current) => current.map((l) => (l.key === key ? { ...l, unavailable: true } : l)));
   }, []);
 
   const clear = useCallback(() => setLines([]), []);
   const has = useCallback(
-    (type: CartLine['type'], id: number) => lines.some((l) => l.type === type && l.id === id),
+    (type: CartLine['type'], id: number, key?: string) =>
+      lines.some((l) => (key ? l.key === key : l.type === type && l.id === id)),
     [lines]
   );
 
