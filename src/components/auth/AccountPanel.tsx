@@ -160,7 +160,7 @@ function ProfileForm({
       </div>
       {error && <FormError>{error}</FormError>}
       {saved && <FormNotice>{t('saved')}</FormNotice>}
-      <Button type="submit" size="lg" disabled={saving} className="w-full sm:w-auto">
+      <Button type="submit" size="lg" disabled={saving} className="w-full sm:w-auto sm:self-start">
         {saving ? t('saving') : t('save')}
       </Button>
     </form>
@@ -223,7 +223,7 @@ function PasswordForm({ t, tErr }: { t: T; tErr: T }) {
       />
       {error && <FormError>{error}</FormError>}
       {changed && <FormNotice>{t('passwordChanged')}</FormNotice>}
-      <Button type="submit" size="lg" disabled={saving} className="w-full sm:w-auto">
+      <Button type="submit" size="lg" disabled={saving} className="w-full sm:w-auto sm:self-start">
         {saving ? t('saving') : t('changePassword')}
       </Button>
     </form>
