@@ -49,36 +49,64 @@
     "p3": "Gear matters, but the ear and the eye matter far more. Here, equipment is a tool, never the hero; whether it's a mix, a color grade or an FX pass, the real work is making the right call at the right moment. In the end only one thing remains: the silence that fills the room when the piece plays, and that instant when everyone quietly agrees, “that's it.” That is exactly what we're after."
   },
   "services": {
-    "section": "002",
+    "eyebrow": "015",
     "label": "SERVICES",
-    "heading": "Services",
-    "items": [
-      {
-        "no": "01",
-        "name": "Recording",
-        "desc": "Tracking through a clean, accurate signal chain — analog to digital. Vocals, instruments and live room."
-      },
-      {
-        "no": "02",
-        "name": "Mixing",
-        "desc": "Detailed mixing that gives the track depth, space and balance. Stems and revisions included."
-      },
-      {
-        "no": "03",
-        "name": "Mastering",
-        "desc": "Consistent, transparent mastering ready for every platform. Optimised for digital and physical."
-      },
-      {
-        "no": "04",
-        "name": "Beat Production",
-        "desc": "Production built from scratch around the artist's world."
-      },
-      {
-        "no": "05",
-        "name": "Vocal Production",
-        "desc": "Performance direction, comping, tuning and aesthetic decisions. Putting the voice at the centre."
+    "heading": "Your jobs.",
+    "intro": "Mastering and mixing orders: upload your files, follow progress, download the results.",
+    "detailHeading": "Job details.",
+    "loading": "Loading…",
+    "empty": "No mastering or mixing orders yet.",
+    "browse": "See services",
+    "notFound": "Job not found.",
+    "backToList": "All jobs",
+    "due": "due",
+    "awaitingHint": "Upload your session files below. The studio starts as soon as they arrive.",
+    "deliveredHint": "Your files are ready. Accept the delivery, or request a revision ({count, plural, =0 {none left} one {# left} other {# left}}).",
+    "deliverables": "DELIVERABLES",
+    "download": "Download",
+    "accept": "Accept delivery",
+    "requestRevision": "Request a revision",
+    "revisionMessage": "What should change?",
+    "sendRevision": "Send revision request",
+    "yourFiles": "YOUR FILES",
+    "brief": "BRIEF",
+    "briefLocked": "The brief is locked because the studio has started working.",
+    "notes": "Notes for the engineer",
+    "links": "Reference links",
+    "saveBrief": "Save brief",
+    "timeline": "TIMELINE",
+    "noEvents": "Nothing yet.",
+    "byStudio": "studio",
+    "byYou": "you",
+    "status": {
+      "awaiting_files": "Awaiting files",
+      "received": "Files received",
+      "in_progress": "In progress",
+      "delivered": "Delivered",
+      "revision_requested": "Revision requested",
+      "completed": "Completed"
+    },
+    "upload": {
+      "drop": "Drop files here or click to choose",
+      "full": "File limit reached for this round",
+      "hint": "{count, plural, =0 {no more files can be added} one {# more file} other {# more files}} · WAV, AIFF, FLAC, MP3 or ZIP",
+      "done": "uploaded",
+      "errors": {
+        "bad_extension": "File type not allowed",
+        "too_large": "File is too large",
+        "too_many_files": "File limit reached",
+        "uploads_closed": "Uploads are closed for this job",
+        "not_uploaded": "Upload did not complete",
+        "generic": "Upload failed"
       }
-    ]
+    },
+    "errors": {
+      "no_revisions_left": "All included revisions have been used.",
+      "message_required": "Tell the studio what to change.",
+      "invalid_transition": "This action is not available right now.",
+      "brief_locked": "The brief can no longer be edited.",
+      "generic": "Something went wrong. Please try again."
+    }
   },
   "rooms": {
     "section": "009",
@@ -555,7 +583,8 @@
       "changePassword": "Change password",
       "passwordChanged": "Password changed.",
       "logout": "Sign out",
-      "orders": "My orders & downloads"
+      "orders": "My orders & downloads",
+      "services": "Mastering & mixing jobs"
     },
     "errors": {
       "generic": "Something went wrong. Please try again.",
@@ -682,7 +711,7 @@
     "backToOrders": "All orders",
     "total": "TOTAL",
     "itemCount": "{count, plural, one {# item} other {# items}}",
-    "serviceNext": "UPLOAD YOUR FILES — COMING WITH THE NEXT RELEASE",
+    "serviceNext": "Open the job to upload your files →",
     "status": {
       "pending": "Pending payment",
       "paid": "Paid",

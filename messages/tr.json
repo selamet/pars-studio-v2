@@ -49,36 +49,64 @@
     "p3": "Donanım önemlidir, ama kulak ve göz çok daha fazlası. Burada ekipman bir araçtır, asla kahraman değil; ister bir miks, ister bir renk düzenlemesi ya da FX işlemi olsun, asıl iş doğru kararı doğru anda verebilmektir. Sonuçta geriye tek bir şey kalır: eser oynadığında odaya çöken o sessizlik ve herkesin aynı anda “işte bu” dediği o an. Peşinde olduğumuz şey tam olarak budur."
   },
   "services": {
-    "section": "002",
+    "eyebrow": "015",
     "label": "HİZMETLER",
-    "heading": "Hizmetler",
-    "items": [
-      {
-        "no": "01",
-        "name": "Kayıt",
-        "desc": "Analog hattan dijitale, gürültüsüz ve doğru sinyal zinciriyle tracking. Vokal, enstrüman ve canlı oda kaydı."
-      },
-      {
-        "no": "02",
-        "name": "Miks",
-        "desc": "Parçaya derinlik, alan ve denge kazandıran detaylı miks. Stem teslimat ve revizyon dahil."
-      },
-      {
-        "no": "03",
-        "name": "Mastering",
-        "desc": "Yayın platformlarına hazır, tutarlı ve şeffaf mastering. Dijital ve fiziksel formatlar için optimizasyon."
-      },
-      {
-        "no": "04",
-        "name": "Beat Prodüksiyon",
-        "desc": "Sanatçının dünyasına özel, sıfırdan kurgulanan prodüksiyon."
-      },
-      {
-        "no": "05",
-        "name": "Vokal Prodüksiyon",
-        "desc": "Performans yönetimi, comp, tuning ve estetik karar. Vokali parçanın merkezine oturtmak."
+    "heading": "İşlerin.",
+    "intro": "Mastering ve miks siparişleri: dosyalarını yükle, süreci izle, sonuçları indir.",
+    "detailHeading": "İş detayı.",
+    "loading": "Yükleniyor…",
+    "empty": "Henüz mastering ya da miks siparişi yok.",
+    "browse": "Hizmetlere bak",
+    "notFound": "İş bulunamadı.",
+    "backToList": "Tüm işler",
+    "due": "teslim",
+    "awaitingHint": "Seans dosyalarını aşağıdan yükle. Dosyalar gelir gelmez stüdyo başlar.",
+    "deliveredHint": "Dosyaların hazır. Teslimi kabul et ya da revizyon iste ({count, plural, =0 {hak kalmadı} other {# hak kaldı}}).",
+    "deliverables": "TESLİMATLAR",
+    "download": "İndir",
+    "accept": "Teslimi kabul et",
+    "requestRevision": "Revizyon iste",
+    "revisionMessage": "Ne değişmeli?",
+    "sendRevision": "Revizyon isteğini gönder",
+    "yourFiles": "DOSYALARIN",
+    "brief": "BRİEF",
+    "briefLocked": "Stüdyo çalışmaya başladığı için brief kilitlendi.",
+    "notes": "Mühendise notlar",
+    "links": "Referans bağlantıları",
+    "saveBrief": "Brief’i kaydet",
+    "timeline": "ZAMAN ÇİZELGESİ",
+    "noEvents": "Henüz bir şey yok.",
+    "byStudio": "stüdyo",
+    "byYou": "sen",
+    "status": {
+      "awaiting_files": "Dosya bekleniyor",
+      "received": "Dosyalar alındı",
+      "in_progress": "Çalışılıyor",
+      "delivered": "Teslim edildi",
+      "revision_requested": "Revizyon istendi",
+      "completed": "Tamamlandı"
+    },
+    "upload": {
+      "drop": "Dosyaları buraya bırak ya da tıklayıp seç",
+      "full": "Bu tur için dosya sınırına ulaşıldı",
+      "hint": "{count, plural, =0 {daha fazla dosya eklenemez} other {# dosya daha}} · WAV, AIFF, FLAC, MP3 ya da ZIP",
+      "done": "yüklendi",
+      "errors": {
+        "bad_extension": "Dosya türüne izin verilmiyor",
+        "too_large": "Dosya çok büyük",
+        "too_many_files": "Dosya sınırına ulaşıldı",
+        "uploads_closed": "Bu iş için yüklemeler kapalı",
+        "not_uploaded": "Yükleme tamamlanmadı",
+        "generic": "Yükleme başarısız"
       }
-    ]
+    },
+    "errors": {
+      "no_revisions_left": "Dahil olan tüm revizyonlar kullanıldı.",
+      "message_required": "Stüdyoya ne değişmesi gerektiğini yaz.",
+      "invalid_transition": "Bu işlem şu anda yapılamaz.",
+      "brief_locked": "Brief artık düzenlenemez.",
+      "generic": "Bir şeyler ters gitti. Lütfen tekrar dene."
+    }
   },
   "rooms": {
     "section": "009",
@@ -555,7 +583,8 @@
       "changePassword": "Şifreyi değiştir",
       "passwordChanged": "Şifre değiştirildi.",
       "logout": "Çıkış yap",
-      "orders": "Siparişlerim ve indirmeler"
+      "orders": "Siparişlerim ve indirmeler",
+      "services": "Mastering & miks işleri"
     },
     "errors": {
       "generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
@@ -682,7 +711,7 @@
     "backToOrders": "Tüm siparişler",
     "total": "TOPLAM",
     "itemCount": "{count} ürün",
-    "serviceNext": "DOSYALARINI YÜKLE — BİR SONRAKİ SÜRÜMLE GELİYOR",
+    "serviceNext": "Dosyalarını yüklemek için işi aç →",
     "status": {
       "pending": "Ödeme bekleniyor",
       "paid": "Ödendi",

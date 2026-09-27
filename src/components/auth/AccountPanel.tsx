@@ -35,9 +35,14 @@ export default function AccountPanel({ locale }: { locale: string }) {
       </section>
 
       <section className="border-t border-rule pt-8">
-        <Button asChild size="lg" variant="outline" className="w-full">
-          <Link href={`/${locale}/account/orders`}>{t('orders')}</Link>
-        </Button>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Button asChild size="lg" variant="outline" className="w-full">
+            <Link href={`/${locale}/account/orders`}>{t('orders')}</Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="w-full">
+            <Link href={`/${locale}/account/services`}>{t('services')}</Link>
+          </Button>
+        </div>
       </section>
 
       <ProfileForm
