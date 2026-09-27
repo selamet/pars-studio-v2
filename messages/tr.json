@@ -9,13 +9,21 @@
     "status": "STÜDYO AÇIK",
     "book": "Rezervasyon",
     "menu": "Menü",
-    "close": "Kapat"
+    "close": "Kapat",
+    "signIn": "Giriş",
+    "account": "Hesap"
   },
   "hero": {
     "meta": "CALIFORNIA · İSTANBUL",
     "eyebrow": "MÜZİK · VİDEO · DAĞITIM",
     "titleLine1": "Ham sesi",
-    "titleWords": ["karaktere", "ruhunuza", "duygulara", "hikâyene", "melodiye"],
+    "titleWords": [
+      "karaktere",
+      "ruhunuza",
+      "duygulara",
+      "hikâyene",
+      "melodiye"
+    ],
     "titleLine3": "kazıyoruz.",
     "caption": "Pars Studios - Creative Media",
     "scroll": "KAYDIR"
@@ -26,7 +34,13 @@
     "image": "/images/studio/about-console.png",
     "imageCaption": "PARS STUDIOS · CALIFORNIA · İSTANBUL",
     "headingPre": "İyi ",
-    "headingWords": ["ses", "müzik", "miks", "ton", "ritim"],
+    "headingWords": [
+      "ses",
+      "müzik",
+      "miks",
+      "ton",
+      "ritim"
+    ],
     "headingPost": " bir tesadüf değil; bir karardır.",
     "p1": "Pars Studios, Irvine CA'da kurulu, İstanbul'da da hizmet veren bağımsız bir yaratıcı medya stüdyosudur. Başta beat prodüksiyon olmak üzere kayıt, miks ve mastering; ayrıca film müziği ve jeneriği, reklam müziği, video klip çekimi ile kurgu ve görsel efekt (FX) işlerini aynı çatı altında üretiriz. Tek bir derdimiz var: bir fikri, dinleyenin göğsünde ve izleyenin gözünde iz bırakan bir esere dönüştürmek. Trend kovalamak yerine her sanatçının kendi sesini bulmasına alan açarız; çünkü zamana kalan, taklit değil karakterdir.",
     "p2": "Her proje, ister bir parça ister bir klip ya da bir reklam filmi olsun, akustikten ve kameradan çok önce niyetle başlar. Önce sanatçıyla oturur; işin ne anlatmak istediğini, hangi duyguyu taşıdığını uzun uzun konuşuruz. Mikrofonu da kamerayı da ancak bundan sonra açarız. Aceleyi sevmeyiz, çünkü acele eninde sonunda kayda ve kurguya sızar; dinleyen ve izleyen onu fark eder. Bizim için doğru anı beklemek, çoğu zaman en pahalı ekipmandan daha değerlidir.",
@@ -133,10 +147,34 @@
     "colRole": "ROL",
     "previewSoon": "DİNLEME YAKINDA",
     "items": [
-      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
-      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" },
-      { "artist": "Ero", "project": "ALO", "year": "2025", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "3u3xhrPu6CvhJd92xl82O8" },
-      { "artist": "Jenga, thirteen", "project": "Anlatamam", "year": "2025", "role": "Kayıt · Prodüksiyon · Miks · Mastering", "spotifyId": "2prtgTnUOfMvJRoilD2Or2" }
+      {
+        "artist": "Aleyna Kalaycıoğlu",
+        "project": "YANGIN",
+        "year": "2024",
+        "role": "Kayıt · Prodüksiyon · Miks · Mastering",
+        "spotifyId": "6HZLaC77dliSiengA0TUcd"
+      },
+      {
+        "artist": "Apeden, EFRUZ",
+        "project": "OHA",
+        "year": "2026",
+        "role": "Kayıt · Prodüksiyon · Miks · Mastering",
+        "spotifyId": "3fYUimY7pmUmycgyzc2Wxg"
+      },
+      {
+        "artist": "Ero",
+        "project": "ALO",
+        "year": "2025",
+        "role": "Kayıt · Prodüksiyon · Miks · Mastering",
+        "spotifyId": "3u3xhrPu6CvhJd92xl82O8"
+      },
+      {
+        "artist": "Jenga, thirteen",
+        "project": "Anlatamam",
+        "year": "2025",
+        "role": "Kayıt · Prodüksiyon · Miks · Mastering",
+        "spotifyId": "2prtgTnUOfMvJRoilD2Or2"
+      }
     ]
   },
   "voices": {
@@ -201,11 +239,16 @@
     "branches": [
       {
         "label": "CALIFORNIA",
-        "lines": ["Irvine, CA"]
+        "lines": [
+          "Irvine, CA"
+        ]
       },
       {
         "label": "İSTANBUL",
-        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
+        "lines": [
+          "Bilgiç Sokak No:2",
+          "Kağıthane, İstanbul"
+        ]
       }
     ],
     "hours": "Hafta içi 11:00 — 22:00",
@@ -220,9 +263,18 @@
     "mapDirections": "Yol tarifi al",
     "socialTitle": "SOSYAL",
     "socialLinks": [
-      { "label": "Instagram", "href": "https://instagram.com" },
-      { "label": "SoundCloud", "href": "https://soundcloud.com" },
-      { "label": "Spotify", "href": "https://spotify.com" }
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com"
+      },
+      {
+        "label": "SoundCloud",
+        "href": "https://soundcloud.com"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://spotify.com"
+      }
     ],
     "bookingTitle": "REZERVASYON",
     "bookingCta": "Rezervasyon Yap",
@@ -265,10 +317,28 @@
       "loading": "Müsaitlik kontrol ediliyor…",
       "noSlots": "Bu tarih için uygun saat yok. Başka bir tarih dene.",
       "slotTaken": "dolu",
-      "weekdays": ["Pa", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+      "weekdays": [
+        "Pa",
+        "Pt",
+        "Sa",
+        "Ça",
+        "Pe",
+        "Cu",
+        "Ct"
+      ],
       "months": [
-        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
-        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+        "Ocak",
+        "Şubat",
+        "Mart",
+        "Nisan",
+        "Mayıs",
+        "Haziran",
+        "Temmuz",
+        "Ağustos",
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık"
       ]
     },
     "details": {
@@ -394,6 +464,99 @@
       "hour": "saat",
       "hours": "saat",
       "error": "Bir hata oluştu. Tekrar dene."
+    }
+  },
+  "auth": {
+    "eyebrow": "009",
+    "fields": {
+      "email": "E-posta",
+      "password": "Şifre",
+      "passwordHint": "En az 8 karakter, sadece rakamlardan oluşmasın."
+    },
+    "login": {
+      "label": "HESAP",
+      "heading": "Giriş yap.",
+      "intro": "Siparişlerine, indirmelerine ve seanslarına eriş.",
+      "submit": "Giriş yap",
+      "submitting": "Giriş yapılıyor…",
+      "or": "VEYA",
+      "google": "Google ile devam et",
+      "forgot": "Şifreni mi unuttun?",
+      "noAccount": "Hesabın yok mu?",
+      "signup": "Hesap oluştur",
+      "errorInvalid": "E-posta veya şifre hatalı.",
+      "unverified": "E-postan henüz doğrulanmadı. Gönderdiğimiz bağlantıyı açıp tekrar giriş yap."
+    },
+    "signup": {
+      "label": "HESAP",
+      "heading": "Hesabını oluştur.",
+      "intro": "Beat, mastering siparişleri ve stüdyo rezervasyonları için tek hesap.",
+      "submit": "Hesap oluştur",
+      "submitting": "Oluşturuluyor…",
+      "haveAccount": "Zaten hesabın var mı?",
+      "login": "Giriş yap",
+      "checkInbox": "{email} adresine bir doğrulama bağlantısı gönderdik. Hesabını etkinleştirmek için aç."
+    },
+    "verify": {
+      "label": "DOĞRULAMA",
+      "heading": "E-postan doğrulanıyor.",
+      "verifying": "Doğrulanıyor…",
+      "success": "E-postan doğrulandı. Şimdi giriş yapabilirsin.",
+      "successSignedIn": "E-postan doğrulandı ve giriş yaptın.",
+      "invalid": "Bu bağlantı geçersiz ya da süresi dolmuş.",
+      "invalidBody": "Yeni bir doğrulama e-postası için giriş yapmayı dene ya da hesabı yeniden oluştur.",
+      "goLogin": "Girişe git",
+      "goAccount": "Hesabıma git"
+    },
+    "reset": {
+      "label": "ŞİFRE",
+      "heading": "Şifreni sıfırla.",
+      "intro": "E-postanı yaz, sana bir sıfırlama bağlantısı gönderelim.",
+      "submit": "Bağlantı gönder",
+      "submitting": "Gönderiliyor…",
+      "sent": "{email} için bir hesap varsa sıfırlama bağlantısı yolda.",
+      "backToLogin": "Girişe dön",
+      "newHeading": "Yeni bir şifre seç.",
+      "newIntro": "Başka yerde kullanmadığın, uzun bir şifre seç.",
+      "newPassword": "Yeni şifre",
+      "confirmPassword": "Yeni şifre (tekrar)",
+      "mismatch": "Şifreler eşleşmiyor.",
+      "submitReset": "Şifreyi kaydet",
+      "submittingReset": "Kaydediliyor…",
+      "done": "Şifren güncellendi. Yeni şifrenle giriş yap.",
+      "invalidKey": "Bu sıfırlama bağlantısı geçersiz ya da süresi dolmuş. Yeni bir tane iste."
+    },
+    "provider": {
+      "label": "GOOGLE",
+      "heading": "Giriş tamamlanıyor.",
+      "finishing": "Tamamlanıyor…",
+      "failed": "Google ile giriş tamamlanamadı.",
+      "failedBody": "Sağlayıcı isteği iptal etti ya da reddetti. Tekrar deneyebilir veya e-posta ve şifreyle giriş yapabilirsin.",
+      "retry": "Girişe dön"
+    },
+    "account": {
+      "label": "HESAP",
+      "heading": "Hesabın.",
+      "intro": "Profil bilgileri ve güvenlik. Siparişler ve indirmeler yakında burada.",
+      "loading": "Yükleniyor…",
+      "emailLabel": "E-POSTA",
+      "unverified": "E-posta henüz doğrulanmadı. Doğrulama bağlantısı için gelen kutunu kontrol et.",
+      "profile": "PROFİL",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "save": "Kaydet",
+      "saving": "Kaydediliyor…",
+      "saved": "Kaydedildi.",
+      "passwordHeading": "ŞİFRE",
+      "currentPassword": "Mevcut şifre",
+      "newPassword": "Yeni şifre",
+      "changePassword": "Şifreyi değiştir",
+      "passwordChanged": "Şifre değiştirildi.",
+      "logout": "Çıkış yap"
+    },
+    "errors": {
+      "generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
+      "network": "Sunucuya ulaşılamıyor. Bağlantını kontrol et."
     }
   }
 }

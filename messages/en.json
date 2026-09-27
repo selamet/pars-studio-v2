@@ -9,13 +9,21 @@
     "status": "STUDIO OPEN",
     "book": "Book",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "signIn": "Sign in",
+    "account": "Account"
   },
   "hero": {
     "meta": "CALIFORNIA · ISTANBUL",
     "eyebrow": "MUSIC · VIDEO · DISTRIBUTION",
     "titleLine1": "We carve raw",
-    "titleWords": ["character", "soul", "emotion", "stories", "feeling"],
+    "titleWords": [
+      "character",
+      "soul",
+      "emotion",
+      "stories",
+      "feeling"
+    ],
     "titleLine3": "from sound.",
     "caption": "Pars Studios - Creative Media",
     "scroll": "SCROLL"
@@ -26,7 +34,13 @@
     "image": "/images/studio/about-console.png",
     "imageCaption": "PARS STUDIOS · CALIFORNIA · ISTANBUL",
     "headingPre": "Good ",
-    "headingWords": ["sound", "music", "tone", "rhythm", "mixing"],
+    "headingWords": [
+      "sound",
+      "music",
+      "tone",
+      "rhythm",
+      "mixing"
+    ],
     "headingPost": " is not an accident. It is a decision.",
     "p1": "Pars Studios is an independent creative media studio based in Irvine, CA, and also serving Istanbul. Led by beat production — and alongside recording, mixing and mastering — we craft film scores and title music, commercial music, music videos, and the editing and visual effects (FX) that go with them, all under one roof. We care about one thing: turning an idea into a work you feel in your chest and see on the screen. Rather than chasing trends, we make room for every artist to find their own voice — because what lasts over time is character, not imitation.",
     "p2": "Every project — whether a track, a music video or a commercial — begins with intent long before the acoustics or the camera. We sit down with the artist first and talk, at length, about what the work wants to say and which emotion it carries; only then do we open a microphone or roll the camera. We don't like to rush, because a rush eventually bleeds into the recording and the edit, and the audience feels it. For us, waiting for the right moment is often worth more than the most expensive piece of gear.",
@@ -133,10 +147,34 @@
     "colRole": "ROLE",
     "previewSoon": "PREVIEW COMING SOON",
     "items": [
-      { "artist": "Aleyna Kalaycıoğlu", "project": "YANGIN", "year": "2024", "role": "Recording · Production · Mix · Master", "spotifyId": "6HZLaC77dliSiengA0TUcd" },
-      { "artist": "Apeden, EFRUZ", "project": "OHA", "year": "2026", "role": "Recording · Production · Mix · Master", "spotifyId": "3fYUimY7pmUmycgyzc2Wxg" },
-      { "artist": "Ero", "project": "ALO", "year": "2025", "role": "Recording · Production · Mix · Master", "spotifyId": "3u3xhrPu6CvhJd92xl82O8" },
-      { "artist": "Jenga, thirteen", "project": "Anlatamam", "year": "2025", "role": "Recording · Production · Mix · Master", "spotifyId": "2prtgTnUOfMvJRoilD2Or2" }
+      {
+        "artist": "Aleyna Kalaycıoğlu",
+        "project": "YANGIN",
+        "year": "2024",
+        "role": "Recording · Production · Mix · Master",
+        "spotifyId": "6HZLaC77dliSiengA0TUcd"
+      },
+      {
+        "artist": "Apeden, EFRUZ",
+        "project": "OHA",
+        "year": "2026",
+        "role": "Recording · Production · Mix · Master",
+        "spotifyId": "3fYUimY7pmUmycgyzc2Wxg"
+      },
+      {
+        "artist": "Ero",
+        "project": "ALO",
+        "year": "2025",
+        "role": "Recording · Production · Mix · Master",
+        "spotifyId": "3u3xhrPu6CvhJd92xl82O8"
+      },
+      {
+        "artist": "Jenga, thirteen",
+        "project": "Anlatamam",
+        "year": "2025",
+        "role": "Recording · Production · Mix · Master",
+        "spotifyId": "2prtgTnUOfMvJRoilD2Or2"
+      }
     ]
   },
   "voices": {
@@ -201,11 +239,16 @@
     "branches": [
       {
         "label": "CALIFORNIA",
-        "lines": ["Irvine, CA"]
+        "lines": [
+          "Irvine, CA"
+        ]
       },
       {
         "label": "ISTANBUL",
-        "lines": ["Bilgiç Sokak No:2", "Kağıthane, İstanbul"]
+        "lines": [
+          "Bilgiç Sokak No:2",
+          "Kağıthane, İstanbul"
+        ]
       }
     ],
     "hours": "Weekdays 11:00 — 22:00",
@@ -220,9 +263,18 @@
     "mapDirections": "Get directions",
     "socialTitle": "SOCIAL",
     "socialLinks": [
-      { "label": "Instagram", "href": "https://instagram.com" },
-      { "label": "SoundCloud", "href": "https://soundcloud.com" },
-      { "label": "Spotify", "href": "https://spotify.com" }
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com"
+      },
+      {
+        "label": "SoundCloud",
+        "href": "https://soundcloud.com"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://spotify.com"
+      }
     ],
     "bookingTitle": "BOOKING",
     "bookingCta": "Book a session",
@@ -265,10 +317,28 @@
       "loading": "Checking availability…",
       "noSlots": "No slot fits this date. Try another day.",
       "slotTaken": "taken",
-      "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+      "weekdays": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+      ],
       "months": [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
       ]
     },
     "details": {
@@ -394,6 +464,99 @@
       "hour": "hour",
       "hours": "hours",
       "error": "Something went wrong. Try again."
+    }
+  },
+  "auth": {
+    "eyebrow": "009",
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "At least 8 characters, not only numbers."
+    },
+    "login": {
+      "label": "ACCOUNT",
+      "heading": "Sign in.",
+      "intro": "Access your orders, downloads and sessions.",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "or": "OR",
+      "google": "Continue with Google",
+      "forgot": "Forgot your password?",
+      "noAccount": "New here?",
+      "signup": "Create an account",
+      "errorInvalid": "Email or password is incorrect.",
+      "unverified": "Your email is not verified yet. Open the link we sent you, then sign in again."
+    },
+    "signup": {
+      "label": "ACCOUNT",
+      "heading": "Create your account.",
+      "intro": "One account for beats, mastering orders and studio bookings.",
+      "submit": "Create account",
+      "submitting": "Creating…",
+      "haveAccount": "Already have an account?",
+      "login": "Sign in",
+      "checkInbox": "We sent a verification link to {email}. Open it to activate your account."
+    },
+    "verify": {
+      "label": "VERIFICATION",
+      "heading": "Verifying your email.",
+      "verifying": "Verifying…",
+      "success": "Your email is verified. You can sign in now.",
+      "successSignedIn": "Your email is verified and you are signed in.",
+      "invalid": "This link is invalid or has expired.",
+      "invalidBody": "Sign in to request a new verification email, or create the account again.",
+      "goLogin": "Go to sign in",
+      "goAccount": "Go to my account"
+    },
+    "reset": {
+      "label": "PASSWORD",
+      "heading": "Reset your password.",
+      "intro": "Enter your email and we will send you a reset link.",
+      "submit": "Send reset link",
+      "submitting": "Sending…",
+      "sent": "If an account exists for {email}, a reset link is on its way.",
+      "backToLogin": "Back to sign in",
+      "newHeading": "Choose a new password.",
+      "newIntro": "Pick something long that you do not use anywhere else.",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "mismatch": "Passwords do not match.",
+      "submitReset": "Set new password",
+      "submittingReset": "Saving…",
+      "done": "Your password has been updated. Sign in with the new one.",
+      "invalidKey": "This reset link is invalid or has expired. Request a new one."
+    },
+    "provider": {
+      "label": "GOOGLE",
+      "heading": "Finishing sign-in.",
+      "finishing": "Finishing…",
+      "failed": "Google sign-in did not complete.",
+      "failedBody": "The provider cancelled or rejected the request. You can try again or use email and password.",
+      "retry": "Back to sign in"
+    },
+    "account": {
+      "label": "ACCOUNT",
+      "heading": "Your account.",
+      "intro": "Profile details and security. Orders and downloads arrive here soon.",
+      "loading": "Loading…",
+      "emailLabel": "EMAIL",
+      "unverified": "Email not verified yet. Check your inbox for the verification link.",
+      "profile": "PROFILE",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "saved": "Saved.",
+      "passwordHeading": "PASSWORD",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "changePassword": "Change password",
+      "passwordChanged": "Password changed.",
+      "logout": "Sign out"
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "network": "Cannot reach the server. Check your connection."
     }
   }
 }
