@@ -16,8 +16,11 @@ export default function SignupForm({ locale }: { locale: string }) {
   const router = useRouter();
   const { refresh } = useAuth();
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
@@ -25,12 +28,22 @@ export default function SignupForm({ locale }: { locale: string }) {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitting(true);
     setError(null);
+    // The confirmation only guards against typos; the API takes one password.
+    if (password !== passwordConfirm) {
+      setFieldErrors({ password_confirm: [t('fields.passwordMismatch')] });
+      return;
+    }
+    setSubmitting(true);
     setFieldErrors({});
     try {
       await ensureCsrf();
-      const { status, data } = await signup(email, password);
+      const { status, data } = await signup({
+        first_name: firstName.trim(),
+        last_name: lastName.trim(),
+        email,
+        password,
+      });
       if (status === 200 && data.meta.is_authenticated) {
         await refresh();
         router.push(`/${locale}/account`);
@@ -63,6 +76,26 @@ export default function SignupForm({ locale }: { locale: string }) {
   return (
     <div className="flex flex-col gap-8">
       <form onSubmit={onSubmit} className="flex flex-col gap-8" noValidate>
+        <div className="grid gap-8 sm:grid-cols-2">
+          <Field
+            id="first_name"
+            label={t('fields.firstName')}
+            autoComplete="given-name"
+            required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            error={fieldErrors.first_name?.[0]}
+          />
+          <Field
+            id="last_name"
+            label={t('fields.lastName')}
+            autoComplete="family-name"
+            required
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            error={fieldErrors.last_name?.[0]}
+          />
+        </div>
         <Field
           id="email"
           type="email"
@@ -84,6 +117,17 @@ export default function SignupForm({ locale }: { locale: string }) {
           onChange={(e) => setPassword(e.target.value)}
           hint={t('fields.passwordHint')}
           error={fieldErrors.password?.[0]}
+        />
+        <Field
+          id="password_confirm"
+          type="password"
+          label={t('fields.passwordConfirm')}
+          autoComplete="new-password"
+          required
+          minLength={8}
+          value={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          error={fieldErrors.password_confirm?.[0]}
         />
 
         {error && <FormError>{error}</FormError>}

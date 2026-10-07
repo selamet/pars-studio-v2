@@ -545,9 +545,13 @@
   "auth": {
     "eyebrow": "009",
     "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
       "email": "Email",
       "password": "Password",
-      "passwordHint": "At least 8 characters, not only numbers."
+      "passwordHint": "At least 8 characters, not only numbers.",
+      "passwordConfirm": "Confirm password",
+      "passwordMismatch": "Passwords don't match."
     },
     "login": {
       "label": "ACCOUNT",

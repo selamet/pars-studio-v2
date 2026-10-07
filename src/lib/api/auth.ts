@@ -55,10 +55,17 @@ export function login(email: string, password: string) {
   });
 }
 
-export function signup(email: string, password: string) {
+export type SignupInput = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+};
+
+export function signup(input: SignupInput) {
   return apiFetch<AuthResponse>(`${HEADLESS}/auth/signup`, {
     method: 'POST',
-    body: { email, password },
+    body: input,
     allowStatuses: [401],
   });
 }
