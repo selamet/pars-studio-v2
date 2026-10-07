@@ -545,9 +545,13 @@
   "auth": {
     "eyebrow": "009",
     "fields": {
+      "firstName": "Ad",
+      "lastName": "Soyad",
       "email": "E-posta",
       "password": "Şifre",
-      "passwordHint": "En az 8 karakter, sadece rakamlardan oluşmasın."
+      "passwordHint": "En az 8 karakter, sadece rakamlardan oluşmasın.",
+      "passwordConfirm": "Şifre tekrar",
+      "passwordMismatch": "Şifreler eşleşmiyor."
     },
     "login": {
       "label": "HESAP",
