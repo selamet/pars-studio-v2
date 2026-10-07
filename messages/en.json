@@ -751,6 +751,13 @@
       "slotTaken": "That studio slot was just taken. It was marked in your cart; pick another time.",
       "paymentUnavailable": "Payments are temporarily unavailable. Please try again in a few minutes."
     },
+    "verify": {
+      "resend": "Resend verification email",
+      "sending": "Sending…",
+      "sent": "Sent. Check your inbox for the new link.",
+      "tooSoon": "A link went out recently. Try again in a few minutes.",
+      "failed": "The email could not be sent. Please try again."
+    },
     "holdNote": "Studio slots in your cart are only held once you start paying, and confirmed when payment completes."
   },
   "checkout": {

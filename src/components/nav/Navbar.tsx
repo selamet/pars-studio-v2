@@ -34,17 +34,19 @@ export default function Navbar() {
   const sectionHref = (id: string) =>
     isLanding ? `#${id}` : `/${locale}#${id}`;
 
-  // Track whether we've scrolled past the hero. When yes, swap
-  // mix-blend-difference (great over the spiral) for a subtle dark glass
-  // backdrop (clean over the rest of the dark page).
+  // Swap mix-blend-difference (great over the landing spiral) for a subtle
+  // dark glass backdrop once content can slide under the header. On landing
+  // that is after scrolling past the hero; elsewhere there is no hero, so
+  // switch as soon as the page leaves the top. Re-runs on client navigation.
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight * 0.6);
+      const threshold = isLanding ? window.innerHeight * 0.6 : 8;
+      setScrolled(window.scrollY > threshold);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isLanding, pathname]);
 
   // Landing sections (anchors) followed by store routes (always real links).
   const links = [

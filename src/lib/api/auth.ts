@@ -78,6 +78,19 @@ export function verifyEmail(key: string) {
   });
 }
 
+/**
+ * Re-sends the verification mail for an address the signed-in user already
+ * has. allauth answers 200 when a mail went out and 403 when it was withheld
+ * (the per-address `confirm_email` cooldown); 429 means `manage_email` is
+ * rate limited. Both non-200 cases reject with `ApiError`.
+ */
+export function resendEmailVerification(email: string) {
+  return apiFetch(`${HEADLESS}/account/email`, {
+    method: 'PUT',
+    body: { email },
+  });
+}
+
 export function requestPasswordReset(email: string) {
   return apiFetch(`${HEADLESS}/auth/password/request`, {
     method: 'POST',

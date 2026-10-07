@@ -751,6 +751,13 @@
       "slotTaken": "O stüdyo saati az önce alındı. Sepette işaretlendi; başka bir saat seç.",
       "paymentUnavailable": "Ödeme geçici olarak kullanılamıyor. Birkaç dakika sonra tekrar dene."
     },
+    "verify": {
+      "resend": "Doğrulama e-postasını tekrar gönder",
+      "sending": "Gönderiliyor…",
+      "sent": "Gönderildi. Yeni bağlantı gelen kutunda.",
+      "tooSoon": "Az önce bir bağlantı gönderildi. Birkaç dakika sonra tekrar dene.",
+      "failed": "E-posta gönderilemedi. Lütfen tekrar dene."
+    },
     "holdNote": "Sepetteki stüdyo saatleri ödemeye başladığında tutulur, ödeme tamamlanınca kesinleşir."
   },
   "checkout": {

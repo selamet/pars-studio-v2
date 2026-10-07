@@ -15,6 +15,7 @@ import { formatUsd } from '@/lib/api/catalog';
 import { startCheckout, type CheckoutConflict } from '@/lib/api/orders';
 import { bookingKey } from '@/lib/api/bookings';
 import { useCart } from './CartProvider';
+import VerifyEmailNotice from './VerifyEmailNotice';
 
 export default function CartView({ locale }: { locale: string }) {
   const t = useTranslations('cart');
@@ -24,9 +25,14 @@ export default function CartView({ locale }: { locale: string }) {
   const { lines, total, hydrated, remove, markUnavailable } = useCart();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Set when checkout answers `email_unverified` even though the cached user
+  // said otherwise; the notice below then renders instead of an error box.
+  const [unverified, setUnverified] = useState(false);
 
   const cancelled = params.get('cancelled');
   const sellable = lines.filter((l) => !l.unavailable);
+  const showVerify =
+    status === 'authenticated' && !!user && (!user.email_verified || unverified);
 
   async function checkout() {
     if (status !== 'authenticated') {
@@ -61,7 +67,7 @@ export default function CartView({ locale }: { locale: string }) {
               : t('errors.unavailable')
         );
       } else if (err instanceof ApiError && err.code === 'email_unverified') {
-        setError(t('errors.unverified'));
+        setUnverified(true);
       } else if (err instanceof ApiError && err.code === 'payment_unavailable') {
         setError(t('errors.paymentUnavailable'));
       } else if (err instanceof ApiError && err.code === 'network') {
@@ -130,9 +136,7 @@ export default function CartView({ locale }: { locale: string }) {
           <span className="font-mono text-[20px]">{formatUsd(total)}</span>
         </div>
         {cancelled && <FormNotice>{t('cancelled')}</FormNotice>}
-        {status === 'authenticated' && user && !user.email_verified && (
-          <FormNotice>{t('errors.unverified')}</FormNotice>
-        )}
+        {showVerify && <VerifyEmailNotice email={user?.email} />}
         {error && <FormError>{error}</FormError>}
         <Button
           type="button"
